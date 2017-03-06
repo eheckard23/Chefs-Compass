@@ -14,7 +14,7 @@ $('.submitSearch').on('click', (e) => {
 	    			'<article class="recipe">'
 	    			+ `<img src="https://spoonacular.com/recipeImages/${recipe.image}"/>`
 	    			+ `<h3>${recipe.title}</h3>`
-	    			+ `<p>${recipe.readyInMinutes}</p>`
+	    			+ `<p>Cook Time: ${recipe.readyInMinutes} minutes</p>`
 	    			+ '</article>'
 	    			);
 	    	});
@@ -25,8 +25,6 @@ $('.submitSearch').on('click', (e) => {
 	    xhr.setRequestHeader("X-Mashape-Authorization", "fHjaL4Ss9gmshKplCTTN8WTMJD0up1Tuhn4jsnpw0mSEkWnxu9"); // Enter here your Mashape key
 	    }
 	});
-
-	// Store recipes in html
 
 });
 
