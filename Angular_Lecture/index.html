@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>My First AngularJS Project</title>
+	<script type="text/javascript" src="https://opensource.keycdn.com/angularjs/1.6.2/angular.min.js"></script>
+	<script type="text/javascript" src="js/app.js"></script>
+</head>
+<body ng-app="MyApp" ng-controller="MyController">
+<!-- ng-app specifies the top level location where the angular is populated -->
+
+	{{ test }}
+
+	<!-- two way data binding -->
+	<br />
+	<input type="text" ng-model="test" />
+	<br />
+	{{ countWords(test) }} word{{ (countWords(test) != 1)?"s":""}}.
+
+	<br />
+	<button ng-click="onCount()">{{ counter }} Button Click{{ (counter != 1)?"s":""}}</button>
+
+	<hr />
+	<form ng-submit="onSave()">
+		<label>
+			Name:
+			<input type="text" ng-model="student.name" />
+		</label>
+		<label>
+			GPA:
+			<input type="text" ng-model="student.gpa" />
+		</label>
+		<br />
+		<button type="submit">Save</button>
+	</form>
+
+	<ul>
+		<!-- loop over array for data -->
+		<li ng-repeat="student in studentArray track by $index">
+			{{ student.name }} (GPA: {{ student.gpa }})
+		</li>
+	</ul>
+
+
+</body>
+</html>
