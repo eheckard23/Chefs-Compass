@@ -37,7 +37,8 @@
 	<ul>
 		<!-- loop over array for data -->
 		<li ng-repeat="student in studentArray track by $index">
-			{{ student.name }} (GPA: {{ student.gpa }})
+			{{ student.name }} (GPA: {{ student.gpa | number:2 }})
+			<button ng-click="eliminateStudentAt($index)">x</button>
 		</li>
 	</ul>
 
