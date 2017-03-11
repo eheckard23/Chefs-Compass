@@ -28,4 +28,14 @@ class Controller{
 		console.table(videos);
 		View.displayVideos(videos);
 	}
+
+	static getRecipePage(recipeObj, url){
+		Model.recipePage(recipeObj, url);
+	}
+
+	static setRecipePage(recipeObj, recipeData){
+		console.log(recipeObj);
+		console.log(recipeData);
+		View.displayRecipePage(recipeObj, recipeData);
+	}
 }

@@ -1,3 +1,13 @@
+header{
+	border: solid 1px orange;
+}
+.jumbotron{
+	border: solid 1px red;
+}
+.welcome,
+.trivia{
+	border: solid 1px blue;
+}
 .ytResults{
 	clear: left;
 }
@@ -14,7 +24,7 @@
 .recipe img{
 	max-width: 100%;
 }
-.recipe button{
+.recipeLink{
 	border: none;
 	border-radius: 15px;
 	background-color: #ff4b51;

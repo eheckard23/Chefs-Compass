@@ -2,9 +2,20 @@ class Session{
 	constructor(){
 		console.log('Session created');
 
+		let searchValue = $('.searchRecipe').val();
+		let recipeCount = 3;
+		let recipeId = '';
+
+		let urls = {
+			triviaSearch: `https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/food/trivia/random`,
+			ytSearch: `https://www.googleapis.com/youtube/v3/search?key=AIzaSyCxolTs58eWL7PrMUVJHPslqY7mOYwQ5lg&part=snippet&maxResults=2&topicId=/m/02wbm&q=${searchValue}`,
+			recipeSearch: `https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search?number=${recipeCount}&query=${searchValue}&type=main+course'`,
+			recipeInstruction: `https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/${recipeId}/analyzedInstructions`
+		};
+
 		$(function(){
 			// create controller
-			const controller = new Controller();
+			this.controller = new Controller();
 			// load youtube client
 			function init(){
 				gapi.client.setApiKey('AIzaSyCxolTs58eWL7PrMUVJHPslqY7mOYwQ5lg');
@@ -13,25 +24,45 @@ class Session{
 				});
 			}
 			// random food trivia
-			controller.getTrivia(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/food/trivia/random`);
+			this.controller.getTrivia(urls.triviaSearch);
+
+			// random recipes
+			this.controller.getRecipes(urls.recipeSearch);
+			// // random videos
+			// controller.ytRequest(urls.recipeSearch);
+
 			// recipe search
+
 			$.when(
 				$('.submitSearch').on('click', (e) => {
 					e.preventDefault();
-					let search = $('.searchRecipe').val();
-					let url = `https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search?number=10&query=${search}&type=main+course'`;
-					controller.getRecipes(url);
+					let searchValue = $('.searchRecipe').val();
+					let recipeCount = 10;
+					this.controller.getRecipes(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search?number=${recipeCount}&query=${searchValue}&type=main+course'`);
 				}),
 
 				$('.submitSearch').on('click', (e) => {
 					e.preventDefault();
-					controller.ytRequest(`https://www.googleapis.com/youtube/v3/search?key=AIzaSyCxolTs58eWL7PrMUVJHPslqY7mOYwQ5lg&part=snippet&q=${$('.searchRecipe').val()}`);
+					let searchValue = $('.searchRecipe').val();
+					this.controller.ytRequest(`https://www.googleapis.com/youtube/v3/search?key=AIzaSyCxolTs58eWL7PrMUVJHPslqY7mOYwQ5lg&part=snippet&maxResults=2&topicId=/m/02wbm&q=${searchValue}`);
 				})
 
 			).then(function(){
 				console.log('success');
 			});
+
+			$('.recipeLink').on('click', (event) => {
+
+			});
 		});
+
+	}
+
+	static recipeLink(event){
+		let recipeObj = $(event.target).parent()[0].childNodes
+		let recipeId = $(event.target).parent()[0].childNodes[0].alt;
+		recipeId = recipeId.replace('/', '');
+		Controller.getRecipePage(recipeObj, `https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/${recipeId}/analyzedInstructions`);
 	}
 
 	static getInstance(){

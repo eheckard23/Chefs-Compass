@@ -31,7 +31,7 @@ class Model{
 	static recipeSearch(url){
 		console.log('test');
 
-		let results = $.ajax({
+		$.ajax({
 			url, // The URL to the API. You can get this in the API page of the API you intend to consume
 		   	type: 'GET', // The HTTP Method, can be GET POST PUT DELETE etc
 		    data: {}, // Additional parameters here
@@ -55,6 +55,23 @@ class Model{
 		request.execute(response => {
 			let videos = response.items;
 			Controller.setVideos(videos);
+		});
+	}
+
+	static recipePage(recipeObj, url){
+		$.ajax({
+			url,
+			type: 'GET',
+			data: {},
+			dataType: 'json',
+			success: function(data){
+				let recipeData = data;
+				Controller.setRecipePage(recipeObj, recipeData);
+			},
+			error: function(err) { alert(err); },
+				beforeSend: function(xhr) {
+				xhr.setRequestHeader("X-Mashape-Authorization", "fHjaL4Ss9gmshKplCTTN8WTMJD0up1Tuhn4jsnpw0mSEkWnxu9"); // Enter here your Mashape key
+			}
 		});
 	}
 }
