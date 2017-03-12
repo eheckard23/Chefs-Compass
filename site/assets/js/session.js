@@ -58,10 +58,10 @@ class Session{
 				let exclusions = $('.exclude').val();
 				let calories = $('.targetCalories').val();
 				let timeFrame = $('input[name="timeFrame"]:checked').val();
-				console.log(diet);
-				console.log(exclusions);
-				console.log(calories);
-				console.log(timeFrame);
+				// console.log(diet);
+				// console.log(exclusions);
+				// console.log(calories);
+				// console.log(timeFrame);
 				this.controller.mealPlanRequest(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/mealplans/generate?diet=${diet}&exclude=${exclusions}&targetCalories=${calories}&timeFrame=${timeFrame}`);
 			});
 

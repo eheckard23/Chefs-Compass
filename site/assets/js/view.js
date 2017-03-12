@@ -29,7 +29,8 @@ class View{
 					+ `<iframe class="ytPlayer" 
 								type="text/html" 
 								src="http://www.youtube.com/embed/${video.id.videoId}">
-						</iframe>`);
+						</iframe>`
+					);
 		});
 	}
 
@@ -40,5 +41,20 @@ class View{
 
 	static displayMealPlan(mealPlan){
 		console.log(mealPlan);
+		let idx = 0;
+		$('.mealPlanSchedule').html('');
+		mealPlan.meals.forEach(meal => {
+			console.log(meal, idx);
+			$('.mealPlanSchedule')
+				.append(
+					`<h3>Day ${idx}</h3>`
+					+ '<article class="recipe">'
+					+ `<img src="https://spoonacular.com/recipeImages/${meal.image}" alt=${meal.id}/>`
+					+ `<h3>${meal.title}</h3>`
+					+ `<p>Cook Time: ${meal.readyInMinutes} minutes</p>`
+					+ `<button class="recipeLink" onclick="Session.recipeLink(event)">Get Recipe</button>`
+					+ '</article>'
+				);
+		});
 	}
 }
