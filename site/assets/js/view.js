@@ -42,19 +42,42 @@ class View{
 	static displayMealPlan(mealPlan){
 		console.log(mealPlan);
 		let idx = 0;
-		$('.mealPlanSchedule').html('');
-		mealPlan.meals.forEach(meal => {
-			console.log(meal, idx);
-			$('.mealPlanSchedule')
-				.append(
-					`<h3>Day ${idx}</h3>`
-					+ '<article class="recipe">'
-					+ `<img src="https://spoonacular.com/recipeImages/${meal.image}" alt=${meal.id}/>`
-					+ `<h3>${meal.title}</h3>`
-					+ `<p>Cook Time: ${meal.readyInMinutes} minutes</p>`
-					+ `<button class="recipeLink" onclick="Session.recipeLink(event)">Get Recipe</button>`
-					+ '</article>'
-				);
-		});
+		if(mealPlan.meals){
+			$('.mealPlanSchedule').html('');
+			mealPlan.meals.forEach(meal => {
+				console.log(meal, idx);
+				$('.mealPlanSchedule')
+					.append(
+						`<article class="mealDay">`
+						+ `<h3>Day 1</h3>`
+						+ '<section class="recipe">'
+						+ `<img src="https://spoonacular.com/recipeImages/${meal.image}" alt=${meal.id}/>`
+						+ `<h3>${meal.title}</h3>`
+						+ `<p>Cook Time: ${meal.readyInMinutes} minutes</p>`
+						+ `<button class="recipeLink" onclick="Session.recipeLink(event)">Get Recipe</button>`
+						+ '</section>'
+						+ `</article>`
+					);
+			});
+		}else{
+			$('.mealPlanSchedule').html('');
+			mealPlan.items.forEach(meal => {
+				meal.value = JSON.parse(meal.value);
+				console.dir(meal.value, idx);
+				$('.mealPlanSchedule')
+					.append(
+						`<article class="mealDay">`
+						+ `<h3>Day 1</h3>`
+						+ '<section class="recipe">'
+						+ `<img src="https://spoonacular.com/recipeImages/${meal.image}" alt=${meal.value.id}/>`
+						+ `<h3>${meal.value.title}</h3>`
+						+ `<p>Cook Time: ${meal.readyInMinutes} minutes</p>`
+						+ `<button class="recipeLink" onclick="Session.recipeLink(event)">Get Recipe</button>`
+						+ '</section>'
+						+ `</article>`
+					);
+			});
+		}
+		
 	}
 }

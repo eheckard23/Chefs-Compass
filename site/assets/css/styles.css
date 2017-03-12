@@ -33,3 +33,6 @@ header{
 .recipeImage{
 	border: solid 2px red;
 }
+.mealDay{
+	float: left;
+}
