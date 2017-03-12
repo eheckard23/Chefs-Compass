@@ -51,15 +51,26 @@ class Session{
 				console.log('success');
 			});
 
-			$('.recipeLink').on('click', (event) => {
-
+			// meal plan
+			$('.dietSubmit').on('click', (e) => {
+				e.preventDefault();
+				let diet = $('.diet').val();
+				let exclusions = $('.exclude').val();
+				let calories = $('.targetCalories').val();
+				let timeFrame = $('input[name="timeFrame"]:checked').val();
+				console.log(diet);
+				console.log(exclusions);
+				console.log(calories);
+				console.log(timeFrame);
+				this.controller.mealPlanRequest(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/mealplans/generate?diet=${diet}&exclude=${exclusions}&targetCalories=${calories}&timeFrame=${timeFrame}`);
 			});
+
 		});
 
 	}
 
 	static recipeLink(event){
-		let recipeObj = $(event.target).parent()[0].childNodes
+		let recipeObj = $(event.target).parent()[0].childNodes;
 		let recipeId = $(event.target).parent()[0].childNodes[0].alt;
 		recipeId = recipeId.replace('/', '');
 		Controller.getRecipePage(recipeObj, `https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/${recipeId}/analyzedInstructions`);

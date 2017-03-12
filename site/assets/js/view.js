@@ -34,9 +34,11 @@ class View{
 	}
 
 	static displayRecipePage(recipeObj, recipeData){
-		window.location.assign('../../recipe.html');
-		console.dir(recipeObj);
-		console.log(recipeObj[0].currentSrc);
-		
+		this.recipeObj = recipeObj;
+		this.recipeData = recipeData;
+	}
+
+	static displayMealPlan(mealPlan){
+		console.log(mealPlan);
 	}
 }

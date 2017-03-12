@@ -34,8 +34,18 @@ class Controller{
 	}
 
 	static setRecipePage(recipeObj, recipeData){
-		console.log(recipeObj);
-		console.log(recipeData);
+		// window.location.assign('../../recipe.html');
 		View.displayRecipePage(recipeObj, recipeData);
 	}
+
+	mealPlanRequest(url){
+		Model.generateMealPlan(url);
+	}
+
+	static setMealPlan(mealPlan){
+		View.displayMealPlan(mealPlan);
+	}
+
+
+
 }

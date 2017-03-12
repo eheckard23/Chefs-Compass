@@ -65,6 +65,7 @@ class Model{
 			data: {},
 			dataType: 'json',
 			success: function(data){
+				console.log('success');
 				let recipeData = data;
 				Controller.setRecipePage(recipeObj, recipeData);
 			},
@@ -74,4 +75,24 @@ class Model{
 			}
 		});
 	}
+
+	static generateMealPlan(url){
+		$.ajax({
+			url,
+			type: 'GET',
+			data: {},
+			dataType: 'json',
+			success: function(data){
+				console.log('model success');
+				let mealPlan = data;
+				Controller.setMealPlan(data);
+			},
+			error: function(err) { alert(err); },
+				beforeSend: function(xhr) {
+				xhr.setRequestHeader("X-Mashape-Authorization", "fHjaL4Ss9gmshKplCTTN8WTMJD0up1Tuhn4jsnpw0mSEkWnxu9"); // Enter here your Mashape key
+			}
+		});
+	}
+
+
 }

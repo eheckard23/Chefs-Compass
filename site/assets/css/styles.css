@@ -30,3 +30,6 @@ header{
 	background-color: #ff4b51;
 	color: white;
 }
+.recipeImage{
+	border: solid 2px red;
+}
