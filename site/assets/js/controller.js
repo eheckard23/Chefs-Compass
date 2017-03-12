@@ -33,10 +33,11 @@ class Controller{
 		Model.recipePage(recipeObj, url);
 	}
 
-	static setRecipePage(recipeObj, recipeData){
-		// window.location.assign('../../recipe.html');
-		View.displayRecipePage(recipeObj, recipeData);
-	}
+	// static setRecipePage(recipeObj, recipeData){
+	// 	window.location.assign('../../recipe.html');
+	// 	// store recipe in local storage
+	// 	Model.storeRecipe(recipeObj, recipeData);
+	// }
 
 	mealPlanRequest(url){
 		Model.generateMealPlan(url);

@@ -34,9 +34,51 @@ class View{
 		});
 	}
 
-	static displayRecipePage(recipeObj, recipeData){
-		this.recipeObj = recipeObj;
-		this.recipeData = recipeData;
+	static displayRecipePage(){
+		let str = localStorage.getItem('recipeLS');
+		let recipeInfo = JSON.parse(str);
+		let recipeId = recipeInfo[0];
+		console.dir(recipeId);
+		let steps = recipeInfo[1].data[0].steps;
+		let ingredients = steps[0].ingredients;
+		let equipment = steps[0].equipment;
+		$('.recipeImage').attr('src', recipeId.src);
+		$('.recipeImage').attr('alt', recipeId.alt);
+		steps.forEach(step => {
+			$('.recipeInstructions')
+				.append(
+					`<li>`
+					+ `Step ${step.number}:`
+					+ `<br />`
+					+ `${step.step}`
+					+ `</li>`
+			);
+		});
+		if(ingredients.length > 0){
+			ingredients.forEach(ingredient => {
+				$('.ingredientList')
+					.append(
+						`<li>`
+						+ `${ingredient.name}`
+						+ `</li>`
+				);
+			});
+		}else{
+				$('.ingredientList').append('<li>Ingredients not available</li>');
+		}
+		if(equipment.length > 0){
+			equipment.forEach(item => {
+				$('.equipmentList')
+					.append(
+						`<li>`
+						+ `${item.name}`
+						+ `</li>`
+				);
+			});
+		}else{
+			$('.equipmentList').append('<li>Equipment not available</li>');
+		}
+		
 	}
 
 	static displayMealPlan(mealPlan){

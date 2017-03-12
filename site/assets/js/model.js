@@ -1,6 +1,14 @@
 class Model{
 	constructor(){
 		console.log('Model created');
+
+	}
+
+	static storeRecipe(recipeObj, recipeData){
+		let recipeLS = [];
+		recipeLS.push(recipeObj, recipeData);
+		let str = JSON.stringify(recipeLS);
+		localStorage.setItem('recipeLS', str);
 	}
 
 	static init(){
@@ -65,9 +73,16 @@ class Model{
 			data: {},
 			dataType: 'json',
 			success: function(data){
-				console.log('success');
-				let recipeData = data;
-				Controller.setRecipePage(recipeObj, recipeData);
+				window.location.assign('../../recipe.html');
+				let recipeData = { data: data};
+				console.dir(recipeObj);
+				let recipeInfo = {
+					src: recipeObj[0].currentSrc,
+					id: recipeObj[0].alt,
+					title: recipeObj[1].innerHTML,
+					readyInMinutes: recipeObj[2].innerHTML,
+				};
+				Model.storeRecipe(recipeInfo, recipeData);
 			},
 			error: function(err) { alert(err); },
 				beforeSend: function(xhr) {

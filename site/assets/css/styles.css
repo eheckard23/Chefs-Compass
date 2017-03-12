@@ -1,8 +1,32 @@
-header{
-	border: solid 1px orange;
+nav{
+	overflow: hidden;
 }
-.jumbotron{
-	border: solid 1px red;
+nav ul{
+	list-style: none;
+}
+nav li{
+	float: left;
+	text-align: center;
+}
+nav a{
+	display: block;
+	width: 70px;
+	border-right: solid 1px black;
+	color: black;
+}
+header{
+	padding: 10px;
+	background-color: #ff4b51;
+}
+.welcome-container{
+	overflow: hidden;
+	background: url('../images/sebastian-lp-204232.jpg') left;
+	background-size: cover;
+	padding: 40px;
+	color: white;
+}
+.searchForm{
+	color: black;
 }
 .welcome,
 .trivia{
@@ -30,8 +54,11 @@ header{
 	background-color: #ff4b51;
 	color: white;
 }
+.recipeImageContainer{
+	width: 25%;
+}
 .recipeImage{
-	border: solid 2px red;
+	max-width: 100%;
 }
 .mealDay{
 	float: left;
