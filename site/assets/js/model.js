@@ -11,6 +11,12 @@ class Model{
 		localStorage.setItem('recipeLS', str);
 	}
 
+	static storeSimilarRecipe(recipes){
+		let str = JSON.stringify(recipes);
+		localStorage.setItem('similarLS', str);
+		// View.displaySimilarRecipes();
+	}
+
 	static init(){
 		// load client youtube
 		console.log('test');
@@ -73,9 +79,8 @@ class Model{
 			data: {},
 			dataType: 'json',
 			success: function(data){
-				window.location.assign('../../recipe.html');
+				// window.location.assign('../../recipe.html');
 				let recipeData = { data: data};
-				console.dir(recipeObj);
 				let recipeInfo = {
 					src: recipeObj[0].currentSrc,
 					id: recipeObj[0].alt,
@@ -83,6 +88,28 @@ class Model{
 					readyInMinutes: recipeObj[2].innerHTML,
 				};
 				Model.storeRecipe(recipeInfo, recipeData);
+			},
+			error: function(err) { alert(err); },
+				beforeSend: function(xhr) {
+				xhr.setRequestHeader("X-Mashape-Authorization", "fHjaL4Ss9gmshKplCTTN8WTMJD0up1Tuhn4jsnpw0mSEkWnxu9"); // Enter here your Mashape key
+			}
+		});
+	}
+
+	static similarRecipes(url){
+		$.ajax({
+			url,
+			type: 'GET',
+			data: {},
+			dataType: 'json',
+			success: function(data){
+				this.similarRecipesArray = [];
+				window.location.assign('../../recipe.html');
+				for(let i=0;i<3;i++){
+					this.similarRecipesArray.push(data[i]);
+					this.similarRecipes = { data: this.similarRecipesArray };
+				}
+				Model.storeSimilarRecipe(this.similarRecipes);
 			},
 			error: function(err) { alert(err); },
 				beforeSend: function(xhr) {

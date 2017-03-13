@@ -60,6 +60,9 @@ header{
 .recipeImage{
 	max-width: 100%;
 }
+.test{
+	border: solid 1px red;
+}
 .mealDay{
 	float: left;
 }

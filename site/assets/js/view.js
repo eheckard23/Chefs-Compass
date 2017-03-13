@@ -35,10 +35,9 @@ class View{
 	}
 
 	static displayRecipePage(){
-		let str = localStorage.getItem('recipeLS');
-		let recipeInfo = JSON.parse(str);
+		let recipeLS = localStorage.getItem('recipeLS');
+		let recipeInfo = JSON.parse(recipeLS);
 		let recipeId = recipeInfo[0];
-		console.dir(recipeId);
 		let steps = recipeInfo[1].data[0].steps;
 		let ingredients = steps[0].ingredients;
 		let equipment = steps[0].equipment;
@@ -78,8 +77,28 @@ class View{
 		}else{
 			$('.equipmentList').append('<li>Equipment not available</li>');
 		}
-		
+		let similarLS = localStorage.getItem('similarLS');
+		let parseRecipes = JSON.parse(similarLS);
+		let similarRecipes = parseRecipes.data;
+		console.dir(similarRecipes);
+		similarRecipes.forEach(recipe => {
+			console.log(recipe);
+			$('.similarRecipes')
+				.append(
+					'<article class="recipe">'
+					+ `<img src="https://spoonacular.com/recipeImages/${recipe.image}" alt=${recipe.id}/>`
+			  		+ `<h3>${recipe.title}</h3>`
+					+ `<p>Cook Time: ${recipe.readyInMinutes} minutes</p>`
+					+ `<button class="recipeLink" onclick="Session.recipeLink(event)">Get Recipe</button>`
+					+ '</article>'
+			);
+		});
+
 	}
+
+	// static displaySimilarRecipes(){
+		
+	// }
 
 	static displayMealPlan(mealPlan){
 		console.log(mealPlan);
