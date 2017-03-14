@@ -14,7 +14,6 @@ class Model{
 	static storeSimilarRecipe(recipes){
 		let str = JSON.stringify(recipes);
 		localStorage.setItem('similarLS', str);
-		// View.displaySimilarRecipes();
 	}
 
 	static init(){
@@ -79,11 +78,11 @@ class Model{
 			data: {},
 			dataType: 'json',
 			success: function(data){
-				// window.location.assign('../../recipe.html');
+				window.location.assign('../../recipe.html');
 				let recipeData = { data: data};
 				let recipeInfo = {
-					src: recipeObj[0].currentSrc,
-					id: recipeObj[0].alt,
+					src: recipeObj[0].childNodes[0].currentSrc,
+					id: recipeObj[0].childNodes[0].alt,
 					title: recipeObj[1].innerHTML,
 					readyInMinutes: recipeObj[2].innerHTML,
 				};

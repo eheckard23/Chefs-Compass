@@ -16,7 +16,6 @@ class Controller{
 	}
 	// ajax returns recipes
 	static setRecipes(recipes){
-		console.table(recipes);
 		// update view
 		View.displayRecipes(recipes);
 	}
@@ -25,11 +24,11 @@ class Controller{
 		Model.ytSearch(path);
 	}
 	static setVideos(videos){
-		console.table(videos);
 		View.displayVideos(videos);
 	}
 
 	static getRecipePage(recipeObj, url){
+		console.log(recipeObj);
 		Model.recipePage(recipeObj, url);
 	}
 

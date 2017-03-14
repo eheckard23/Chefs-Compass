@@ -10,29 +10,39 @@
 </head>
 <body>
 	<header>
-		<a href="index.html">Home</a>
 
 		<nav>
 			<ul>
-				<li><a href="plan.html">New Plan</a></li>
-				<li>About</li>
-				<li>Contact</li>
+				<li><a href="index.html">Home</a></li>
+				<li><a href="plan.html">Diet</a></li>
+				<li><a href="#">About</a></li>
+				<li><a href="#">Contact</a></li>
 			</ul>
 		</nav>
 	</header>
 
-	<form>
-		<select class="diet">
-			<option value="vegetarian">Vegetarian</option>
-			<option value="vegan">Vegan</option>
-			<option value="paleo">Paleo</option>
-		</select>
-		<input type="text" class="exclude" placeholder="Diet Exclusions" />
-		<input type="text" class="targetCalories" placeholder="Target Calories" />
-		<input type="radio" name="timeFrame" value="Day" checked>Day
-		<input type="radio" name="timeFrame" value="Week">Week
-		<input class="dietSubmit" type="submit" name="dietSubmit" value="Submit" />
-	</form>
+	<section class="welcome-container container-fluid">
+
+		<section class="welcome">
+			<h1>Start Your Meal Plan</h1>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt ut labore et dolore magna aliqua. </p>
+			<form class="dietForm">
+				<select class="diet">
+					<option value="vegetarian">Vegetarian</option>
+					<option value="vegan">Vegan</option>
+					<option value="paleo">Paleo</option>
+				</select>
+				<input type="text" class="exclude" placeholder="Diet Exclusions" />
+				<input type="text" class="targetCalories" placeholder="Target Calories" />
+				<input type="radio" name="timeFrame" value="Day" checked>Day
+				<input type="radio" name="timeFrame" value="Week">Week
+				<input class="dietSubmit" type="submit" name="dietSubmit" value="Submit" />
+			</form>
+
+		</section>
+
+	
 
 	<section class="mealPlanSchedule"></section>
 

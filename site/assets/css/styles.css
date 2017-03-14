@@ -25,12 +25,12 @@ header{
 	padding: 40px;
 	color: white;
 }
-.searchForm{
+.searchForm,
+.dietForm{
 	color: black;
 }
 .welcome,
 .trivia{
-	border: solid 1px blue;
 }
 .ytResults{
 	clear: left;
@@ -45,6 +45,11 @@ header{
 	border-radius: 4px;
 	color: #ff4b51;
 }
+.recipeImg{
+	width: 100%;
+	height: 100px;
+	overflow: hidden;
+}
 .recipe img{
 	max-width: 100%;
 }
@@ -54,14 +59,41 @@ header{
 	background-color: #ff4b51;
 	color: white;
 }
+.recipeJumbotron{
+	overflow: hidden;
+}
 .recipeImageContainer{
 	width: 25%;
+	float: left;
 }
 .recipeImage{
 	max-width: 100%;
 }
-.test{
-	border: solid 1px red;
+.tools{
+	float: left;
+	overflow: hidden;
+	padding-left: 5%;
+}
+.ingredientList-container{
+	float: left;
+	margin-bottom: 20px;
+}
+.ingredientList{
+
+}
+.equipmentList-container{
+	clear: left;
+}
+.recipeInstructions{
+	clear: left;
+	
+}
+.recipeInstructions-container{
+	background-color: #ff4b51;
+	padding: 40px;
+}
+.recipeInstructions-container h4{
+	margin: 0;
 }
 .mealDay{
 	float: left;

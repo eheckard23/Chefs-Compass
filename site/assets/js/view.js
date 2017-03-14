@@ -12,7 +12,9 @@ class View{
 		recipes.forEach(recipe => {
 			$('.results').append(
 				'<article class="recipe">'
+				+ '<div class="recipeImg">'
 				+ `<img src="https://spoonacular.com/recipeImages/${recipe.image}" alt=${recipe.id}/>`
+				+ '</div>'
 		  		+ `<h3>${recipe.title}</h3>`
 				+ `<p>Cook Time: ${recipe.readyInMinutes} minutes</p>`
 				+ `<button class="recipeLink" onclick="Session.recipeLink(event)">Get Recipe</button>`
@@ -95,10 +97,6 @@ class View{
 		});
 
 	}
-
-	// static displaySimilarRecipes(){
-		
-	// }
 
 	static displayMealPlan(mealPlan){
 		console.log(mealPlan);

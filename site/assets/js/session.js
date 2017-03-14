@@ -67,7 +67,7 @@ class Session{
 
 	static recipeLink(event){
 		let recipeObj = $(event.target).parent()[0].childNodes;
-		let recipeId = $(event.target).parent()[0].childNodes[0].alt;
+		let recipeId = $(event.target).parent()[0].childNodes[0].childNodes[0].alt;
 		recipeId = recipeId.replace('/', '');
 		Controller.getRecipePage(recipeObj, `https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/${recipeId}/analyzedInstructions`);
 		Controller.getSimilarRecipes(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/${recipeId}/similar`);
