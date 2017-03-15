@@ -35,16 +35,57 @@ class View{
 					);
 		});
 	}
-
+	// fired on recipe page load
 	static displayRecipePage(){
-		let recipeLS = localStorage.getItem('recipeLS');
-		let recipeInfo = JSON.parse(recipeLS);
-		let recipeId = recipeInfo[0];
-		let steps = recipeInfo[1].data[0].steps;
-		let ingredients = steps[0].ingredients;
-		let equipment = steps[0].equipment;
-		$('.recipeImage').attr('src', recipeId.src);
-		$('.recipeImage').attr('alt', recipeId.alt);
+		// grab recipe id
+		let hash = window.location.hash.split('#')[1];
+		// 
+		Session.getInstructionsByHash(hash);
+
+	}
+
+	// fired after instructions are found
+	static displayRecipeInformation(recipeInstructions){
+		let recipe = localStorage.getItem('recipeInfo');
+		recipe = JSON.parse(recipe);
+		let steps = recipeInstructions[0].steps;
+		let ingredientArray = [];
+		let ingredients = [];
+		let equipmentArray = [];
+		let equipment = [];
+
+		// display image, title
+		$('.recipeImage').attr('src', recipe.src);
+		$('.recipeImage').attr('alt', recipe.alt);
+		// loop through steps to get ingredients and equipment
+		steps.forEach(step => {
+			ingredientArray.push(step.ingredients);
+			equipmentArray.push(step.equipment);
+		});
+
+		ingredientArray.forEach(ingredientArr => {
+			for(let i=0;i<ingredientArr.length;i++){
+				ingredients.push(ingredientArr[i].name);
+			}
+		});
+
+		equipmentArray.forEach(equipmentArr => {
+			for(let i=0;i<equipmentArr.length;i++){
+				equipment.push(equipmentArr[i].name);
+			}
+		})
+
+		// display ingredients
+		ingredients.forEach(ingredient => {
+			$('.ingredientList')
+					.append(
+						`<li>`
+						+ `${ingredient}`
+						+ `</li>`
+				);
+		});
+
+		// loop through instructions
 		steps.forEach(step => {
 			$('.recipeInstructions')
 				.append(
@@ -55,47 +96,17 @@ class View{
 					+ `</li>`
 			);
 		});
-		if(ingredients.length > 0){
-			ingredients.forEach(ingredient => {
-				$('.ingredientList')
-					.append(
-						`<li>`
-						+ `${ingredient.name}`
-						+ `</li>`
-				);
-			});
-		}else{
-				$('.ingredientList').append('<li>Ingredients not available</li>');
-		}
-		if(equipment.length > 0){
-			equipment.forEach(item => {
-				$('.equipmentList')
-					.append(
-						`<li>`
-						+ `${item.name}`
-						+ `</li>`
-				);
-			});
-		}else{
-			$('.equipmentList').append('<li>Equipment not available</li>');
-		}
-		let similarLS = localStorage.getItem('similarLS');
-		let parseRecipes = JSON.parse(similarLS);
-		let similarRecipes = parseRecipes.data;
-		console.dir(similarRecipes);
-		similarRecipes.forEach(recipe => {
-			console.log(recipe);
-			$('.similarRecipes')
-				.append(
-					'<article class="recipe">'
-					+ `<img src="https://spoonacular.com/recipeImages/${recipe.image}" alt=${recipe.id}/>`
-			  		+ `<h3>${recipe.title}</h3>`
-					+ `<p>Cook Time: ${recipe.readyInMinutes} minutes</p>`
-					+ `<button class="recipeLink" onclick="Session.recipeLink(event)">Get Recipe</button>`
-					+ '</article>'
-			);
-		});
 
+
+		// loop through equipment
+		equipment.forEach(item => {
+			$('.equipmentList')
+					.append(
+						`<li>`
+						+ `${item}`
+						+ `</li>`
+				);
+		});
 	}
 
 	static displayMealPlan(mealPlan){

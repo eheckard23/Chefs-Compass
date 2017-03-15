@@ -4,16 +4,15 @@ class Model{
 
 	}
 
-	static storeRecipe(recipeObj, recipeData){
-		let recipeLS = [];
-		recipeLS.push(recipeObj, recipeData);
-		let str = JSON.stringify(recipeLS);
-		localStorage.setItem('recipeLS', str);
-	}
-
-	static storeSimilarRecipe(recipes){
-		let str = JSON.stringify(recipes);
-		localStorage.setItem('similarLS', str);
+	static storeRecipeObj(recipeObj){
+		let recipeInfo = { 
+			src: recipeObj[0].childNodes[0].currentSrc, 
+			id: recipeObj[0].childNodes[0].alt, 
+			title: recipeObj[1].innerHTML, 
+			readyInMinutes: recipeObj[2].innerHTML
+		};
+		let str = JSON.stringify(recipeInfo);
+		localStorage.setItem('recipeInfo', str);
 	}
 
 	static init(){
@@ -71,22 +70,14 @@ class Model{
 		});
 	}
 
-	static recipePage(recipeObj, url){
+	static recipeInstructions(url){
 		$.ajax({
 			url,
 			type: 'GET',
 			data: {},
 			dataType: 'json',
 			success: function(data){
-				window.location.assign('../../recipe.html');
-				let recipeData = { data: data};
-				let recipeInfo = {
-					src: recipeObj[0].childNodes[0].currentSrc,
-					id: recipeObj[0].childNodes[0].alt,
-					title: recipeObj[1].innerHTML,
-					readyInMinutes: recipeObj[2].innerHTML,
-				};
-				Model.storeRecipe(recipeInfo, recipeData);
+				Controller.sendRecipeInstructions(data);
 			},
 			error: function(err) { alert(err); },
 				beforeSend: function(xhr) {
@@ -103,7 +94,7 @@ class Model{
 			dataType: 'json',
 			success: function(data){
 				this.similarRecipesArray = [];
-				window.location.assign('../../recipe.html');
+				window.location.assign('./recipe.html');
 				for(let i=0;i<3;i++){
 					this.similarRecipesArray.push(data[i]);
 					this.similarRecipes = { data: this.similarRecipesArray };

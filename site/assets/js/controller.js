@@ -27,9 +27,16 @@ class Controller{
 		View.displayVideos(videos);
 	}
 
-	static getRecipePage(recipeObj, url){
-		console.log(recipeObj);
-		Model.recipePage(recipeObj, url);
+	static storeRecipeObj(recipeObj){
+		Model.storeRecipeObj(recipeObj);
+	}
+
+	static getRecipeInstructions(url){
+		Model.recipeInstructions(url);
+	}
+
+	static sendRecipeInstructions(recipeInstructions){
+		View.displayRecipeInformation(recipeInstructions);
 	}
 
 	static getSimilarRecipes(url){
