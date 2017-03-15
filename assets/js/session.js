@@ -8,8 +8,8 @@ class Session{
 
 		let urls = {
 			triviaSearch: `https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/food/trivia/random`,
-			ytSearch: `https://www.googleapis.com/youtube/v3/search?key=AIzaSyCxolTs58eWL7PrMUVJHPslqY7mOYwQ5lg&part=snippet&maxResults=2&topicId=/m/02wbm&q=${searchValue}`,
-			recipeSearch: `https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search?number=${recipeCount}&query=${searchValue}&type=main+course'`,
+			ytSearch: `https://www.googleapis.com/youtube/v3/search?key=AIzaSyCxolTs58eWL7PrMUVJHPslqY7mOYwQ5lg&part=snippet&maxResults=2&topicId=/m/02wbm&type=video&q=${searchValue}`,
+			recipeSearch: `https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search?number=${recipeCount}&query=recipes+using+${searchValue}&type=main+course'`,
 			recipeInstruction: `https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/${recipeId}/analyzedInstructions`
 		};
 
@@ -29,7 +29,7 @@ class Session{
 			// random recipes
 			this.controller.getRecipes(urls.recipeSearch);
 			// // random videos
-			// controller.ytRequest(urls.recipeSearch);
+			// this.controller.ytRequest(urls.recipeSearch);
 
 			// recipe search
 
@@ -44,7 +44,7 @@ class Session{
 				$('.submitSearch').on('click', (e) => {
 					e.preventDefault();
 					let searchValue = $('.searchRecipe').val();
-					this.controller.ytRequest(`https://www.googleapis.com/youtube/v3/search?key=AIzaSyCxolTs58eWL7PrMUVJHPslqY7mOYwQ5lg&part=snippet&maxResults=2&topicId=/m/02wbm&q=${searchValue}`);
+					this.controller.ytRequest(`https://www.googleapis.com/youtube/v3/search?key=AIzaSyCxolTs58eWL7PrMUVJHPslqY7mOYwQ5lg&part=snippet&maxResults=2&topicId=/m/02wbm&q=recipes+with+${searchValue}`);
 				})
 
 			).then(function(){
