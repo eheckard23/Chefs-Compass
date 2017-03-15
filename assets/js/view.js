@@ -144,7 +144,7 @@ class View{
 						+ `<img src="https://spoonacular.com/recipeImages/${meal.image}" alt=${meal.id}/>`
 						+ `<h3>${meal.title}</h3>`
 						+ `<p>Cook Time: ${meal.readyInMinutes} minutes</p>`
-						+ `<button class="recipeLink" onclick="Session.recipeLink(event)">Get Recipe</button>`
+						+ `<button class="recipeLink" onclick="Session.mealLink(event)">Get Recipe</button>`
 						+ '</article>'
 						+ `</section>`
 					);
@@ -162,7 +162,7 @@ class View{
 						+ `<img src="https://spoonacular.com/recipeImages/${meal.image}" alt=${meal.value.id}/>`
 						+ `<h3>${meal.value.title}</h3>`
 						+ `<p>Cook Time: ${meal.readyInMinutes} minutes</p>`
-						+ `<button class="recipeLink" onclick="Session.recipeLink(event)">Get Recipe</button>`
+						+ `<button class="recipeLink" onclick="Session.mealLink(event)">Get Recipe</button>`
 						+ '</section>'
 						+ `</article>`
 					);

@@ -68,7 +68,6 @@ class Session{
 	static recipeLink(event){
 		// get recipe img, title, ready time
 		let recipeObj = $(event.target).parent()[0].childNodes;
-		console.dir(recipeObj);
 		// get recipe id
 		let recipeId = recipeObj[0].childNodes[0].alt;
 		recipeId = recipeId.replace('/', '');
@@ -77,24 +76,34 @@ class Session{
 		// store in LS
 		Controller.storeRecipeObj(recipeObj);
 		// redirect using hash
-		window.location.assign(`./recipe.html#${recipeId}`);
+		if(window.location.href.indexOf('recipe') > -1){
+			window.location.assign(`./recipe.html#${recipeId}`);
+			window.location.reload();
+		}else{
+			window.location.assign(`./recipe.html#${recipeId}`);
+		}
 
 	}
 
-	// static mealLink(event){
-	// 	console.log('test');
-	// 	// get recipe img, title, ready time
-	// 	let recipeObj = $(event.target).parent()[0].childNodes;
-	// 	console.dir(recipeObj);
-	// 	// get recipe id
-	// 	let recipeId = recipeObj[0].childNodes[0].alt;
-	// 	recipeId = recipeId.replace('/', '');
-	// 	// pass to controller then store LS in model
-	// 	// store in LS
-	// 	Controller.storeRecipeObj(recipeObj);
-	// 	// redirect using hash
-	// 	window.location.assign(`./recipe.html#${recipeId}`);
-	// }
+	static mealLink(event){
+		// get recipe img, title, ready time
+		let mealObj = $(event.target).parent()[0].childNodes;
+		// get meal id
+		let mealId = mealObj[0].alt;
+		mealId = mealId.replace('/', '');
+		console.log(mealId);
+		// pass to controller then store LS in model
+		// store in LS
+		Controller.storeMealObj(mealObj);
+		// redirect using hash
+		if(window.location.href.indexOf('recipe') > -1){
+			window.location.assign(`./recipe.html#${mealId}`);
+			window.location.reload();
+		}else{
+			window.location.assign(`./recipe.html#${mealId}`);
+		}
+
+	}
 
 	static getInstructionsByHash(hash){
 		// grab hash from view url

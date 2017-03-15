@@ -16,6 +16,18 @@ class Model{
 		localStorage.setItem('recipeInfo', str);
 	}
 
+	static storeMealObj(mealObj){
+		console.dir(mealObj);
+		let mealInfo = { 
+			src: mealObj[0].currentSrc, 
+			id: mealObj[0].alt, 
+			title: mealObj[1].innerHTML, 
+			readyInMinutes: mealObj[2].innerHTML
+		};
+		let str = JSON.stringify(mealInfo);
+		localStorage.setItem('mealInfo', str);
+	}
+
 	static init(){
 		// load client youtube
 		console.log('test');
@@ -115,6 +127,7 @@ class Model{
 			dataType: 'json',
 			success: function(data){
 				console.log('model success');
+				console.dir(data);
 				let mealPlan = data;
 				Controller.setMealPlan(data);
 			},

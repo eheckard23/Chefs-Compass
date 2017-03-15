@@ -35,6 +35,10 @@ class Controller{
 		Model.recipeInstructions(url);
 	}
 
+	static storeMealObj(mealObj){
+		Model.storeMealObj(mealObj);
+	}
+
 	static sendRecipeInstructions(recipeInstructions){
 		View.displayRecipeInformation(recipeInstructions);
 	}
