@@ -39,13 +39,17 @@ class View{
 	static displayRecipePage(){
 		// grab recipe id
 		let hash = window.location.hash.split('#')[1];
-		// 
 		Session.getInstructionsByHash(hash);
 
 	}
 
 	// fired after instructions are found
 	static displayRecipeInformation(recipeInstructions){
+		// clear html
+		// $('.ingredientList').html('');
+		// $('.recipeInstructions').html('');
+		// $('.equipmentList').html('');
+		// $('.similarRecipes').html('');
 		let recipe = localStorage.getItem('recipeInfo');
 		recipe = JSON.parse(recipe);
 		let steps = recipeInstructions[0].steps;
@@ -53,7 +57,6 @@ class View{
 		let ingredients = [];
 		let equipmentArray = [];
 		let equipment = [];
-
 		// display image, title
 		$('.recipeImage').attr('src', recipe.src);
 		$('.recipeImage').attr('alt', recipe.alt);
@@ -109,6 +112,23 @@ class View{
 		});
 	}
 
+	static displaySimilarRecipes(recipes){
+		recipes.forEach(recipe => {
+			console.log(recipe.id);
+			$('.similarRecipes')
+				.append(
+					'<article class="recipe">'
+					+ '<div class="recipeImg">'
+					+ `<img src="https://spoonacular.com/recipeImages/${recipe.image}" alt=${recipe.id}/>`
+					+ '</div>'
+			  		+ `<h3>${recipe.title}</h3>`
+					+ `<p>Cook Time: ${recipe.readyInMinutes} minutes</p>`
+					+ `<button class="recipeLink" onclick="Session.recipeLink(event)">Get Recipe</button>`
+					+ '</article>'
+			);
+		});
+	}
+
 	static displayMealPlan(mealPlan){
 		console.log(mealPlan);
 		let idx = 0;
@@ -118,15 +138,15 @@ class View{
 				console.log(meal, idx);
 				$('.mealPlanSchedule')
 					.append(
-						`<article class="mealDay">`
+						`<section class="mealDay">`
 						+ `<h3>Day 1</h3>`
-						+ '<section class="recipe">'
+						+ '<article class="recipe">'
 						+ `<img src="https://spoonacular.com/recipeImages/${meal.image}" alt=${meal.id}/>`
 						+ `<h3>${meal.title}</h3>`
 						+ `<p>Cook Time: ${meal.readyInMinutes} minutes</p>`
 						+ `<button class="recipeLink" onclick="Session.recipeLink(event)">Get Recipe</button>`
-						+ '</section>'
-						+ `</article>`
+						+ '</article>'
+						+ `</section>`
 					);
 			});
 		}else{

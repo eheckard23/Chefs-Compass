@@ -17,6 +17,8 @@ nav a{
 header{
 	padding: 10px;
 	background-color: #ff4b51;
+	position: fixed;
+	width: 100%;
 }
 .welcome-container{
 	overflow: hidden;

@@ -43,8 +43,8 @@ class Controller{
 		Model.similarRecipes(url);
 	}
 
-	static sendSimilarRecipes(data){
-		View.displaySimilarRecipes(data);
+	static sendSimilarRecipes(recipes){
+		View.displaySimilarRecipes(recipes);
 	}
 
 	mealPlanRequest(url){

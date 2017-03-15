@@ -68,23 +68,46 @@ class Session{
 	static recipeLink(event){
 		// get recipe img, title, ready time
 		let recipeObj = $(event.target).parent()[0].childNodes;
+		console.dir(recipeObj);
 		// get recipe id
-		let recipeId = $(event.target).parent()[0].childNodes[0].childNodes[0].alt;
+		let recipeId = recipeObj[0].childNodes[0].alt;
 		recipeId = recipeId.replace('/', '');
+		console.log(recipeId);
 		// pass to controller then store LS in model
 		// store in LS
 		Controller.storeRecipeObj(recipeObj);
 		// redirect using hash
 		window.location.assign(`./recipe.html#${recipeId}`);
+
 	}
+
+	// static mealLink(event){
+	// 	console.log('test');
+	// 	// get recipe img, title, ready time
+	// 	let recipeObj = $(event.target).parent()[0].childNodes;
+	// 	console.dir(recipeObj);
+	// 	// get recipe id
+	// 	let recipeId = recipeObj[0].childNodes[0].alt;
+	// 	recipeId = recipeId.replace('/', '');
+	// 	// pass to controller then store LS in model
+	// 	// store in LS
+	// 	Controller.storeRecipeObj(recipeObj);
+	// 	// redirect using hash
+	// 	window.location.assign(`./recipe.html#${recipeId}`);
+	// }
 
 	static getInstructionsByHash(hash){
 		// grab hash from view url
 		// get analyzed instructions
 		// send instructions to view
 		Controller.getRecipeInstructions(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/${hash}/analyzedInstructions`);
-		// Controller.getSimilarRecipes(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/${recipeId}/similar`);
+		// display similar recipes based on id
+		Controller.getSimilarRecipes(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/${hash}/similar`);
 
+	}
+
+	static dietLink(event){
+		console.dir($(event.target).parent()[0].childNodes);
 	}
 
 	static getInstance(){

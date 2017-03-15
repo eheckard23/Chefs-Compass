@@ -5,6 +5,7 @@ class Model{
 	}
 
 	static storeRecipeObj(recipeObj){
+		console.dir(recipeObj);
 		let recipeInfo = { 
 			src: recipeObj[0].childNodes[0].currentSrc, 
 			id: recipeObj[0].childNodes[0].alt, 
@@ -93,13 +94,11 @@ class Model{
 			data: {},
 			dataType: 'json',
 			success: function(data){
-				this.similarRecipesArray = [];
-				window.location.assign('./recipe.html');
+				this.similarRecipes = [];
 				for(let i=0;i<3;i++){
-					this.similarRecipesArray.push(data[i]);
-					this.similarRecipes = { data: this.similarRecipesArray };
+					this.similarRecipes.push(data[i]);
 				}
-				Model.storeSimilarRecipe(this.similarRecipes);
+				Controller.sendSimilarRecipes(this.similarRecipes);
 			},
 			error: function(err) { alert(err); },
 				beforeSend: function(xhr) {
