@@ -46,6 +46,7 @@ class View{
 
 	// fired after instructions are found
 	static displayRecipeInformation(recipeInstructions){
+		console.log(window.location.href);
 		// get local storage items
 		// parse from string
 		let recipe = localStorage.getItem('recipeInfo');
