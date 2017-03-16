@@ -63,7 +63,7 @@ class View{
 			// create pinterest save button
 			$('.tools').append(
 					'<div class="pinterest">'
-					+ `<a class="pinterestLink" data-pin-do="buttonPin" href="https://www.pinterest.com/pin/create/button/&url=${encodeURIComponent(window.location.href)}/&media=${encodeURIComponent(recipe.src)}">`
+					+ `<a class="pinterestLink" data-pin-do="buttonPin" data-pin-media="${recipe.src}" data-pin-url="${window.location.href}" href="https://www.pinterest.com/pin/create/button/">`
 					+ '<img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_gray_20.png" />'
 					+ '</a>'
 					+ '</div>'
