@@ -51,6 +51,8 @@ class Session{
 			// meal plan
 			$('.dietSubmit').on('click', (e) => {
 				e.preventDefault();
+				// clear out html
+				$('.mealPlanSchedule').html('');
 				// get form values
 				let diet = $('.diet').val();
 				let exclude = $('.exclude').val();

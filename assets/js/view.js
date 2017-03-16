@@ -62,7 +62,11 @@ class View{
 			$('.recipeImage').attr('alt', recipe.alt);
 			// create pinterest save button
 			$('.tools').append(
-					`<a class="pinterest" data-pin-do="buttonPin" href=https://www.pinterest.com/pin/create/button/&media=${recipe.src}/&url=${window.location.href}>`
+					'<div class="pinterest">'
+					+ `<a data-pin-do="buttonBookmark" href="https://www.pinterest.com/pin/create/button/&media=${recipe.src}/&url=${window.location.href}">`
+					+ '<img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_gray_20.png" />'
+					+ '</a>'
+					+ '</div>'
 				);
 		}else if(meal != null){
 			// get 2 similar videos using recipe title
@@ -190,7 +194,6 @@ class View{
 		// checks for week or day timeFrame
 		// day
 		if(mealPlan.meals){
-			$('.mealPlanSchedule').html('');
 			mealPlan.meals.forEach(meal => {
 				// increment meal count
 				// display meal time accordingly
@@ -207,7 +210,9 @@ class View{
 						`<section class="mealDay">`
 						+ `<h3>${this.time}</h3>`
 						+ '<article class="recipe">'
+						+ '<div class="recipeImg">'
 						+ `<img src="https://spoonacular.com/recipeImages/${meal.image}" alt=${meal.id}/>`
+						+ '</div>'
 						+ `<h3>${meal.title}</h3>`
 						+ `<p>Cook Time: ${meal.readyInMinutes} minutes</p>`
 						+ `<button class="recipeLink" onclick="Session.mealLink(event)">Get Recipe</button>`
@@ -224,95 +229,104 @@ class View{
 			});
 			let meal = this.mealArray;
 			let weekSchedule = $('.mealPlanSchedule').html();
-			weekSchedule = '';
 
+			// -------------- TO BE REFACTORED
+
+			// divide the meals into days
+			// get first 1-3, store in day 1
 			weekSchedule += `<h3 class="day">Day 1</h3>`;
-			console.log(weekSchedule);
 
 			for(let i=0;i<3;i++){
 				weekSchedule += `<article class="mealDay">`
 					+ '<section class="recipe">'
+					+ '<div class="recipeImg">'
 					+ `<img src="https://spoonacular.com/recipeImages/${meal[i].image}" alt=${meal[i].id}/>`
+					+ '</div>'
 					+ `<h3>${meal[i].title}</h3>`
-					+ `<p>Cook Time: ${meal[i].readyInMinutes} minutes</p>`
 					+ `<button class="recipeLink" onclick="Session.mealLink(event)">Get Recipe</button>`
 					+ '</section>'
 					+ `</article>`
 			}
 
 			weekSchedule += `<h3 class="day">Day 2</h3>`;
-
+			// get first 4-6, store in day 2
 			for(let i=2;i<5;i++){
 				weekSchedule += `<article class="mealDay">`
 					+ '<section class="recipe">'
+					+ '<div class="recipeImg">'
 					+ `<img src="https://spoonacular.com/recipeImages/${meal[i].image}" alt=${meal[i].id}/>`
+					+ '</div>'
 					+ `<h3>${meal[i].title}</h3>`
-					+ `<p>Cook Time: ${meal[i].readyInMinutes} minutes</p>`
 					+ `<button class="recipeLink" onclick="Session.mealLink(event)">Get Recipe</button>`
 					+ '</section>'
 					+ `</article>`
 			}
 
 			weekSchedule += `<h3 class="day">Day 3</h3>`;
-
+			// get first 7-9, store in day 3
 			for(let i=4;i<7;i++){
 				weekSchedule += `<article class="mealDay">`
 					+ '<section class="recipe">'
+					+ '<div class="recipeImg">'
 					+ `<img src="https://spoonacular.com/recipeImages/${meal[i].image}" alt=${meal[i].id}/>`
+					+ '</div>'
 					+ `<h3>${meal[i].title}</h3>`
-					+ `<p>Cook Time: ${meal[i].readyInMinutes} minutes</p>`
 					+ `<button class="recipeLink" onclick="Session.mealLink(event)">Get Recipe</button>`
 					+ '</section>'
 					+ `</article>`
 			}
 
 			weekSchedule += `<h3 class="day">Day 4</h3>`;
-
+			// get first 10-12, store in day 4
 			for(let i=6;i<9;i++){
 				weekSchedule += `<article class="mealDay">`
 					+ '<section class="recipe">'
+					+ '<div class="recipeImg">'
 					+ `<img src="https://spoonacular.com/recipeImages/${meal[i].image}" alt=${meal[i].id}/>`
+					+ '</div>'
 					+ `<h3>${meal[i].title}</h3>`
-					+ `<p>Cook Time: ${meal[i].readyInMinutes} minutes</p>`
 					+ `<button class="recipeLink" onclick="Session.mealLink(event)">Get Recipe</button>`
 					+ '</section>'
 					+ `</article>`
 			}
 
 			weekSchedule += `<h3 class="day">Day 5</h3>`;
-
+			// get first 13-15, store in day 5
 			for(let i=8;i<11;i++){
 				weekSchedule += `<article class="mealDay">`
 					+ '<section class="recipe">'
+					+ '<div class="recipeImg">'
 					+ `<img src="https://spoonacular.com/recipeImages/${meal[i].image}" alt=${meal[i].id}/>`
+					+ '</div>'
 					+ `<h3>${meal[i].title}</h3>`
-					+ `<p>Cook Time: ${meal[i].readyInMinutes} minutes</p>`
 					+ `<button class="recipeLink" onclick="Session.mealLink(event)">Get Recipe</button>`
 					+ '</section>'
 					+ `</article>`
 			}
 
 			weekSchedule += `<h3 class="day">Day 6</h3>`;
-
+			// get first 16-18, store in day 6
 			for(let i=10;i<13;i++){
 				weekSchedule += `<article class="mealDay">`
 					+ '<section class="recipe">'
-					+ `<img src="https://spoonacular.com/recipeImages/${meal[i].image}" alt=${meal[i].id}/>`
+					+ '<div class="recipeImg">'
+					+ `<img class="recipeImg" src="https://spoonacular.com/recipeImages/${meal[i].image}" alt=${meal[i].id}/>`
+					+ '</div>'
 					+ `<h3>${meal[i].title}</h3>`
-					+ `<p>Cook Time: ${meal[i].readyInMinutes} minutes</p>`
 					+ `<button class="recipeLink" onclick="Session.mealLink(event)">Get Recipe</button>`
 					+ '</section>'
 					+ `</article>`
 			}
 
 			weekSchedule += `<h3 class="day">Day 7</h3>`;
-
+			// get first 19-21, store in day 7
 			for(let i=12;i<15;i++){
 				weekSchedule += `<article class="mealDay">`
 					+ '<section class="recipe">'
+					+ '<div class="recipeImg">'
 					+ `<img src="https://spoonacular.com/recipeImages/${meal[i].image}" alt=${meal[i].id}/>`
+					+ '</div>'
 					+ `<h3>${meal[i].title}</h3>`
-					+ `<p>Cook Time: ${meal[i].readyInMinutes} minutes</p>`
 					+ `<button class="recipeLink" onclick="Session.mealLink(event)">Get Recipe</button>`
 					+ '</section>'
 					+ `</article>`
