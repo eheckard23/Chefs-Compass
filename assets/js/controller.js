@@ -31,6 +31,14 @@ class Controller{
 		Model.storeRecipeObj(recipeObj);
 	}
 
+	static getRecipeInfo(url){
+		Model.recipeInfo(url);
+	}
+
+	static sendRecipeInfo(data){
+		View.displayRecipeInfo(data);
+	}
+
 	static getRecipeInstructions(url){
 		Model.recipeInstructions(url);
 	}

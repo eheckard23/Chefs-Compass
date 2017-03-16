@@ -2,6 +2,10 @@ class Session{
 	constructor(){
 		console.log('Session created');
 
+		$(window).on('hashchange', () => {
+			window.location.reload();
+		});
+
 		let searchValue = $('.searchRecipe').val();
 		let recipeCount = 3;
 		let recipeId = '';
@@ -85,29 +89,9 @@ class Session{
 
 	}
 
-	static mealLink(event){
-		// get recipe img, title, ready time
-		let mealObj = $(event.target).parent()[0].childNodes;
-		let title = mealObj[1].innerHTML;
-		console.dir(mealObj);
-		// get meal id
-		// let mealId = mealObj[0].alt;
-		mealId = mealId.replace('/', '');
-		// pass to controller then store LS in model
-		// store in LS
-		Controller.storeMealObj(mealObj);
-		// redirect using hash
-		if(window.location.href.indexOf('recipe') > -1){
-			window.location.assign(`./recipe.html#${mealId}`);
-			window.location.reload();
-		}else{
-			window.location.assign(`./recipe.html#${mealId}`);
-		}
-
-	}
-
 	static getInstructionsByHash(hash){
 		// grab hash from view url
+		Controller.getRecipeInfo(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/${hash}/information`);
 		// get analyzed instructions
 		// send instructions to view
 		Controller.getRecipeInstructions(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/${hash}/analyzedInstructions`);

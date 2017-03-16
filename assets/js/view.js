@@ -11,13 +11,14 @@ class View{
 		$('.results').html('');
 		recipes.forEach(recipe => {
 			$('.results').append(
-				'<article class="recipe">'
+				` <a href="recipe.html#${recipe.id}">`
+				+ '<article class="recipe">'
 				+ '<div class="recipeImg">'
 				+ `<img src="https://spoonacular.com/recipeImages/${recipe.image}" alt=${recipe.id}/>`
 				+ '</div>'
 		  		+ `<h3>${recipe.title}</h3>`
 				+ `<p>Cook Time: ${recipe.readyInMinutes} minutes</p>`
-				+ `<button class="recipeLink" onclick="Session.recipeLink(event)">Get Recipe</button>`
+				+ `</a>`
 				+ '</article>'
 			);
 		});
@@ -44,52 +45,27 @@ class View{
 
 	}
 
+	static displayRecipeInfo(data){
+		let src = data.image;
+		$('.recipeImage').attr('src', data.image);
+		// get 2 similar videos using recipe title
+		Controller.similarVideos(`https://www.googleapis.com/youtube/v3/search?key=AIzaSyCxolTs58eWL7PrMUVJHPslqY7mOYwQ5lg&part=snippet&maxResults=2&topicId=/m/02wbm&q=recipes+with+${data.title}`);
+		// create pinterest save button
+		let url = encodeURIComponent(window.location.href);
+		let media = encodeURIComponent(src);
+		console.log(media);
+		console.log(url);
+		$('.tools').append(
+				'<div class="pinterest">'
+				+ `<a data-pin-do="buttonPin" href="https://www.pinterest.com/pin/create/button/&url="${url}"/&media="${media}">`
+				+ '<img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_gray_20.png" />'
+				+ '</a>'
+				+ '</div>'
+			);
+	}
+
 	// fired after instructions are found
 	static displayRecipeInformation(recipeInstructions){
-		// get local storage items
-		// parse from string
-		let recipe = localStorage.getItem('recipeInfo');
-		recipe = JSON.parse(recipe);
-		console.dir(recipe.src);
-		let meal = localStorage.getItem('mealInfo');
-		meal = JSON.parse(meal);
-		// local storage is cleared after each iteration
-		// search for set local storage items
-		if(recipe != null){
-			// get 2 similar videos using recipe title
-			Controller.similarVideos(`https://www.googleapis.com/youtube/v3/search?key=AIzaSyCxolTs58eWL7PrMUVJHPslqY7mOYwQ5lg&part=snippet&maxResults=2&topicId=/m/02wbm&q=recipes+with+${recipe.title}`);
-			// display image on recipe page
-			$('.recipeImage').attr('src', recipe.src);
-			$('.recipeImage').attr('alt', recipe.alt);
-			// create pinterest save button
-			$('.tools').append(
-					'<div class="pinterest">'
-					+ `<a href="https://www.pinterest.com/pin/create/button/"
-						data-pin-do="buttonPin"
-						data-pin-media="${recipe.src}"
-						data-pin-url="${window.location.href}">`
-					+ '<img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_gray_20.png" />'
-					+ '</a>'
-					+ '</div>'
-				);
-		}else if(meal != null){
-			// get 2 similar videos using recipe title
-			Controller.similarVideos(`https://www.googleapis.com/youtube/v3/search?key=AIzaSyCxolTs58eWL7PrMUVJHPslqY7mOYwQ5lg&part=snippet&maxResults=2&topicId=/m/02wbm&q=recipes+with+${meal.title}`);		
-			// display image on recipe page
-			$('.recipeImage').attr('src', meal.src);
-			$('.recipeImage').attr('alt', meal.alt);	
-			// create pinterest save button
-			$('.tools').append(
-					'<div class="pinterest">'
-					+ `<a data-pin-do="buttonPin" href="https://www.pinterest.com/pin/create/button/&url=${encodeURIComponent(window.location.href)}/&media=${encodeURIComponent(recipe.src)}">`
-					+ '<img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_gray_20.png" />'
-					+ '</a>'
-					+ '</div>'
-				);
-
-		}else{
-			console.log('error');
-		}
 		
 		// check if recipe does not have instructions
 		if(!recipeInstructions.length > 0){
@@ -170,13 +146,14 @@ class View{
 			console.log(recipe.id);
 			$('.similarRecipes')
 				.append(
-					'<article class="recipe">'
+					` <a href="recipe.html#${recipe.id}">`
+					+ '<article class="recipe">'
 					+ '<div class="recipeImg">'
 					+ `<img src="https://spoonacular.com/recipeImages/${recipe.image}" alt=${recipe.id}/>`
 					+ '</div>'
 			  		+ `<h3>${recipe.title}</h3>`
 					+ `<p>Cook Time: ${recipe.readyInMinutes} minutes</p>`
-					+ `<button class="recipeLink" onclick="Session.recipeLink(event)">Get Recipe</button>`
+					+ `</a>`
 					+ '</article>'
 			);
 		});
@@ -217,13 +194,14 @@ class View{
 					.append(
 						`<section class="mealDay">`
 						+ `<h3>${this.time}</h3>`
+						+ `<a href="recipe.html#${meal.id}">`
 						+ '<article class="recipe">'
 						+ '<div class="recipeImg">'
 						+ `<img src="https://spoonacular.com/recipeImages/${meal.image}" alt=${meal.id}/>`
 						+ '</div>'
-						+ `<h3>${meal.title}</h3>`
+				  		+ `<h3>${meal.title}</h3>`
 						+ `<p>Cook Time: ${meal.readyInMinutes} minutes</p>`
-						+ `<button class="recipeLink" onclick="Session.mealLink(event)">Get Recipe</button>`
+						+ `</a>`
 						+ '</article>'
 						+ `</section>`
 					);
