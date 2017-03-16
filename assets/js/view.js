@@ -50,6 +50,7 @@ class View{
 		// parse from string
 		let recipe = localStorage.getItem('recipeInfo');
 		recipe = JSON.parse(recipe);
+		console.dir(recipe.src);
 		let meal = localStorage.getItem('mealInfo');
 		meal = JSON.parse(meal);
 		// local storage is cleared after each iteration
@@ -63,7 +64,7 @@ class View{
 			// create pinterest save button
 			$('.tools').append(
 					'<div class="pinterest">'
-					+ `<a class="pinterestLink" data-pin-do="buttonPin" data-pin-media="${recipe.src}" data-pin-url="${window.location.href}" href="https://www.pinterest.com/pin/create/button/">`
+					+ `<a href="https://www.pinterest.com/pin/create/button/" data-pin-do="buttonPin" data-pin-media="${recipe.src}" data-pin-url="${window.location.href}">`
 					+ '<img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_gray_20.png" />'
 					+ '</a>'
 					+ '</div>'
@@ -86,9 +87,6 @@ class View{
 		}else{
 			console.log('error');
 		}
-
-		let link = $('.pinterestLink').attr('href');
-		console.log(link);
 		
 		// check if recipe does not have instructions
 		if(!recipeInstructions.length > 0){
