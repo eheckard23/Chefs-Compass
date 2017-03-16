@@ -76,7 +76,11 @@ class View{
 			$('.recipeImage').attr('alt', meal.alt);	
 			// create pinterest save button
 			$('.tools').append(
-					`<a class="pinterest" data-pin-do="buttonPin" href=https://www.pinterest.com/pin/create/button/&media=${meal.src}/&url=${window.location.href}>`
+					'<div class="pinterest">'
+					+ `<a data-pin-do="buttonBookmark" href="https://www.pinterest.com/pin/create/button/&media=${recipe.src}/&url=${window.location.href}">`
+					+ '<img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_gray_20.png" />'
+					+ '</a>'
+					+ '</div>'
 				);
 
 		}else{
