@@ -46,7 +46,6 @@ class View{
 
 	// fired after instructions are found
 	static displayRecipeInformation(recipeInstructions){
-		console.log(window.location.href);
 		// get local storage items
 		// parse from string
 		let recipe = localStorage.getItem('recipeInfo');
@@ -64,7 +63,7 @@ class View{
 			// create pinterest save button
 			$('.tools').append(
 					'<div class="pinterest">'
-					+ `<a data-pin-do="buttonPin" href="https://www.pinterest.com/pin/create/button/&url=${window.location.href}/&media=${recipe.src}&description=Recipe">`
+					+ `<a data-pin-do="buttonPin" href="https://www.pinterest.com/pin/create/button/&url=${encodeURI(window.location.href)}/&media=${encodeURI(recipe.src)}&description=Recipe">`
 					+ '<img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_gray_20.png" />'
 					+ '</a>'
 					+ '</div>'
@@ -78,7 +77,7 @@ class View{
 			// create pinterest save button
 			$('.tools').append(
 					'<div class="pinterest">'
-					+ `<a data-pin-do="buttonPin" href="https://www.pinterest.com/pin/create/button/&url=${window.location.href}/&media=${recipe.src}&description=Recipe">`
+					+ `<a data-pin-do="buttonPin" href="https://www.pinterest.com/pin/create/button/&url=${encodeURI(window.location.href)}/&media=${encodeURI(recipe.src)}&description=Recipe">`
 					+ '<img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_gray_20.png" />'
 					+ '</a>'
 					+ '</div>'

@@ -90,8 +90,9 @@ class Session{
 		// get recipe img, title, ready time
 		let mealObj = $(event.target).parent()[0].childNodes;
 		let title = mealObj[1].innerHTML;
+		console.dir(mealObj);
 		// get meal id
-		let mealId = mealObj[0].alt;
+		// let mealId = mealObj[0].alt;
 		mealId = mealId.replace('/', '');
 		// pass to controller then store LS in model
 		// store in LS
