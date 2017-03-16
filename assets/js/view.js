@@ -63,7 +63,7 @@ class View{
 			// create pinterest save button
 			$('.tools').append(
 					'<div class="pinterest">'
-					+ `<a data-pin-do="buttonPin" href="https://www.pinterest.com/pin/create/button/&url=${encodeURI(window.location.href)}/&media=${encodeURI(recipe.src)}&description=Recipe">`
+					+ `<a data-pin-do="buttonPin" href="https://www.pinterest.com/pin/create/button/&url=${encodeURIComponent(window.location.href)}/&media=${encodeURIComponents(recipe.src)}&description=Recipe">`
 					+ '<img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_gray_20.png" />'
 					+ '</a>'
 					+ '</div>'
@@ -77,7 +77,7 @@ class View{
 			// create pinterest save button
 			$('.tools').append(
 					'<div class="pinterest">'
-					+ `<a data-pin-do="buttonPin" href="https://www.pinterest.com/pin/create/button/&url=${encodeURI(window.location.href)}/&media=${encodeURI(recipe.src)}&description=Recipe">`
+					+ `<a data-pin-do="buttonPin" href="https://www.pinterest.com/pin/create/button/&url=${encodeURIComponents(window.location.href)}/&media=${encodeURIComponents(recipe.src)}&description=Recipe">`
 					+ '<img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_gray_20.png" />'
 					+ '</a>'
 					+ '</div>'

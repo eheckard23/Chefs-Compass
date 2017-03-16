@@ -72,7 +72,6 @@ class Session{
 		// get recipe id
 		let recipeId = recipeObj[0].childNodes[0].alt;
 		recipeId = recipeId.replace('/', '');
-		console.log(recipeId);
 		// pass to controller then store LS in model
 		// store in LS
 		Controller.storeRecipeObj(recipeObj);
