@@ -70,25 +70,6 @@ class Session{
 
 	}
 
-	static recipeLink(event){
-		// get recipe img, title, ready time
-		let recipeObj = $(event.target).parent()[0].childNodes;
-		// get recipe id
-		let recipeId = recipeObj[0].childNodes[0].alt;
-		recipeId = recipeId.replace('/', '');
-		// pass to controller then store LS in model
-		// store in LS
-		Controller.storeRecipeObj(recipeObj);
-		// redirect using hash
-		if(window.location.href.indexOf('recipe') > -1){
-			window.location.assign(`./recipe.html#${recipeId}`);
-			window.location.reload();
-		}else{
-			window.location.assign(`./recipe.html#${recipeId}`);
-		}
-
-	}
-
 	static getInstructionsByHash(hash){
 		// grab hash from view url
 		Controller.getRecipeInfo(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/${hash}/information`);
@@ -97,7 +78,6 @@ class Session{
 		Controller.getRecipeInstructions(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/${hash}/analyzedInstructions`);
 		// display similar recipes based on id
 		Controller.getSimilarRecipes(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/${hash}/similar`);
-		// dispaly similar videos
 	}
 
 	static getInstance(){

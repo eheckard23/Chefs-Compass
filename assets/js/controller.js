@@ -27,10 +27,6 @@ class Controller{
 		View.displayVideos(videos);
 	}
 
-	static storeRecipeObj(recipeObj){
-		Model.storeRecipeObj(recipeObj);
-	}
-
 	static getRecipeInfo(url){
 		Model.recipeInfo(url);
 	}
@@ -41,10 +37,6 @@ class Controller{
 
 	static getRecipeInstructions(url){
 		Model.recipeInstructions(url);
-	}
-
-	static storeMealObj(mealObj){
-		Model.storeMealObj(mealObj);
 	}
 
 	static sendRecipeInstructions(recipeInstructions){
