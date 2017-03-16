@@ -5,7 +5,7 @@ class Model{
 	}
 
 	static storeRecipeObj(recipeObj){
-		console.dir(recipeObj);
+		// store new object with values from recipeObj
 		let recipeInfo = { 
 			src: recipeObj[0].childNodes[0].currentSrc, 
 			id: recipeObj[0].childNodes[0].alt, 
@@ -13,11 +13,12 @@ class Model{
 			readyInMinutes: recipeObj[2].innerHTML
 		};
 		let str = JSON.stringify(recipeInfo);
+		// set local storage
 		localStorage.setItem('recipeInfo', str);
 	}
 
 	static storeMealObj(mealObj){
-		console.dir(mealObj);
+		// store new object with values from mealObj
 		let mealInfo = { 
 			src: mealObj[0].currentSrc, 
 			id: mealObj[0].alt, 
@@ -25,6 +26,7 @@ class Model{
 			readyInMinutes: mealObj[2].innerHTML
 		};
 		let str = JSON.stringify(mealInfo);
+		// set local storage
 		localStorage.setItem('mealInfo', str);
 	}
 
@@ -39,11 +41,12 @@ class Model{
 
 	static trivia(url){
 		$.ajax({
-		    url, // The URL to the API. You can get this in the API page of the API you intend to consume
-		    type: 'GET', // The HTTP Method, can be GET POST PUT DELETE etc
-		    data: {}, // Additional parameters here
+		    url,
+		    type: 'GET',
+		    data: {},
 		    dataType: 'json',
 		    success: function(data) {
+		    	// pass result to controller then view
 		    	Controller.setTrivia(data);
 		    },
 		    error: function(err) { alert(err); },
@@ -57,12 +60,14 @@ class Model{
 		console.log('test');
 
 		$.ajax({
-			url, // The URL to the API. You can get this in the API page of the API you intend to consume
-		   	type: 'GET', // The HTTP Method, can be GET POST PUT DELETE etc
-		    data: {}, // Additional parameters here
+			url,
+		   	type: 'GET', 
+		    data: {},
 		    dataType: 'json',
 		    success: function(data) {
+		    	// store in new variable
 		  		const recipes = data.results;
+		  		// pass to controller then view
 		  		Controller.setRecipes(recipes);
 		    },
 			error: function(err) { alert(err); },
@@ -77,8 +82,10 @@ class Model{
 		let request = gapi.client.request({
 			path,
 		});
+		// use url path to execute the request
 		request.execute(response => {
 			let videos = response.items;
+			// pass to controller then view
 			Controller.setVideos(videos);
 		});
 	}
@@ -90,6 +97,7 @@ class Model{
 			data: {},
 			dataType: 'json',
 			success: function(data){
+				// pass to controller then view
 				Controller.sendRecipeInstructions(data);
 			},
 			error: function(err) { alert(err); },
@@ -107,15 +115,27 @@ class Model{
 			dataType: 'json',
 			success: function(data){
 				this.similarRecipes = [];
+				// only grab 3 recipes
 				for(let i=0;i<3;i++){
 					this.similarRecipes.push(data[i]);
 				}
+				// pass to controller then view
 				Controller.sendSimilarRecipes(this.similarRecipes);
 			},
 			error: function(err) { alert(err); },
 				beforeSend: function(xhr) {
 				xhr.setRequestHeader("X-Mashape-Authorization", "fHjaL4Ss9gmshKplCTTN8WTMJD0up1Tuhn4jsnpw0mSEkWnxu9"); // Enter here your Mashape key
 			}
+		});
+	}
+
+	static similarVideos(path){
+		let request = gapi.client.request({
+			path,
+		});
+		request.execute(response => {
+			let videos = response.items;
+			Controller.sendSimilarVideos(videos);
 		});
 	}
 
@@ -126,9 +146,8 @@ class Model{
 			data: {},
 			dataType: 'json',
 			success: function(data){
-				console.log('model success');
-				console.dir(data);
 				let mealPlan = data;
+				// pass to controller then view
 				Controller.setMealPlan(data);
 			},
 			error: function(err) { alert(err); },

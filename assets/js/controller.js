@@ -51,6 +51,14 @@ class Controller{
 		View.displaySimilarRecipes(recipes);
 	}
 
+	static similarVideos(path){
+		Model.similarVideos(path);
+	}
+
+	static sendSimilarVideos(videos){
+		View.displaySimilarVideos(videos);
+	}
+
 	mealPlanRequest(url){
 		Model.generateMealPlan(url);
 	}

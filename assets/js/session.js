@@ -28,11 +28,9 @@ class Session{
 
 			// random recipes
 			this.controller.getRecipes(urls.recipeSearch);
-			// // random videos
-			// this.controller.ytRequest(urls.recipeSearch);
 
 			// recipe search
-
+			// pass search value to recipe search and youtube search
 			$.when(
 				$('.submitSearch').on('click', (e) => {
 					e.preventDefault();
@@ -40,13 +38,12 @@ class Session{
 					let recipeCount = 10;
 					this.controller.getRecipes(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search?number=${recipeCount}&query=${searchValue}&type=main+course'`);
 				}),
-
 				$('.submitSearch').on('click', (e) => {
 					e.preventDefault();
 					let searchValue = $('.searchRecipe').val();
 					this.controller.ytRequest(`https://www.googleapis.com/youtube/v3/search?key=AIzaSyCxolTs58eWL7PrMUVJHPslqY7mOYwQ5lg&part=snippet&maxResults=2&topicId=/m/02wbm&q=recipes+with+${searchValue}`);
 				})
-
+			// once the requests are complete
 			).then(function(){
 				console.log('success');
 			});
@@ -54,10 +51,12 @@ class Session{
 			// meal plan
 			$('.dietSubmit').on('click', (e) => {
 				e.preventDefault();
+				// get form values
 				let diet = $('.diet').val();
 				let exclude = $('.exclude').val();
 				let targetCalories = $('.targetCalories').val();
 				let timeFrame = $('input[name="timeFrame"]:checked').val();
+				// check for empty fields
 				this.controller.mealPlanRequest(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/mealplans/generate${diet != '' ? `?diet=${diet}` : ''}${exclude != '' ? `?exclude=${exclude}` : ''}${targetCalories != '' ? `?targetCalories=${targetCalories}` : ''}&timeFrame=${timeFrame}`);
 			});
 
@@ -88,10 +87,10 @@ class Session{
 	static mealLink(event){
 		// get recipe img, title, ready time
 		let mealObj = $(event.target).parent()[0].childNodes;
+		let title = mealObj[1].innerHTML;
 		// get meal id
 		let mealId = mealObj[0].alt;
 		mealId = mealId.replace('/', '');
-		console.log(mealId);
 		// pass to controller then store LS in model
 		// store in LS
 		Controller.storeMealObj(mealObj);
@@ -112,11 +111,7 @@ class Session{
 		Controller.getRecipeInstructions(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/${hash}/analyzedInstructions`);
 		// display similar recipes based on id
 		Controller.getSimilarRecipes(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/${hash}/similar`);
-
-	}
-
-	static dietLink(event){
-		console.dir($(event.target).parent()[0].childNodes);
+		// dispaly similar videos
 	}
 
 	static getInstance(){
