@@ -67,6 +67,14 @@ class Controller{
 		View.displayMealPlan(mealPlan);
 	}
 
+	static addFavoriteRecipe(){
+		let id = $('.favorites').attr('data-id');
+		let title = $('.favorites').attr('data-recipe');
+		let img = $('.favorites').attr('data-img');
+		let time = $('.favorites').attr('data-time');
+		Model.storeFavoriteRecipe(id, title, img, time);
+	}
+
 
 
 }

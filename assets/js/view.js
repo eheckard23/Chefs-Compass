@@ -11,10 +11,10 @@ class View{
 		$('.results').html('');
 		recipes.forEach(recipe => {
 			$('.results').append(
-				` <a href="recipe.html#${recipe.id}">`
+				` <a href="recipe.html#${recipe.id}" data-id=${recipe.id}>`
 				+ '<article class="recipe">'
 				+ '<div class="recipeImg">'
-				+ `<img src="https://spoonacular.com/recipeImages/${recipe.image}" alt=${recipe.id}/>`
+				+ `<img src="https://spoonacular.com/recipeImages/${recipe.image}" alt=${recipe.title}/>`
 				+ '</div>'
 		  		+ `<h3>${recipe.title}</h3>`
 				+ `<p>Cook Time: ${recipe.readyInMinutes} minutes</p>`
@@ -48,8 +48,16 @@ class View{
 	static displayRecipeInfo(data){
 		let src = data.image;
 		$('.recipeImage').attr('src', data.image);
+		$('.recipeTitle').html(data.title);
 		// get 2 similar videos using recipe title
 		Controller.similarVideos(`https://www.googleapis.com/youtube/v3/search?key=AIzaSyCxolTs58eWL7PrMUVJHPslqY7mOYwQ5lg&part=snippet&maxResults=2&topicId=/m/02wbm&q=recipes+with+${data.title}`);
+		// favorite recipe button
+		$('.favorites').attr({
+			'data-id': data.id,
+			'data-recipe': data.title,
+			'data-img': data.image,
+			'data-time': data.readyInMinutes
+		}); 
 		// create pinterest save button
 		$('.tools').append(
 				`<button class="pinterest" data-media=${src} data-description="New Recipe">Pin It</button>`
@@ -66,7 +74,6 @@ class View{
 
 	// fired after instructions are found
 	static displayRecipeInformation(recipeInstructions){
-		
 		// check if recipe does not have instructions
 		if(!recipeInstructions.length > 0){
 			$('.ingredientList').html(`<h4>Sorry! There doesn't seem to be a recipe for this item yet.</h4>`)
@@ -115,10 +122,10 @@ class View{
 				$('.recipeInstructions')
 					.append(
 						`<li>`
-						+ `Step ${step.number}:`
-						+ `<br />`
+						+ `<b>${step.number}.</b> `
 						+ `${step.step}`
 						+ `</li>`
+						+ '<br />'
 				);
 			});
 
@@ -134,8 +141,6 @@ class View{
 			});
 
 		}
-		// clear local storage
-		localStorage.clear();
 	}
 
 	// get similar recipes
@@ -143,7 +148,6 @@ class View{
 	static displaySimilarRecipes(recipes){
 		// display similar recipes
 		recipes.forEach(recipe => {
-			console.log(recipe.id);
 			$('.similarRecipes')
 				.append(
 					` <a href="recipe.html#${recipe.id}">`
@@ -165,11 +169,13 @@ class View{
 		videos.forEach(video => {
 			$('.similarVideos')
 				.append(
-					`<h3>${video.snippet.title}</h3>`
+					'<article class="videoRecipe">'
 					+ `<iframe class="ytPlayer" 
 								type="text/html" 
 								src="http://www.youtube.com/embed/${video.id.videoId}">
 						</iframe>`
+					+ `<h3>${video.snippet.title}</h3>`
+					+ '</article>'
 					);
 		});
 	}
@@ -263,6 +269,11 @@ class View{
 
 			$('.mealPlanSchedule').append(weekSchedule);
 		}
+	}
+
+	static getFavoriteRecipes(){
+		let recipes = localStorage.getItem('favRecipe');
+		recipes = JSON.parse(recipes);
 	}
 
 }

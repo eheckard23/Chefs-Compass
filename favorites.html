@@ -7,7 +7,7 @@
 	<script type="text/javascript" src="assets/js/jquery-3.1.1.min.js"></script>
 	<script src="https://use.fontawesome.com/38d2ef35d3.js"></script>
 </head>
-<body>
+<body onload="View.getFavoriteRecipes()">
 	<header>
 
 		<nav>
@@ -23,33 +23,7 @@
 		</nav>
 	</header>
 
-	<section class="welcome-container container-fluid">
-
-		<section class="welcome">
-
-			<h5 class="triviaResult"></h5>
-
-			<form class="searchForm">
-				<p>
-					<label for="search">Search</label>
-					<input class="searchRecipe" type="search" name="search" placeholder="Search Recipes..." />
-				</p>
-				<p>
-					<input class="submitSearch" type="submit" name="submit" />
-				</p>
-			</form>
-		</section>
-
-	</section>
-
-	<h2 class="recipe-heading">Recipes</h2>
-	<section class="results"></section>
-
-	<section class="mealPlan-cta">
-		
-	</section>
-
-	<section class="ytResults"></section>
+	<section class="favoriteRecipe-container"></section>
 
 
 <script type="text/javascript" src="assets/js/model.js"></script>

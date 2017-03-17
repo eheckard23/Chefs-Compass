@@ -1,13 +1,16 @@
 class Session{
 	constructor(){
+		// localStorage.clear();
 		console.log('Session created');
+
+		$('input[name="search"]').focus();
 
 		$(window).on('hashchange', () => {
 			window.location.reload();
 		});
 
 		let searchValue = $('.searchRecipe').val();
-		let recipeCount = 3;
+		let recipeCount = 4;
 		let recipeId = '';
 
 		let urls = {
@@ -28,7 +31,7 @@ class Session{
 				});
 			}
 			// random food trivia
-			this.controller.getTrivia(urls.triviaSearch);
+			// this.controller.getTrivia(urls.triviaSearch);
 
 			// random recipes
 			this.controller.getRecipes(urls.recipeSearch);

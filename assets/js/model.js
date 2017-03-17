@@ -174,5 +174,13 @@ class Model{
 		});
 	}
 
+	static storeFavoriteRecipe(id, title, img, time){
+		let favoriteRecipeArray = [];
+		let favRecipe = { id, title, img, time };
+		favoriteRecipeArray.push(favRecipe);
+		let str = JSON.stringify(favoriteRecipeArray);
+		localStorage.setItem('favRecipe', favoriteRecipeArray);
+	}
+
 
 }
