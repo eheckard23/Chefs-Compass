@@ -155,17 +155,6 @@ class View{
 				);
 			});
 
-
-			// // loop through equipment
-			// equipment.forEach(item => {
-			// 	$('.equipmentList')
-			// 			.append(
-			// 				`<li>`
-			// 				+ `${item}`
-			// 				+ `</li>`
-			// 		);
-			// });
-
 		}
 	}
 
@@ -291,7 +280,8 @@ class View{
 	static getFavoriteRecipes(){
 		let recipes = localStorage.getItem('favRecipe');
 		recipes = JSON.parse(recipes);
-		recipes.forEach(recipe => {
+		console.log(recipes.favLS);
+		recipes.favLS.forEach(recipe => {
 			$('.favoriteRecipe-container').append(
 				` <a href="recipe.html#${recipe.id}" data-id=${recipe.id}>`
 				+ '<article class="recipe">'

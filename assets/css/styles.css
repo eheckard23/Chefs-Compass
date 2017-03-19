@@ -66,7 +66,8 @@ nav a[href*="index"]{
 }
 /*-------------------------- =Jumbotron----------------*/
 .welcome-container,
-.plan-container{
+.plan-container,
+.favorites-jumbotron{
 	overflow: hidden;
 	background: url('../images/sebastian-lp-204232.jpg') left;
 	background-size: cover;
@@ -537,8 +538,13 @@ footer p{
 
 /*-------------------------- =Favorite Recipes Page----------------*/
 .favoriteRecipe-container{
-	border: solid 2px #b74949;
-	padding-top: 40px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+.favorites-jumbotron h1{
+	font-size: 2em;
+	text-align: center;
 }
 
 

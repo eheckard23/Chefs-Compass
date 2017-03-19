@@ -1,6 +1,7 @@
 class Controller{
 	constructor(){
 		console.log('Controller created');
+		Controller.favRecipeArray = [];
 		// load client youtube
 	}
 	getTrivia(url){
@@ -72,7 +73,10 @@ class Controller{
 		let title = $('.favorites').attr('data-recipe');
 		let img = $('.favorites').attr('data-img');
 		let time = $('.favorites').attr('data-time');
-		Model.storeFavoriteRecipe(id, title, img, time);
+		let favRecipe = { id, title, img, time };
+		Controller.favRecipeArray.push(favRecipe);
+		console.log(Controller.favRecipeArray);
+		Model.storeFavoriteRecipes(Controller.favRecipeArray);
 	}
 
 

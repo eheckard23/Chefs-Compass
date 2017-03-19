@@ -1,7 +1,13 @@
 class Model{
 	constructor(){
 		console.log('Model created');
-		Model.favRecipeArray = [];
+	}
+
+	static storeFavoriteRecipes(favRecipeArray){
+		let favLS = { favLS: favRecipeArray }
+
+		let str = JSON.stringify(favLS);
+		localStorage.setItem('favRecipe', str);
 	}
 
 	static storeRecipeObj(recipeObj){
@@ -172,18 +178,6 @@ class Model{
 				xhr.setRequestHeader("X-Mashape-Authorization", "fHjaL4Ss9gmshKplCTTN8WTMJD0up1Tuhn4jsnpw0mSEkWnxu9"); // Enter here your Mashape key
 			}
 		});
-	}
-
-	static storeFavoriteRecipe(id, title, img, time){
-		let favRecipe = {};
-		favRecipe.id = id;
-		favRecipe.title = title;
-		favRecipe.img = img;
-		favRecipe.time = time;
-		console.log(Model.favRecipeArray);
-		Model.favRecipeArray.push(favRecipe);
-		let str = JSON.stringify(favoriteRecipeArray);
-		localStorage.setItem('favRecipe', str);
 	}
 
 
