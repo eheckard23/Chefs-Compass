@@ -23,26 +23,58 @@
 		</nav>
 	</header>
 
-	<section class="welcome-container container-fluid">
+	<section class="plan-container">
 
-		<section class="welcome">
-			<h1>Start Your Meal Plan</h1>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-			tempor incididunt ut labore et dolore magna aliqua. </p>
-			<form class="dietForm">
-				<select class="diet">
+		<h1 class="plan-heading">Start Your Meal Plan</h1>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. </p>	
+
+	</section>
+
+	<section class="plan">
+		
+		<form class="dietForm">
+			<section class="select">
+				
+				<select>
+					<option value="normal">Normal</option>
 					<option value="vegetarian">Vegetarian</option>
 					<option value="vegan">Vegan</option>
 					<option value="paleo">Paleo</option>
 				</select>
-				<input type="text" class="exclude" placeholder="Diet Exclusions" />
-				<input type="text" class="targetCalories" placeholder="Target Calories" />
-				<input type="radio" name="timeFrame" value="Day" checked>Day
-				<input type="radio" name="timeFrame" value="Week">Week
-				<input class="dietSubmit" type="submit" name="dietSubmit" value="Submit" />
-			</form>
 
-		</section>
+				<div class="select-arrow"><i class="fa fa-arrow-down" aria-hidden="true"></i>
+</div>
+
+			</section>
+			
+			<p class="form-input">
+				<label for="exclude">Diet Exclusions</label>
+				<input type="text" name="exclude" class="exclude" placeholder="Diet Exclusions" />
+			</p>
+
+			<p class="form-input">
+				<label for="targetCalories">Target Calories</label>
+				<input type="text" name="targetCalories" class="targetCalories" placeholder="Target Calories" />
+			</p>
+
+			<section class="radio">
+
+				<p class="form-radio">
+					<input type="radio" name="timeFrame" value="Day" checked />
+					Day
+				</p>
+				<p class="form-radio">
+					<input type="radio" name="timeFrame" value="Week" />
+					Week
+				</p>
+
+			</section>
+			
+			
+			<input class="dietSubmit" type="submit" name="dietSubmit" value="Submit" />
+		</form>
+
 	</section>
 
 	
