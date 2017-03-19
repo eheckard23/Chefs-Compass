@@ -31,10 +31,10 @@ class Session{
 				});
 			}
 			// random food trivia
-			this.controller.getTrivia(urls.triviaSearch);
+			// this.controller.getTrivia(urls.triviaSearch);
 
 			// random recipes
-			this.controller.getRecipes(urls.recipeSearch);
+			// this.controller.getRecipes(urls.recipeSearch);
 
 			// recipe search
 			// pass search value to recipe search and youtube search

@@ -138,10 +138,51 @@ nav a[href*="index"]{
 }
 /*--------- =Meal Plan CTA----*/
 .mealPlan-cta{
+	color: white;
+	text-align: center;
 	background-color: #b74949;
 	padding: 20px;
 }
-
+.mealPlan-cta p{
+	font-size: 1.5em;
+	display: block;
+	width: 50%;
+	margin: 0 auto;
+}
+.mealPlan-features{
+	border: solid 1px #333;
+	list-style: none;
+	width: 30%;
+	margin: 20px auto;
+	padding: 0;
+	border-radius: 2px;
+}
+.mealPlan-cta li{
+	padding: 20px 0;
+	background: url('../images/cc-logo-dark.png') no-repeat left -17px;
+	background-size: 100px 100px;
+	background-color: white;
+	color: #333;
+}
+.mealPlan-cta li:nth-child(odd){
+	background: url('../images/cc-logo.png') no-repeat left -17px;
+	background-size: 100px 100px;
+	background-color: rgba(255,255,255,0.2);
+}
+.mealPlan-cta a{
+	display: block;
+	width: 10%;
+	text-decoration: none;
+	margin: 0 auto;
+	padding: 20px;
+	background-color: #1862a8;
+	color: white;
+	border-radius: 2px;
+	-webkit-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.05);
+	-moz-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.05);
+	box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.05);
+	transition: all .3s ease;
+}
 /*--------- =Footer----*/
 footer{
 	padding: 20px;
@@ -151,6 +192,8 @@ footer{
 footer p{
 	width: 50%;
 }
+
+
 
 /*-------------------------- =Recipe Card----------------*/
 .recipe,
@@ -270,7 +313,8 @@ footer p{
 	transition: all .3s ease;
 }
 .pinterest:hover,
-.favorites:hover{
+.favorites:hover
+.mealPlan-cta a:hover{
 	-webkit-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.70);
 	-moz-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.70);
 	box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.70);
@@ -355,6 +399,7 @@ footer p{
 }
 .ytPlayer{
 	width: 100%;
+	border: none;
 }
 .videoRecipeHeading{
 	width: 50%;
