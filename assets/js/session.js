@@ -10,7 +10,7 @@ class Session{
 		});
 
 		let searchValue = $('.searchRecipe').val();
-		let recipeCount = 4;
+		let recipeCount = 6;
 		let recipeId = '';
 
 		let urls = {
@@ -31,7 +31,7 @@ class Session{
 				});
 			}
 			// random food trivia
-			// this.controller.getTrivia(urls.triviaSearch);
+			this.controller.getTrivia(urls.triviaSearch);
 
 			// random recipes
 			this.controller.getRecipes(urls.recipeSearch);

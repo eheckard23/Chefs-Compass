@@ -222,25 +222,16 @@ class View{
 			let meal = this.mealArray;
 			let weekSchedule = $('.mealPlanSchedule').html();
 
-			// -------------- TO BE REFACTORED
-
 			function displayMealDays(start, finish){
+				weekSchedule += '<ul class="weekList">';
 				for(let i=start;i<finish;i++){
-					let imgSrc = 'https://spoonacular.com/recipeImages/' 
-							+ meal[i].title.replace(/\s+/g, '-').replace('#', '-') + '-' 
-							+ meal[i].id + '.jpg';
-					weekSchedule += `<article class="mealDay">`
+					weekSchedule += '<li>'
 						+ `<a href="recipe.html#${meal[i].id}">`
-							+ '<article class="recipe">'
-							+ '<div class="recipeImg">'
-							+ `<img src="${imgSrc[i]}" alt=${meal[i].id}/>`
-							+ '</div>'
-					  		+ `<h3>${meal[i].title}</h3>`
-							+ `<p>Cook Time: ${meal[i].readyInMinutes} minutes</p>`
-							+ `</a>`
-							+ '</article>'
-						+ `</article>`
+					  	+ `<h3>${meal[i].title}</h3>`
+						+ `</a>`
+						+ '</li>'
 				}
+				weekSchedule += '</ul>';
 			}
 
 			// divide the meals into days
@@ -274,6 +265,19 @@ class View{
 	static getFavoriteRecipes(){
 		let recipes = localStorage.getItem('favRecipe');
 		recipes = JSON.parse(recipes);
+		recipes.forEach(recipe => {
+			$('.favoriteRecipe-container').append(
+				` <a href="recipe.html#${recipe.id}" data-id=${recipe.id}>`
+				+ '<article class="recipe">'
+				+ '<div class="recipeImg">'
+				+ `<img src="${recipe.img}" alt=${recipe.title}/>`
+				+ '</div>'
+		  		+ `<h3>${recipe.title}</h3>`
+				+ `<p>Cook Time: ${recipe.time} minutes</p>`
+				+ `</a>`
+				+ '</article>'
+			);
+		});
 	}
 
 }

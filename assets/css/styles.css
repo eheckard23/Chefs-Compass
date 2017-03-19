@@ -6,20 +6,16 @@ body{
 	color: black;
 	background: #e9e9e5;
 }
-a:visited{
-	color: #ff4b51;
+a:visited,
+.recipe a:visited{
+	color: #b74949;
 }
 /*-------------------------- =Navigation----------------*/
 header{
 	position: fixed;
+	top: 0;
 	width: 100%;
-	padding: 10px 0;
-	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&0.54+9,0+97 */
-	background: -moz-linear-gradient(top,  rgba(0,0,0,0.54) 0%, rgba(0,0,0,0.54) 9%, rgba(0,0,0,0) 97%, rgba(0,0,0,0) 100%); /* FF3.6-15 */
-	background: -webkit-linear-gradient(top,  rgba(0,0,0,0.54) 0%,rgba(0,0,0,0.54) 9%,rgba(0,0,0,0) 97%,rgba(0,0,0,0) 100%); /* Chrome10-25,Safari5.1-6 */
-	background: linear-gradient(to bottom,  rgba(0,0,0,0.54) 0%,rgba(0,0,0,0.54) 9%,rgba(0,0,0,0) 97%,rgba(0,0,0,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8a000000', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */
-	transition: all .3s ease;
+	/*background-color: #b74949;*/
 }
 nav{
 	width: 100%;
@@ -29,29 +25,31 @@ nav{
 nav form{
 	float: right;
 	margin-right: 2%;
+	padding: 17.5px 0;
 }
 nav input[type="search"]{
 	color: black;
-	padding-left: 10%;
+	padding: 5px;
 	border: none;
-	border-radius: 25px;
+	border-radius: 5px;
 	background: white;
 }
 nav ul{
-	margin: 0 2% 0 0;
+	width: 50%;
+	margin: 0 2% 0 2%;
 	float: left;
 	list-style: none;
-	margin-left: 2%;
-	padding: 0;
+	padding: 10px 0;
 }
 nav li{
 	float: left;
+	margin-right: 5%;
 }
 nav a{
 	text-decoration: none;
-	color: white;
+	color: rgba(255,255,255,0.6);
 	display: block;
-	width: 70px;
+	padding: 10px 0;
 }
 nav a:hover{
 	color: white;
@@ -60,12 +58,19 @@ nav a:hover{
 nav a:visited{
 	color: white;
 }
+nav a[href*="index"]{
+	background: url('../images/cc-logo.png') no-repeat -20px -27px ;
+	background-size: 100px 100px;
+	padding: 10px 0 10px 50px;
+	color: white;
+}
 /*-------------------------- =Jumbotron----------------*/
 .welcome-container{
 	overflow: hidden;
 	background: url('../images/sebastian-lp-204232.jpg') left;
 	background-size: cover;
-	padding: 40px;
+	/*margin-top: 58px;*/
+	padding: 100px 0 40px;
 	color: white;
 }
 .triviaResult{
@@ -91,29 +96,40 @@ nav a:visited{
 }
 .searchForm input[name="search"]{
 	display: block;
+	background: rgba(255,255,255,0.2);
+	outline: none;
+	margin: 0 auto;
 	padding: 10px;
 	font-size: 3em;
 	color: white;
 	border: none;
-	border-radius: 35px;
-	background: -moz-linear-gradient(left,  rgba(0,0,0,0.54) 0%, rgba(0,0,0,0) 38%, rgba(0,0,0,0) 100%);
-	background: -webkit-linear-gradient(left,  rgba(0,0,0,0.54) 0%,rgba(0,0,0,0) 38%,rgba(0,0,0,0) 100%);
-	background: linear-gradient(to right,  rgba(0,0,0,0.54) 0%,rgba(0,0,0,0) 38%,rgba(0,0,0,0) 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8a000000', endColorstr='#00000000',GradientType=1 );
 }
 .searchForm input[type="submit"]{
 	display: none;
+}
+::-webkit-input-placeholder{
+	color: white;
+}
+:-moz-placeholder{
+	color: white;
+}
+::-moz-placeholder{
+	color: white;
 }
 /*-------------------------- =Search Results----------------*/
 .recipe-heading,
 .similarRecipeHeading,
 .videoRecipeHeading{
+	color: #b74949;
 	text-align: center;
 }
 .results,
 .similarRecipes,
 .similarVideos{
+	width: 90%;
+	margin: 0 auto;
 	display: flex;
+	flex-wrap: wrap;
 	justify-content: center;
 }
 .similarRecipes a,
@@ -128,13 +144,13 @@ nav a:visited{
 	margin: 20px;
 	padding: 10px;
 	border-radius: 2px;
-	color: #ff4b51;
+	color: #b74949;
 	background-color: white;
 	text-align: center;
 	-webkit-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.05);
 	-moz-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.05);
 	box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.05);
-	transition: box-shadow .3s ease;
+	transition: all .3s ease;
 	cursor: pointer;
 }
 .recipe:hover{
@@ -144,6 +160,9 @@ nav a:visited{
 }
 .recipe p{
 	padding-bottom: 10px;
+}
+.recipe a{
+	color: #b74949;
 }
 /*-------------------------- =Recipe Page----------------*/
 .recipeJumbotron{
@@ -194,7 +213,7 @@ nav a:visited{
 	padding: 0;	
 }
 .recipeInstructions-container{
-	background-color: #ff4b51;
+	background-color: #b74949;
 	padding: 40px;
 }
 .recipeInstructions-container h4{
@@ -216,6 +235,19 @@ nav a:visited{
 .pinterest{
 	clear: left;
 }
+/*-------------------------- =Meal Plan----------------*/
+.weekList h3{
+	margin: 0;
+}
+
+
+/*-------------------------- =Favorite Recipes Page----------------*/
+.favoriteRecipe-container{
+	border: solid 2px #b74949;
+	padding-top: 40px;
+}
+
+
 /*-------------------------- =Media Queries----------------*/
 @media screen and (max-width: 764px){
 	.recipeImageContainer{
