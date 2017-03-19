@@ -6,22 +6,32 @@ class View{
 	static displayFact(fact){
 		$('.triviaResult').append(fact.text);
 	}
+
 	// populate results section with recipe image, title, and id
 	static displayRecipes(recipes){
-		$('.results').html('');
-		recipes.forEach(recipe => {
-			$('.results').append(
-				` <a href="recipe.html#${recipe.id}" data-id=${recipe.id}>`
-				+ '<article class="recipe">'
-				+ '<div class="recipeImg">'
-				+ `<img src="https://spoonacular.com/recipeImages/${recipe.image}" alt=${recipe.title}/>`
-				+ '</div>'
-		  		+ `<h3>${recipe.title}</h3>`
-				+ `<p>Cook Time: ${recipe.readyInMinutes} minutes</p>`
-				+ `</a>`
-				+ '</article>'
-			);
-		});
+
+		// remove loading div
+		setTimeout(removeSpinner, 1000);
+		
+		function removeSpinner(){
+			$('.loader').removeClass('loading');
+
+			$('.results').html('');
+			recipes.forEach(recipe => {
+				$('.results').append(
+					` <a href="recipe.html#${recipe.id}" data-id=${recipe.id}>`
+					+ '<article class="recipe">'
+					+ '<div class="recipeImg">'
+					+ `<img src="https://spoonacular.com/recipeImages/${recipe.image}" alt=${recipe.title}/>`
+					+ '</div>'
+			  		+ `<h3>${recipe.title}</h3>`
+					+ `<p>Cook Time: ${recipe.readyInMinutes} minutes</p>`
+					+ `</a>`
+					+ '</article>'
+				);
+			});
+		}
+
 	}
 	// present 2 youtube videos based on search results
 	static displayVideos(videos){
@@ -49,7 +59,6 @@ class View{
 	}
 
 	static displayRecipeInfo(data){
-		console.dir(data);
 		let src = data.image;
 		$('.recipeImage').attr('src', data.image);
 		$('.recipeTitle').html(data.title);
@@ -278,7 +287,7 @@ class View{
 	}
 
 	static getFavoriteRecipes(){
-		let recipes = localStorage.getItem('favRecipe');
+		let recipes = localStorage.getItem('favLS');
 		recipes = JSON.parse(recipes);
 		console.log(recipes.favLS);
 		recipes.favLS.forEach(recipe => {

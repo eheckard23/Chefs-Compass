@@ -36,6 +36,8 @@ class Session{
 			// random recipes
 			this.controller.getRecipes(urls.recipeSearch);
 
+			// remove loading div
+
 			// recipe search
 			// pass search value to recipe search and youtube search
 			$.when(

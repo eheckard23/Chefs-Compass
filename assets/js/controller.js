@@ -1,8 +1,8 @@
 class Controller{
 	constructor(){
 		console.log('Controller created');
-		Controller.favRecipeArray = [];
 		// load client youtube
+		Controller.model = new Model();
 	}
 	getTrivia(url){
 		Model.trivia(url);
@@ -74,9 +74,9 @@ class Controller{
 		let img = $('.favorites').attr('data-img');
 		let time = $('.favorites').attr('data-time');
 		let favRecipe = { id, title, img, time };
-		Controller.favRecipeArray.push(favRecipe);
-		console.log(Controller.favRecipeArray);
-		Model.storeFavoriteRecipes(Controller.favRecipeArray);
+		// Controller.favRecipeArray.push(favRecipe);
+		// console.log(Controller.favRecipeArray);
+		Controller.model.storeFavoriteRecipes(favRecipe);
 	}
 
 

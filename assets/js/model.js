@@ -1,13 +1,15 @@
 class Model{
 	constructor(){
 		console.log('Model created');
+		this.favRecipeArray = [];
 	}
 
-	static storeFavoriteRecipes(favRecipeArray){
-		let favLS = { favLS: favRecipeArray }
+	storeFavoriteRecipes(favRecipe){
+		this.favRecipeArray.push(favRecipe);
+		let favLS = { favLS: this.favRecipeArray }
 
 		let str = JSON.stringify(favLS);
-		localStorage.setItem('favRecipe', str);
+		localStorage.setItem('favLS', str);
 	}
 
 	static storeRecipeObj(recipeObj){
