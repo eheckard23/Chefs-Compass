@@ -107,7 +107,8 @@ nav a[href*="index"]{
 	color: white;
 	border: none;
 }
-.searchForm input[type="submit"]{
+.searchForm input[type="submit"],
+.nav-form input[type="submit"]{
 	display: none;
 }
 .searchForm input[name="search"]::-webkit-input-placeholder{
