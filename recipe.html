@@ -19,45 +19,104 @@
 			</ul>
 
 			<form action="#">
-				<input type="search" name="search" placeholder="Search Recipes" />
+				<input type="search" placeholder="Search Recipes" />
 			</form>
 		</nav>
 	</header>
 
-	<section class="recipeJumbotron">
+	<section class="recipe-jumbotron">
 
-		<div class="recipeImageContainer">
+		<div class="recipe-container">
 			<img class="recipeImage" src="#" alt="#" />
 		</div>
 
-		<section class="tools">
-			<h1 class="recipeTitle"></h1>
-			<button class="favorites" onclick="Controller.addFavoriteRecipe()"><i class="fa fa-heart" aria-hidden="true"></i>  Add to Favorites</button>
-			<section class="ingredientList-container">
-				<h4>Ingredients</h4>
-				<ul class="ingredientList"></ul>
-			</section>
+		<section class="title">
 
-			<section class="equipmentList-container">
-				<h4>Equipment</h4>
-				<ul class="equipmentList"></ul>
+			<h1 class="recipeTitle"></h1>
+
+			<section class="stats">
+
+				<div class="recipe-stat">
+					<h3 class="servings"></h3>
+					<p>SERVINGS</p>
+				</div>
+				
+				<div class="recipe-stat">	
+					<h3 class="ready-time"></h3>
+					<p>TIME</p>
+				</div>
+
+				<div class="recipe-stat score">
+					<h3 class="weight-score"></h3>
+					<p>WEIGHT WATCHERS SCORE</p>
+				</div>
+
 			</section>
 
 		</section>
 		
+		<section class="favorites-container">
+
+			<button class="favorites" onclick="Controller.addFavoriteRecipe()"><i class="fa fa-heart" aria-hidden="true"></i>  Add to Favorites</button>
+			
+		</section>
+
+		
 		
 	</section>
 
-	<section class="recipeInstructions-container">
-		<h4>Instructions</h4>
-		<ul class="recipeInstructions"></ul>
+	<section class="tools">
+		
+		<section class="ingredientList-container">
+
+			<h4>Ingredients</h4>
+			<ul class="ingredientList"></ul>
+
+		</section>
+
+		<section class="similar-container">
+
+			<h4 class="similarRecipeHeading">Similar Recipes</h4>
+			<section class="similarRecipes"></section>
+
+		</section>
+
 	</section>
 
-	<h4 class="similarRecipeHeading">Similar Recipes</h4>
-	<section class="similarRecipes"></section>
+
+
+	<section class="recipeInstructions-container">
+
+		<h4>Instructions</h4>
+		<ul class="recipeInstructions"></ul>
+
+	</section>
+
+	
 
 	<h4 class="videoRecipeHeading">Video Recipes</h4>
 	<section class="similarVideos"></section>
+
+	<footer>
+		
+		<h2>Thank You!</h2>
+
+		<nav>
+			
+			<ul>
+				<li><a href="index.html">Chef's Compass</a></li>
+				<li><a href="plan.html">Meal Plan</a></li>
+				<li><a href="favorites.html">My Favorites</a></li>
+			</ul>
+
+		</nav>
+
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		consequat.</p>
+
+	</footer>
 
 <script type="text/javascript" src="assets/js/model.js"></script>
 <script type="text/javascript" src="assets/js/view.js"></script>

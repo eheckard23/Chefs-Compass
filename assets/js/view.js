@@ -25,16 +25,19 @@ class View{
 	}
 	// present 2 youtube videos based on search results
 	static displayVideos(videos){
+		// display similar videos
 		$('.ytResults').html('');
 		videos.forEach(video => {
 			$('.ytResults')
 				.append(
-					`<h3>${video.snippet.title}</h3>`
+					'<article class="videoRecipe">'
 					+ `<iframe class="ytPlayer" 
 								type="text/html" 
 								src="http://www.youtube.com/embed/${video.id.videoId}">
 						</iframe>`
-					);
+					+ `<h3>${video.snippet.title}</h3>`
+					+ '</article>'
+				);
 		});
 	}
 	// fired on recipe page load
@@ -46,9 +49,34 @@ class View{
 	}
 
 	static displayRecipeInfo(data){
+		console.dir(data);
 		let src = data.image;
 		$('.recipeImage').attr('src', data.image);
 		$('.recipeTitle').html(data.title);
+		$('.servings').html(data.servings);
+		$('.ready-time').html(data.readyInMinutes);
+		$('.weight-score').html(data.weightWatcherSmartPoints);
+
+		// check if recipe is vegan
+		if(data.vegan == true){
+			// add new stat
+			$('.recipe-stat').last().after(
+				'<div class="recipe-stat">'
+				+ '<i class="fa fa-check" aria-hidden="true"></i>'
+				+ '<p>VEGAN</p>'	
+				+ '</div>'
+			);
+		}
+		// check if recipe is gluten free
+		if(data.glutenFree == true){
+			// add new stat
+			$('.recipe-stat').last().after(
+				'<div class="recipe-stat">'
+				+ '<i class="fa fa-check" aria-hidden="true"></i>'
+				+ '<p>GLUTEN FREE</p>'	
+				+ '</div>'
+			);
+		}
 		// get 2 similar videos using recipe title
 		Controller.similarVideos(`https://www.googleapis.com/youtube/v3/search?key=AIzaSyCxolTs58eWL7PrMUVJHPslqY7mOYwQ5lg&part=snippet&maxResults=2&topicId=/m/02wbm&q=recipes+with+${data.title}`);
 		// favorite recipe button
@@ -59,8 +87,8 @@ class View{
 			'data-time': data.readyInMinutes
 		}); 
 		// create pinterest save button
-		$('.tools').append(
-				`<button class="pinterest" data-media=${src} data-description="New Recipe">Pin It</button>`
+		$('.favorites').after(
+				`<button class="pinterest" data-media=${src} data-description="${data.title}">Pin It</button>`
 		);
 		$('.pinterest').on('click', (e) => {
 			PinUtils.pinOne({
@@ -122,23 +150,21 @@ class View{
 				$('.recipeInstructions')
 					.append(
 						`<li>`
-						+ `<b>${step.number}.</b> `
 						+ `${step.step}`
 						+ `</li>`
-						+ '<br />'
 				);
 			});
 
 
-			// loop through equipment
-			equipment.forEach(item => {
-				$('.equipmentList')
-						.append(
-							`<li>`
-							+ `${item}`
-							+ `</li>`
-					);
-			});
+			// // loop through equipment
+			// equipment.forEach(item => {
+			// 	$('.equipmentList')
+			// 			.append(
+			// 				`<li>`
+			// 				+ `${item}`
+			// 				+ `</li>`
+			// 		);
+			// });
 
 		}
 	}

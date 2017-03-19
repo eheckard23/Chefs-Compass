@@ -133,7 +133,7 @@ class Model{
 			success: function(data){
 				this.similarRecipes = [];
 				// only grab 3 recipes
-				for(let i=0;i<3;i++){
+				for(let i=0;i<2;i++){
 					this.similarRecipes.push(data[i]);
 				}
 				// pass to controller then view
