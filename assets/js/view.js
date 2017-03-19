@@ -78,7 +78,7 @@ class View{
 			);
 		}
 		// get 2 similar videos using recipe title
-		Controller.similarVideos(`https://www.googleapis.com/youtube/v3/search?key=AIzaSyCxolTs58eWL7PrMUVJHPslqY7mOYwQ5lg&part=snippet&maxResults=2&topicId=/m/02wbm&q=recipes+with+${data.title}`);
+		Controller.similarVideos(`https://www.googleapis.com/youtube/v3/search?key=AIzaSyCxolTs58eWL7PrMUVJHPslqY7mOYwQ5lg&part=snippet&maxResults=3&topicId=/m/02wbm&q=recipes+with+${data.title}`);
 		// favorite recipe button
 		$('.favorites').attr({
 			'data-id': data.id,
