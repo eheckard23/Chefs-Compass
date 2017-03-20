@@ -45,7 +45,7 @@ body{
 	border: solid 10px transparent;
 	border-top-color: #b74949; 
 	border-bottom-color: #b74949;
-	animation: spinny 1s linear infinite; 
+	animation: spinny .7s linear infinite; 
 }
 @keyframes spinny{
 	0%{
@@ -268,9 +268,9 @@ footer p{
 .plan-container{
 	padding: 100px 60px 60px;	
 }
-.plan-container p{
+.plan-container h3{
 	display: block;
-	width: 50%;
+	width: 75%;
 	margin: 20px auto;
 	text-align: center;
 }
@@ -317,20 +317,22 @@ footer p{
 }
 .select-arrow{
 	position: absolute;
-	top: 0;
+	top: 30px;
 	right: 0;
 	padding: 13px;
 	cursor: pointer;
 }
 .dietForm input[type=radio]{
 	display: block;
-	width: 25%;
+	padding: 20px;
 	margin: 0 auto;
 }
 .dietForm input[type=submit]{
 	width: 50%;
 	margin: 20px auto;
-	background-color: rgba(251,251,244,0.8);
+	padding: 10px;
+	background-color: #1862a8;
+	cursor: pointer;
 }
 .form-input{
 	width: 95%;
@@ -365,12 +367,36 @@ footer p{
 	color: #fbfbf4;
 	background-color: #333;
 	margin-bottom: 30px; 
+	justify-content: center;
 }
-.mealPlanSchudule h2{
-
+.mealTime{
+	text-align: center;
 }
-.mealPlanSchedule h3{
-	margin-left: 20px;
+.weekDay{
+	width: 25%;
+	margin: 10px;
+	padding: 20px;
+	border-radius: 2px;
+	background-color: #fbfbf4;
+}
+.weekList{
+	list-style: none;
+	padding: 0;
+}
+.weekList li{
+	padding: 10px 0;
+	border-bottom: solid 2px rgba(0,0,0,0.3);
+}
+.weekDay a{
+	color: #333;
+	text-decoration: none;
+}
+.weekDay a:hover{
+	color: #b74949;
+	text-decoration: underline;
+}
+.weekList h3{
+	margin: 0;
 }
 
 /*-------------------------- =Recipe Card----------------*/
@@ -590,16 +616,7 @@ footer p{
 	border-top: solid 2px #b74949;
 }
 
-/*-------------------------- =Meal Plan----------------*/
-.weekList h3{
-	margin: 0;
-}
-.mealDay{
-	float: left;
-}
-.day{
-	clear: left;
-}
+
 
 /*-------------------------- =Favorite Recipes Page----------------*/
 .favoriteRecipe-container{
@@ -611,8 +628,51 @@ footer p{
 	font-size: 2em;
 	text-align: center;
 }
-
-
+/*-------------------------- =404 Page----------------*/
+.top{
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 50vh;
+	background-color: #fbfbf4;	
+}
+.top a{
+	display: block;
+	width: 50%;
+	margin: 0 auto;
+	padding-top: 10px;
+	text-align: center;
+	color: #b74949; 
+	text-decoration: none;
+}
+.top a:hover{
+	text-decoration: underline;
+}
+.top h1{
+	font-size: 5em;
+	display: block;
+	width: 90%;
+	margin: 0 auto;
+	padding-top: 150px;
+	text-align: center;
+	color: #b74949; 
+}
+.bottom{
+	top: 50%;
+	left: 0;
+	width: 100vw;
+	height: 50vh;
+	background-color: #b74949;
+}
+.bottom h2{
+	font-size: 5em;
+	display: block;
+	width: 90%;
+	margin: 0 auto;
+	padding-top: 100px;
+	text-align: center;
+	color: #fbfbf4;
+}
 /*-------------------------- =Media Queries----------------*/
 @media screen and (max-width: 764px){
 	.recipeImageContainer{

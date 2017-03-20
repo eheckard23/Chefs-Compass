@@ -223,7 +223,7 @@ class View{
 				$('.mealPlanSchedule')
 					.append(
 						`<section class="mealDay">`
-						+ `<h3>${this.time}</h3>`
+						+ `<h3 class="mealTime">${this.time}</h3>`
 						+ `<a href="recipe.html#${meal.id}">`
 						+ '<article class="recipe">'
 						+ '<div class="recipeImg">'
@@ -247,7 +247,8 @@ class View{
 			let weekSchedule = $('.mealPlanSchedule').html();
 
 			function displayMealDays(start, finish){
-				weekSchedule += '<ul class="weekList">';
+				weekSchedule += '<section class="weekDay">'
+							+ '<ul class="weekList">';
 				for(let i=start;i<finish;i++){
 					weekSchedule += '<li>'
 						+ `<a href="recipe.html#${meal[i].id}">`
@@ -255,30 +256,31 @@ class View{
 						+ `</a>`
 						+ '</li>'
 				}
-				weekSchedule += '</ul>';
+				weekSchedule += '</ul>'
+							+ '</section>';
 			}
 
 			// divide the meals into days
 			// get first 1-3, store in day 1 etc..
-			weekSchedule += `<h3 class="day">Day 1</h3>`;
+			// weekSchedule += `<h3 class="day">Day 1</h3>`;
 			displayMealDays(0,3);
 
-			weekSchedule += `<h3 class="day">Day 2</h3>`;
+			// weekSchedule += `<h3 class="day">Day 2</h3>`;
 			displayMealDays(3,6);
 
-			weekSchedule += `<h3 class="day">Day 3</h3>`;
+			// weekSchedule += `<h3 class="day">Day 3</h3>`;
 			displayMealDays(6,9);
 
-			weekSchedule += `<h3 class="day">Day 4</h3>`;
+			// weekSchedule += `<h3 class="day">Day 4</h3>`;
 			displayMealDays(9,12);
 
-			weekSchedule += `<h3 class="day">Day 5</h3>`;
+			// weekSchedule += `<h3 class="day">Day 5</h3>`;
 			displayMealDays(12,15);
 
-			weekSchedule += `<h3 class="day">Day 6</h3>`;
+			// weekSchedule += `<h3 class="day">Day 6</h3>`;
 			displayMealDays(15,18);
 
-			weekSchedule += `<h3 class="day">Day 7</h3>`;
+			// weekSchedule += `<h3 class="day">Day 7</h3>`;
 			displayMealDays(18,21);
 
 

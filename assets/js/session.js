@@ -9,6 +9,10 @@ class Session{
 			window.location.reload();
 		});
 
+		if(window.location.href == 'http://localhost:8888/recipe.html'){
+			window.location.href = './404.html';
+		}
+
 		let searchValue = $('.searchRecipe').val();
 		let recipeCount = 6;
 		let recipeId = '';
@@ -30,6 +34,12 @@ class Session{
 					console.log('ready');
 				});
 			}
+
+			console.log(window.location.href);
+			if(window.location.href == "http://localhost:8888/recipe.html"){
+				window.location.assign('./404.html');
+			}
+
 			// random food trivia
 			this.controller.getTrivia(urls.triviaSearch);
 
@@ -46,6 +56,8 @@ class Session{
 					let searchValue = $('.searchRecipe').val();
 					let recipeCount = 10;
 					this.controller.getRecipes(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search?number=${recipeCount}&query=${searchValue}&type=main+course'`);
+					searchValue = '';
+					navSearch = '';
 				}),
 				$('.submitSearch').on('click', (e) => {
 					e.preventDefault();
