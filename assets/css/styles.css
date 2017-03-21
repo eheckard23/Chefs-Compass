@@ -626,6 +626,11 @@ footer p{
 	font-size: 2em;
 	text-align: center;
 }
+.favoriteRecipe-container h1{
+	font-size: 3em;
+	color: #b74949;
+	margin: 100px;
+}
 /*-------------------------- =404 Page----------------*/
 .top{
 	top: 0;
@@ -672,11 +677,50 @@ footer p{
 	color: #fbfbf4;
 }
 /*-------------------------- =Media Queries----------------*/
+@media screen and (max-width: 1100px){
+	.favorites-container{
+		clear: left;
+	}
+	.recipeInstructions-container{
+		float: left;
+	}
+	.similarVideo-container{
+		clear: left;
+	}
+	.similar-container{
+		clear: left;
+		margin-left: 5%;
+		border: solid 2px red;
+	}
+}
+@media screen and (max-width: 900px){
+	.mealPlan-cta p{
+		width: 90%;
+	}
+	.mealPlan-features{
+		width: 90%;
+	}
+	.dietForm{
+		width: 80%;
+	}
+}
 @media screen and (max-width: 764px){
 	.recipeImageContainer{
 		width: 100%;
 		height: 300px;
 		overflow: hidden;
+	}
+	.dietForm{
+		width: 60%;
+	}
+}
+@media screen and (max-width: 577px){
+	.searchForm input[name="search"]{
+		font-size: 1em;
+		width: 50%;
+	}
+	.recipe{
+		width: 80%;
 	}
 }
 

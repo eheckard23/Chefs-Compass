@@ -291,7 +291,15 @@ class View{
 
 	static getFavoriteRecipes(){
 		let recipes = JSON.parse(localStorage.getItem('favRecipeArr'));
-		console.dir(recipes);
+
+		if(!recipes || recipes.length < 1){
+
+			$('.favoriteRecipe-container').append(
+
+				"<h1 class='noFavorites'>You haven't saved any recipes yet!</h1>"
+
+			);
+		}
 		// console.log(recipes.favLS);
 		recipes.forEach(recipe => {
 			$('.favoriteRecipe-container').append(
