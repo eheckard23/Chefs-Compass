@@ -1,41 +1,32 @@
 class Model{
 	constructor(){
 		console.log('Model created');
-		this.favRecipeArray = [];
+		
 	}
 
-	storeFavoriteRecipes(favRecipe){
-		this.favRecipeArray.push(favRecipe);
-		let favLS = { favLS: this.favRecipeArray }
+	static storeFavoriteRecipes(favRecipe){
+		console.log('storeFavoriteRecipes()', favRecipe);
+		// check if array has been made
+		if(!localStorage.getItem('favRecipeArr')){
+			console.log("doesn't exist");
+			// first recipe
+			var favRecipeArr = [];
+			favRecipeArr.push(favRecipe);
 
-		let str = JSON.stringify(favLS);
-		localStorage.setItem('favLS', str);
-	}
+		}else{
+			console.log("exist");
+			// array already exists
+			// get / parse array push new recipe
+			var favRecipeArr = JSON.parse(localStorage.getItem('favRecipeArr'));
+			favRecipeArr.push(favRecipe);
 
-	static storeRecipeObj(recipeObj){
-		// store new object with values from recipeObj
-		let recipeInfo = { 
-			src: recipeObj[0].childNodes[0].currentSrc, 
-			id: recipeObj[0].childNodes[0].alt, 
-			title: recipeObj[1].innerHTML, 
-			readyInMinutes: recipeObj[2].innerHTML
-		};
-		let str = JSON.stringify(recipeInfo);
-		// set local storage
-		localStorage.setItem('recipeInfo', str);
-	}
+		}
+		console.log("out");
+		let favRecipeLS = JSON.stringify(favRecipeArr);
+		localStorage.setItem('favRecipeArr', favRecipeLS);
 
-	static storeMealObj(mealObj){
-		// store new object with values from mealObj
-		let mealInfo = { 
-			src: mealObj[0].currentSrc, 
-			id: mealObj[0].alt, 
-			title: mealObj[1].innerHTML, 
-			readyInMinutes: mealObj[2].innerHTML
-		};
-		let str = JSON.stringify(mealInfo);
-		// set local storage
-		localStorage.setItem('mealInfo', str);
+		console.log(localStorage.getItem('favRecipeArr'));
+
 	}
 
 	static init(){

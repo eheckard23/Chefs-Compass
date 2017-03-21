@@ -2,7 +2,7 @@ class Controller{
 	constructor(){
 		console.log('Controller created');
 		// load client youtube
-		Controller.model = new Model();
+
 	}
 	getTrivia(url){
 		Model.trivia(url);
@@ -76,7 +76,7 @@ class Controller{
 		let favRecipe = { id, title, img, time };
 		// Controller.favRecipeArray.push(favRecipe);
 		// console.log(Controller.favRecipeArray);
-		Controller.model.storeFavoriteRecipes(favRecipe);
+		Model.storeFavoriteRecipes(favRecipe);
 	}
 
 

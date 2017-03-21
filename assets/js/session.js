@@ -72,6 +72,11 @@ class Session{
 			// meal plan
 			$('.dietSubmit').on('click', (e) => {
 				e.preventDefault();
+				// remove form
+				$('.dietForm').addClass('removeForm');
+
+				// move schedule up
+				$('.mealPlanSchedule').addClass('presentSchedule');
 				// clear out html
 				$('.mealPlanSchedule').html('');
 				// get form values

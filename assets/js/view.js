@@ -289,10 +289,10 @@ class View{
 	}
 
 	static getFavoriteRecipes(){
-		let recipes = localStorage.getItem('favLS');
-		recipes = JSON.parse(recipes);
-		console.log(recipes.favLS);
-		recipes.favLS.forEach(recipe => {
+		let recipes = JSON.parse(localStorage.getItem('favRecipeArr'));
+		console.dir(recipes);
+		// console.log(recipes.favLS);
+		recipes.forEach(recipe => {
 			$('.favoriteRecipe-container').append(
 				` <a href="recipe.html#${recipe.id}" data-id=${recipe.id}>`
 				+ '<article class="recipe">'
