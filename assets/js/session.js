@@ -43,6 +43,7 @@ class Session{
 			// random food trivia
 			this.controller.getTrivia(urls.triviaSearch);
 
+			$('.loader').addClass('loading');
 			// random recipes
 			Controller.getRecipes(urls.recipeSearch);
 
@@ -52,19 +53,14 @@ class Session{
 			$.when(
 				$('.submitSearch').on('click', (e) => {
 					// add loading animation
-					setTimeout(loader, 1000);
-					
-					function loader(){
 						
-						$('.loader').addClass('loading');
+					$('.loader').addClass('loading');
 
-						e.preventDefault();
-						let searchValue = $('.searchRecipe').val();
-						let recipeCount = 10;
-						Controller.getRecipes(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search?number=${recipeCount}&query=${searchValue}&type=main+course'`);
-						searchValue = '';
-
-					}
+					e.preventDefault();
+					let searchValue = $('.searchRecipe').val();
+					let recipeCount = 10;
+					Controller.getRecipes(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search?number=${recipeCount}&query=${searchValue}&type=main+course'`);
+					searchValue = '';
 
 				}),
 
