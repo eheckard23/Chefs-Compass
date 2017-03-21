@@ -7,20 +7,19 @@ class View{
 		$('.triviaResult').append(fact.text);
 	}
 
-	// populate results section with recipe image, title, and id
-	static displayRecipes(recipes){
+	// populate results section with recipe data object
+	// home page
+	static displayRecipes(recipeArray){
 
-		// remove loading div
-		// home page
-		
-		setTimeout(removeLoader, 1500);
+		// remove loading animation
+		setTimeout(removeLoader, 1000);
 
 		function removeLoader(){
 
 			$('.loader').removeClass('loading');
 
 			$('.results').html('');
-			recipes.forEach(recipe => {
+			recipeArray.forEach(recipe => {
 				$('.results').append(
 					` <a href="recipe.html#${recipe.id}" data-id=${recipe.id}>`
 					+ '<article class="recipe">'
@@ -90,6 +89,54 @@ class View{
 				+ '</div>'
 			);
 		}
+
+		let steps = data.analyzedInstructions[0].steps;
+
+		// check if steps exist
+		if(steps && steps.length != 0){
+
+			// loop through steps
+			steps.forEach(step => {
+				// get individual step
+				let instruction = step.step;
+				// show step
+				$('.recipeInstructions').append(`<li>${instruction}</li>`);
+
+			});
+
+		}else{
+
+			// show message
+			$('.recipeInstructions').append("<li>Sorry! We're working on adding instuctions for this recipe.</li>");
+
+		}
+
+		let ingredients = data.extendedIngredients;
+
+		// check if ingredients exist
+		if(ingredients && ingredients.length != 0){
+
+			// populate ingredient list
+			ingredients.forEach(ingredient => {
+
+				// show ingredient with amount and unit
+				$('.ingredientList').append(
+
+					`<li>${ingredient.originalString}</li>`
+
+				);
+
+			});
+
+		}else{
+
+			// show message
+			$('.ingredientList').append("<li>Sorry! We're working on adding ingredients for this recipe.</li>");
+
+		}
+
+		
+
 		// get 2 similar videos using recipe title
 		Controller.similarVideos(`https://www.googleapis.com/youtube/v3/search?key=AIzaSyCxolTs58eWL7PrMUVJHPslqY7mOYwQ5lg&part=snippet&maxResults=3&topicId=/m/02wbm&q=recipes+with+${data.title}`);
 		// favorite recipe button
@@ -99,6 +146,7 @@ class View{
 			'data-img': data.image,
 			'data-time': data.readyInMinutes
 		}); 
+
 		// create pinterest save button
 		$('.favorites').after(
 				`<button class="pinterest" data-media=${src} data-description="${data.title}">Pin It</button>`
@@ -111,64 +159,6 @@ class View{
 		});
 		
 		
-	}
-
-	// fired after instructions are found
-	static displayRecipeInformation(recipeInstructions){
-		// check if recipe does not have instructions
-		if(!recipeInstructions.length > 0){
-			$('.ingredientList').html(`<h4>Sorry! There doesn't seem to be a recipe for this item yet.</h4>`)
-		}else{
-			// get values from recipeInstructions
-			let steps = recipeInstructions[0].steps;
-			// variables to store values
-			let ingredientArray = [];
-			let ingredients = [];
-			let equipmentArray = [];
-			let equipment = [];
-			// display image, title
-			// each step has an array of ingredients and equipment
-			// get all arrays from steps
-			steps.forEach(step => {
-				ingredientArray.push(step.ingredients);
-				equipmentArray.push(step.equipment);
-			});
-			// loop through each array and get individual
-			// item. store in new array
-			ingredientArray.forEach(ingredientArr => {
-				for(let i=0;i<ingredientArr.length;i++){
-					ingredients.push(ingredientArr[i].name);
-				}
-			});
-			// loop through each array and get individual
-			// item. store in new array
-			equipmentArray.forEach(equipmentArr => {
-				for(let i=0;i<equipmentArr.length;i++){
-					equipment.push(equipmentArr[i].name);
-				}
-			})
-
-			// display ingredients
-			ingredients.forEach(ingredient => {
-				$('.ingredientList')
-						.append(
-							`<li>`
-							+ `${ingredient}`
-							+ `</li>`
-					);
-			});
-
-			// loop through instructions
-			steps.forEach(step => {
-				$('.recipeInstructions')
-					.append(
-						`<li>`
-						+ `${step.step}`
-						+ `</li>`
-				);
-			});
-
-		}
 	}
 
 	// get similar recipes

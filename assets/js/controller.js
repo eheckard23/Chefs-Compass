@@ -15,10 +15,26 @@ class Controller{
 		// ajax
 		Model.recipeSearch(url);
 	}
-	// ajax returns recipes
-	static setRecipes(recipes){
-		// update view
-		View.displayRecipes(recipes);
+
+	static getRecipeDO(recipe){
+
+		// create new recipe DO with model data
+		let recipeDO = new RecipeDO();
+		recipeDO.id = recipe.id;
+		recipeDO.title = recipe.title;
+		recipeDO.image = recipe.image;
+		recipeDO.readyInMinutes = recipe.readyInMinutes;
+		// send back to model
+		return recipeDO;
+
+	}
+
+	// get recipe array from model
+	static sendRecipeArray(recipeArray){
+
+		// pass array to view
+		View.displayRecipes(recipeArray);
+
 	}
 
 	ytRequest(path){
@@ -34,14 +50,6 @@ class Controller{
 
 	static sendRecipeInfo(data){
 		View.displayRecipeInfo(data);
-	}
-
-	static getRecipeInstructions(url){
-		Model.recipeInstructions(url);
-	}
-
-	static sendRecipeInstructions(recipeInstructions){
-		View.displayRecipeInformation(recipeInstructions);
 	}
 
 	static getSimilarRecipes(url){

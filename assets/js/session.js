@@ -1,15 +1,17 @@
 class Session{
 	constructor(){
-		// localStorage.clear();
+
 		console.log('Session created');
 
 		$('input[name="search"]').focus();
 
+		// reload recipe page
 		$(window).on('hashchange', () => {
 			window.location.reload();
 		});
 
-		if(window.location.href == 'https://localhost:8888/recipe.html'){
+		// redirect to 404 page
+		if(window.location.pathname.includes("recipe") && (!window.location.hash || window.location.hash == "#")){
 			window.location.href = './404.html';
 		}
 
@@ -17,6 +19,8 @@ class Session{
 		let recipeCount = 6;
 		let recipeId = '';
 
+
+		// request urls
 		let urls = {
 			triviaSearch: `https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/food/trivia/random`,
 			ytSearch: `https://www.googleapis.com/youtube/v3/search?key=AIzaSyCxolTs58eWL7PrMUVJHPslqY7mOYwQ5lg&part=snippet&maxResults=2&topicId=/m/02wbm&type=video&q=${searchValue}`,
@@ -43,7 +47,9 @@ class Session{
 			// random food trivia
 			this.controller.getTrivia(urls.triviaSearch);
 
+			// loading animation
 			$('.loader').addClass('loading');
+
 			// random recipes
 			Controller.getRecipes(urls.recipeSearch);
 
@@ -113,9 +119,7 @@ class Session{
 	static getInstructionsByHash(hash){
 		// grab hash from view url
 		Controller.getRecipeInfo(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/${hash}/information`);
-		// get analyzed instructions
-		// send instructions to view
-		Controller.getRecipeInstructions(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/${hash}/analyzedInstructions`);
+		
 		// display similar recipes based on id
 		Controller.getSimilarRecipes(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/${hash}/similar`);
 	}

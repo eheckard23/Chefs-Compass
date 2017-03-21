@@ -47,7 +47,7 @@ class Model{
 		    	// pass result to controller then view
 		    	Controller.setTrivia(data);
 		    },
-		    error: function(err) { alert(err); },
+		    error: function(err) { console.error(err);},//alert(err); },
 		    beforeSend: function(xhr) {
 		    xhr.setRequestHeader("X-Mashape-Authorization", "fHjaL4Ss9gmshKplCTTN8WTMJD0up1Tuhn4jsnpw0mSEkWnxu9"); // Enter here your Mashape key
 		    }
@@ -63,9 +63,17 @@ class Model{
 		    dataType: 'json',
 		    success: function(data) {
 		    	// store in new variable
-		  		const recipes = data.results;
-		  		// pass to controller then view
-		  		Controller.setRecipes(recipes);
+		  		let recipes = data.results;
+		  		this.recipeArray = [];
+		  		// loop through data
+		  		recipes.forEach(recipe => {
+		  			// create new recipe data object
+		  			let recipeDO = Controller.getRecipeDO(recipe);
+		  			// push recipe data object to array
+		  			this.recipeArray.push(recipeDO);
+		  		});
+		  		// send recipe array to controller
+		  		Controller.sendRecipeArray(this.recipeArray);
 		    },
 			error: function(err) { alert(err); },
 				beforeSend: function(xhr) {
@@ -97,24 +105,7 @@ class Model{
 				// pass to controller then view
 				Controller.sendRecipeInfo(data);
 			},
-			error: function(err) { alert(err); },
-				beforeSend: function(xhr) {
-				xhr.setRequestHeader("X-Mashape-Authorization", "fHjaL4Ss9gmshKplCTTN8WTMJD0up1Tuhn4jsnpw0mSEkWnxu9"); // Enter here your Mashape key
-			}
-		});
-	}
-
-	static recipeInstructions(url){
-		$.ajax({
-			url,
-			type: 'GET',
-			data: {},
-			dataType: 'json',
-			success: function(data){
-				// pass to controller then view
-				Controller.sendRecipeInstructions(data);
-			},
-			error: function(err) { alert(err); },
+			error: function(err) { console.error(err); },
 				beforeSend: function(xhr) {
 				xhr.setRequestHeader("X-Mashape-Authorization", "fHjaL4Ss9gmshKplCTTN8WTMJD0up1Tuhn4jsnpw0mSEkWnxu9"); // Enter here your Mashape key
 			}
