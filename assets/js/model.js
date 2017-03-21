@@ -67,8 +67,9 @@ class Model{
 		  		this.recipeArray = [];
 		  		// loop through data
 		  		recipes.forEach(recipe => {
+		  			let info = false;
 		  			// create new recipe data object
-		  			let recipeDO = Controller.getRecipeDO(recipe);
+		  			let recipeDO = Controller.getRecipeDO(recipe, info);
 		  			// push recipe data object to array
 		  			this.recipeArray.push(recipeDO);
 		  		});

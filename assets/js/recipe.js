@@ -15,6 +15,7 @@ class RecipeDO{
 		this.weightWatcherSmartPoints = 0;
 		this.steps = [];
 		this.ingredients = [];
+		this.info = '';
 
 	}
 

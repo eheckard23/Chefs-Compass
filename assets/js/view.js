@@ -66,14 +66,27 @@ class View{
 
 	static displayRecipeInfo(recipeDO){
 
-		$('.recipeImage').attr('src', recipeDO.image);
-		$('.recipeTitle').html(recipeDO.title);
-		$('.servings').html(recipeDO.servings);
-		$('.ready-time').html(recipeDO.readyInMinutes);
-		$('.weight-score').html(recipeDO.weightWatcherSmartPoints);
+		// store recipe DO in variables
+		let id = recipeDO.id;
+		let src = recipeDO.image;
+		let title = recipeDO.title;
+		let servings = recipeDO.servings;
+		let readyInMinutes = recipeDO.readyInMinutes;
+		let weightWatchers = recipeDO.weightWatcherSmartPoints;
+		let vegan = recipeDO.vegan;
+		let glutenFree = recipeDO.glutenFree;
+		let steps = recipeDO.steps;
+		let ingredients = recipeDO.ingredients;
+
+		// jumbotron data view
+		$('.recipeImage').attr('src', src);
+		$('.recipeTitle').html(title);
+		$('.servings').html(servings);
+		$('.ready-time').html(readyInMinutes);
+		$('.weight-score').html(weightWatchers);
 
 		// check if recipe is vegan
-		if(recipeDO.vegan == true){
+		if(vegan == true){
 			// add new stat
 			$('.recipe-stat').last().after(
 				'<div class="recipe-stat">'
@@ -83,7 +96,7 @@ class View{
 			);
 		}
 		// check if recipe is gluten free
-		if(recipeDO.glutenFree == true){
+		if(glutenFree == true){
 			// add new stat
 			$('.recipe-stat').last().after(
 				'<div class="recipe-stat">'
@@ -92,8 +105,6 @@ class View{
 				+ '</div>'
 			);
 		}
-
-		let steps = recipeDO.steps;
 
 		// check if steps exist
 		if(steps && steps.length != 0){
@@ -113,8 +124,6 @@ class View{
 			$('.recipeInstructions').append("<li>Sorry! We're working on adding instuctions for this recipe.</li>");
 
 		}
-
-		let ingredients = recipeDO.ingredients;
 
 		// check if ingredients exist
 		if(ingredients && ingredients.length != 0){
@@ -141,18 +150,18 @@ class View{
 		
 
 		// get 2 similar videos using recipe title
-		Controller.similarVideos(`https://www.googleapis.com/youtube/v3/search?key=AIzaSyCxolTs58eWL7PrMUVJHPslqY7mOYwQ5lg&part=snippet&maxResults=3&topicId=/m/02wbm&q=recipes+with+${recipeDO.title}`);
+		Controller.similarVideos(`https://www.googleapis.com/youtube/v3/search?key=AIzaSyCxolTs58eWL7PrMUVJHPslqY7mOYwQ5lg&part=snippet&maxResults=3&topicId=/m/02wbm&q=recipes+with+${title}`);
 		// favorite recipe button
 		$('.favorites').attr({
-			'data-id': recipeDO.id,
-			'data-recipe': recipeDO.title,
-			'data-img': recipeDO.image,
-			'data-time': recipeDO.readyInMinutes
+			'data-id': id,
+			'data-recipe': title,
+			'data-img': src,
+			'data-time': readyInMinutes
 		}); 
 
 		// create pinterest save button
 		$('.favorites').after(
-				`<button class="pinterest" data-media=${recipeDO.image} data-description="${recipeDO.title}">Pin It</button>`
+				`<button class="pinterest" data-media=${src} data-description="${title}">Pin It</button>`
 		);
 		$('.pinterest').on('click', (e) => {
 			PinUtils.pinOne({

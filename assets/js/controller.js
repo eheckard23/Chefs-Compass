@@ -11,12 +11,31 @@ class Controller{
 		View.displayFact(fact);
 	}
 
+	// ------------------- recipe data objects -----------
 	static getRecipes(url){
 		// ajax
 		Model.recipeSearch(url);
 	}
 
-	static getRecipeDO(recipe){
+	// get recipe array from model
+	static sendRecipeArray(recipeArray){
+
+		// pass array to view
+		View.displayRecipes(recipeArray);
+
+	}
+
+	static getRecipeInfo(url){
+		// creates a new data object for recipe page
+		Model.recipeInfo(url);
+	}
+
+	static sendRecipeInfo(recipeDO){
+		// pass data object to view
+		View.displayRecipeInfo(recipeDO);
+	}
+
+	static getRecipeDO(recipe, info){
 
 		// create new recipe DO with model data
 		let recipeDO = new RecipeDO();
@@ -24,10 +43,12 @@ class Controller{
 		recipeDO.title = recipe.title;
 		recipeDO.image = recipe.image;
 		recipeDO.readyInMinutes = recipe.readyInMinutes;
+		recipeDO.info = info;
+
 
 		// recipe page information
-		if(recipe.analyzedInstructions[0]){
-
+		if(recipeDO.info != false){
+			// data only attached if recipe page data is requested
 			recipeDO.servings = recipe.servings;
 			recipeDO.vegan = recipe.vegan;
 			recipeDO.glutenFree = recipe.glutenFree;
@@ -42,27 +63,11 @@ class Controller{
 
 	}
 
-	// get recipe array from model
-	static sendRecipeArray(recipeArray){
-
-		// pass array to view
-		View.displayRecipes(recipeArray);
-
-	}
-
 	ytRequest(path){
 		Model.ytSearch(path);
 	}
 	static setVideos(videos){
 		View.displayVideos(videos);
-	}
-
-	static getRecipeInfo(url){
-		Model.recipeInfo(url);
-	}
-
-	static sendRecipeInfo(recipeDO){
-		View.displayRecipeInfo(recipeDO);
 	}
 
 	static getSimilarRecipes(url){
