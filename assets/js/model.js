@@ -5,33 +5,32 @@ class Model{
 	}
 
 	static storeFavoriteRecipes(favRecipe){
-		console.log('storeFavoriteRecipes()', favRecipe);
+
 		// check if array has been made
 		if(!localStorage.getItem('favRecipeArr')){
-			console.log("doesn't exist");
+
 			// first recipe
 			var favRecipeArr = [];
 			favRecipeArr.push(favRecipe);
 
 		}else{
-			console.log("exist");
+
 			// array already exists
 			// get / parse array push new recipe
 			var favRecipeArr = JSON.parse(localStorage.getItem('favRecipeArr'));
 			favRecipeArr.push(favRecipe);
 
 		}
-		console.log("out");
+
 		let favRecipeLS = JSON.stringify(favRecipeArr);
 		localStorage.setItem('favRecipeArr', favRecipeLS);
 
-		console.log(localStorage.getItem('favRecipeArr'));
 
 	}
 
 	static init(){
 		// load client youtube
-		console.log('test');
+
 		gapi.client.setApiKey('AIzaSyCxolTs58eWL7PrMUVJHPslqY7mOYwQ5lg');
 		gapi.client.load('youtube', 'v3', function(){
 			console.log('ready');
@@ -56,7 +55,6 @@ class Model{
 	}
 
 	static recipeSearch(url){
-		console.log('test');
 
 		$.ajax({
 			url,

@@ -11,26 +11,24 @@ class View{
 	static displayRecipes(recipes){
 
 		// remove loading div
-		setTimeout(removeSpinner, 1000);
+		// home page
 		
-		function removeSpinner(){
-			$('.loader').removeClass('loading');
+		$('.loader').removeClass('loading');
 
-			$('.results').html('');
-			recipes.forEach(recipe => {
-				$('.results').append(
-					` <a href="recipe.html#${recipe.id}" data-id=${recipe.id}>`
-					+ '<article class="recipe">'
-					+ '<div class="recipeImg">'
-					+ `<img src="https://spoonacular.com/recipeImages/${recipe.image}" alt=${recipe.title}/>`
-					+ '</div>'
-			  		+ `<h3>${recipe.title}</h3>`
-					+ `<p>Cook Time: ${recipe.readyInMinutes} minutes</p>`
-					+ `</a>`
-					+ '</article>'
-				);
-			});
-		}
+		$('.results').html('');
+		recipes.forEach(recipe => {
+			$('.results').append(
+				` <a href="recipe.html#${recipe.id}" data-id=${recipe.id}>`
+				+ '<article class="recipe">'
+				+ '<div class="recipeImg">'
+				+ `<img src="https://spoonacular.com/recipeImages/${recipe.image}" alt=${recipe.title}/>`
+				+ '</div>'
+		  		+ `<h3>${recipe.title}</h3>`
+				+ `<p>Cook Time: ${recipe.readyInMinutes} minutes</p>`
+				+ `</a>`
+				+ '</article>'
+			);
+		});
 
 	}
 	// present 2 youtube videos based on search results
@@ -205,10 +203,12 @@ class View{
 	}
 
 	static displayMealPlan(mealPlan){
+
 		let idx = 0;
 		// checks for week or day timeFrame
 		// day
 		if(mealPlan.meals){
+
 			mealPlan.meals.forEach(meal => {
 				// increment meal count
 				// display meal time accordingly
@@ -236,6 +236,7 @@ class View{
 						+ `</section>`
 					);
 			});
+
 		}else{
 			// week
 			this.mealArray = [];

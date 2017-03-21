@@ -35,7 +35,7 @@ class Session{
 				});
 			}
 
-			console.log(window.location.href);
+			// 404 page
 			if(window.location.href == "http://localhost:8888/recipe.html"){
 				window.location.assign('./404.html');
 			}
@@ -44,26 +44,37 @@ class Session{
 			this.controller.getTrivia(urls.triviaSearch);
 
 			// random recipes
-			this.controller.getRecipes(urls.recipeSearch);
+			Controller.getRecipes(urls.recipeSearch);
 
-			// remove loading div
 
 			// recipe search
 			// pass search value to recipe search and youtube search
 			$.when(
 				$('.submitSearch').on('click', (e) => {
-					e.preventDefault();
-					let searchValue = $('.searchRecipe').val();
-					let recipeCount = 10;
-					this.controller.getRecipes(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search?number=${recipeCount}&query=${searchValue}&type=main+course'`);
-					searchValue = '';
-					navSearch = '';
+					// add loading animation
+					setTimeout(loader, 1000);
+					
+					function loader(){
+						
+						$('.loader').addClass('loading');
+
+						e.preventDefault();
+						let searchValue = $('.searchRecipe').val();
+						let recipeCount = 10;
+						Controller.getRecipes(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search?number=${recipeCount}&query=${searchValue}&type=main+course'`);
+						searchValue = '';
+
+					}
+
 				}),
+
 				$('.submitSearch').on('click', (e) => {
 					e.preventDefault();
 					let searchValue = $('.searchRecipe').val();
 					this.controller.ytRequest(`https://www.googleapis.com/youtube/v3/search?key=AIzaSyCxolTs58eWL7PrMUVJHPslqY7mOYwQ5lg&part=snippet&maxResults=2&topicId=/m/02wbm&q=recipes+with+${searchValue}`);
+				
 				})
+
 			// once the requests are complete
 			).then(function(){
 				console.log('success');
@@ -89,6 +100,17 @@ class Session{
 			});
 
 		});
+
+	}
+
+	static addSpinner(){
+
+		$('.loader').addClass('loading');
+	}
+
+	static removeSpinner(){
+
+		$('.loader').removeClass('loading');
 
 	}
 

@@ -11,7 +11,7 @@ class Controller{
 		View.displayFact(fact);
 	}
 
-	getRecipes(url){
+	static getRecipes(url){
 		// ajax
 		Model.recipeSearch(url);
 	}

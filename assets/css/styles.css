@@ -360,13 +360,8 @@ footer p{
 .dietForm input::-moz-placeholder{
 	color: rgba(0,0,0,0.3);
 }
-.removeForm{
-	visibility: hidden;
-	opacity: 0;
-}
 /*-------------------------- =Meal Plan Schedule----------------*/
 .mealPlanSchedule{
-	opacity: 0;
 	color: #fbfbf4;
 	background-color: #333;
 	margin-bottom: 30px; 
@@ -401,10 +396,6 @@ footer p{
 }
 .weekList h3{
 	margin: 0;
-}
-.presentSchedule{
-	opacity: 1;
-	margin-top: -500px;
 }
 /*-------------------------- =Recipe Card----------------*/
 .recipe,
