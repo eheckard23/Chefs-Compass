@@ -572,7 +572,7 @@ footer p{
 .recipeInstructions-container{
 	background-color: #fbfbf4;
 	width: 50%;
-	margin: 30px 0 0 30px;
+	margin: 30px 0 30px 30px;
 	padding: 60px;
 	clear: left;
 }
@@ -730,22 +730,34 @@ footer p{
 	.favorites-container,
 	.favorites,
 	.pinterest,
+	.ingredientList-container,
+	.recipeInstructions-container,
+	.similarVideo-container,
 	.similarVideos .videoRecipe{
 		width: 100%;
 	}
 	.ingredientList-container,
 	.recipeInstructions-container,
 	.similarVideo-container{
-		width: 90%;
-		padding: 20px;
+		padding: 0;
+	}
+	.similarVideo-container{
+		margin-top: 30px;
+	}
+	.similarVideos{
+		justify-content: center;
+	}
+	.favorites,
+	.pinterest{
+		padding: 40px 0;
 	}
 	.ingredientList-container ul,
 	.recipe-instructions{
+		padding: 20px;
 		width: 90%;
 	}
-	.ingredientList-container li,
-	.recipeInstructions li{
-		width: 60%;
+	.ingredientList-container li{
+		width: 90%;
 	}
 
 	.recipe-stat:not(:last-of-type){
