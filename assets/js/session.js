@@ -9,7 +9,7 @@ class Session{
 			window.location.reload();
 		});
 
-		if(window.location.href == 'http://localhost:8888/recipe.html'){
+		if(window.location.href == 'https://localhost:8888/recipe.html'){
 			window.location.href = './404.html';
 		}
 
@@ -36,7 +36,7 @@ class Session{
 			}
 
 			// 404 page
-			if(window.location.href == "http://localhost:8888/recipe.html"){
+			if(window.location.href == "https://localhost:8888/recipe.html"){
 				window.location.assign('./404.html');
 			}
 

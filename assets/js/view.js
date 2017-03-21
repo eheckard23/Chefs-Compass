@@ -41,7 +41,7 @@ class View{
 					'<article class="videoRecipe">'
 					+ `<iframe class="ytPlayer" 
 								type="text/html" 
-								src="http://www.youtube.com/embed/${video.id.videoId}">
+								src="https://www.youtube.com/embed/${video.id.videoId}">
 						</iframe>`
 					+ `<h3>${video.snippet.title}</h3>`
 					+ '</article>'
@@ -194,7 +194,7 @@ class View{
 					'<article class="videoRecipe">'
 					+ `<iframe class="ytPlayer" 
 								type="text/html" 
-								src="http://www.youtube.com/embed/${video.id.videoId}">
+								src="https://www.youtube.com/embed/${video.id.videoId}">
 						</iframe>`
 					+ `<h3>${video.snippet.title}</h3>`
 					+ '</article>'
