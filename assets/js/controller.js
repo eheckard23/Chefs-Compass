@@ -24,6 +24,19 @@ class Controller{
 		recipeDO.title = recipe.title;
 		recipeDO.image = recipe.image;
 		recipeDO.readyInMinutes = recipe.readyInMinutes;
+
+		// recipe page information
+		if(recipe.analyzedInstructions[0]){
+
+			recipeDO.servings = recipe.servings;
+			recipeDO.vegan = recipe.vegan;
+			recipeDO.glutenFree = recipe.glutenFree;
+			recipeDO.weightWatcherSmartPoints = recipe.weightWatcherSmartPoints;
+			recipeDO.steps = recipe.analyzedInstructions[0].steps;
+			recipeDO.ingredients = recipe.extendedIngredients;
+
+		}
+
 		// send back to model
 		return recipeDO;
 
@@ -48,8 +61,8 @@ class Controller{
 		Model.recipeInfo(url);
 	}
 
-	static sendRecipeInfo(data){
-		View.displayRecipeInfo(data);
+	static sendRecipeInfo(recipeDO){
+		View.displayRecipeInfo(recipeDO);
 	}
 
 	static getSimilarRecipes(url){

@@ -102,8 +102,13 @@ class Model{
 			data: {},
 			dataType: 'json',
 			success: function(data){
-				// pass to controller then view
-				Controller.sendRecipeInfo(data);
+				console.dir(data);
+				// get back title, image, readyInMinutes, vegan, gluten, weightWatcherSmartPoints
+				// analyzedInstructons, extendedIngredients
+				let recipePage = Controller.getRecipeDO(data);
+
+				Controller.sendRecipeInfo(recipePage);
+				
 			},
 			error: function(err) { console.error(err); },
 				beforeSend: function(xhr) {

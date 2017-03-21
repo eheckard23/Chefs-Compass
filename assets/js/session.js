@@ -117,6 +117,7 @@ class Session{
 	}
 
 	static getInstructionsByHash(hash){
+		
 		// grab hash from view url
 		Controller.getRecipeInfo(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/${hash}/information`);
 		

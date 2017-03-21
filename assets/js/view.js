@@ -53,24 +53,27 @@ class View{
 				);
 		});
 	}
+
 	// fired on recipe page load
 	static displayRecipePage(){
 		// grab recipe id
 		let hash = window.location.hash.split('#')[1];
+
+		// get recipe information
 		Session.getInstructionsByHash(hash);
 
 	}
 
-	static displayRecipeInfo(data){
-		let src = data.image;
-		$('.recipeImage').attr('src', data.image);
-		$('.recipeTitle').html(data.title);
-		$('.servings').html(data.servings);
-		$('.ready-time').html(data.readyInMinutes);
-		$('.weight-score').html(data.weightWatcherSmartPoints);
+	static displayRecipeInfo(recipeDO){
+
+		$('.recipeImage').attr('src', recipeDO.image);
+		$('.recipeTitle').html(recipeDO.title);
+		$('.servings').html(recipeDO.servings);
+		$('.ready-time').html(recipeDO.readyInMinutes);
+		$('.weight-score').html(recipeDO.weightWatcherSmartPoints);
 
 		// check if recipe is vegan
-		if(data.vegan == true){
+		if(recipeDO.vegan == true){
 			// add new stat
 			$('.recipe-stat').last().after(
 				'<div class="recipe-stat">'
@@ -80,7 +83,7 @@ class View{
 			);
 		}
 		// check if recipe is gluten free
-		if(data.glutenFree == true){
+		if(recipeDO.glutenFree == true){
 			// add new stat
 			$('.recipe-stat').last().after(
 				'<div class="recipe-stat">'
@@ -90,7 +93,7 @@ class View{
 			);
 		}
 
-		let steps = data.analyzedInstructions[0].steps;
+		let steps = recipeDO.steps;
 
 		// check if steps exist
 		if(steps && steps.length != 0){
@@ -111,7 +114,7 @@ class View{
 
 		}
 
-		let ingredients = data.extendedIngredients;
+		let ingredients = recipeDO.ingredients;
 
 		// check if ingredients exist
 		if(ingredients && ingredients.length != 0){
@@ -138,18 +141,18 @@ class View{
 		
 
 		// get 2 similar videos using recipe title
-		Controller.similarVideos(`https://www.googleapis.com/youtube/v3/search?key=AIzaSyCxolTs58eWL7PrMUVJHPslqY7mOYwQ5lg&part=snippet&maxResults=3&topicId=/m/02wbm&q=recipes+with+${data.title}`);
+		Controller.similarVideos(`https://www.googleapis.com/youtube/v3/search?key=AIzaSyCxolTs58eWL7PrMUVJHPslqY7mOYwQ5lg&part=snippet&maxResults=3&topicId=/m/02wbm&q=recipes+with+${recipeDO.title}`);
 		// favorite recipe button
 		$('.favorites').attr({
-			'data-id': data.id,
-			'data-recipe': data.title,
-			'data-img': data.image,
-			'data-time': data.readyInMinutes
+			'data-id': recipeDO.id,
+			'data-recipe': recipeDO.title,
+			'data-img': recipeDO.image,
+			'data-time': recipeDO.readyInMinutes
 		}); 
 
 		// create pinterest save button
 		$('.favorites').after(
-				`<button class="pinterest" data-media=${src} data-description="${data.title}">Pin It</button>`
+				`<button class="pinterest" data-media=${recipeDO.image} data-description="${recipeDO.title}">Pin It</button>`
 		);
 		$('.pinterest').on('click', (e) => {
 			PinUtils.pinOne({
