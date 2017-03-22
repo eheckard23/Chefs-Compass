@@ -175,9 +175,9 @@ class View{
 
 	// get similar recipes
 	// called from Session.recipeInstructions hash method
-	static displaySimilarRecipes(recipes){
+	static displaySimilarRecipes(recipeArray){
 		// display similar recipes
-		recipes.forEach(recipe => {
+		recipeArray.forEach(recipe => {
 			$('.similarRecipes')
 				.append(
 					` <a href="recipe.html#${recipe.id}">`
@@ -191,6 +191,7 @@ class View{
 					+ '</article>'
 			);
 		});
+
 	}
 	// called from Session.recipeInstructions hash method
 	static displaySimilarVideos(videos){
@@ -210,91 +211,102 @@ class View{
 		});
 	}
 
-	static displayMealPlan(mealPlan){
+	static displayMealPlan(mealPlanArray){
 
-		let idx = 0;
-		// checks for week or day timeFrame
-		// day
-		if(mealPlan.meals){
-
-			mealPlan.meals.forEach(meal => {
-				// increment meal count
-				// display meal time accordingly
-				idx ++;
-				if(idx == 1){
-					this.time = 'Breakfast';
-				}else if(idx == 2){
-					this.time = 'Lunch';
-				}else{
-					this.time = 'Dinner'
-				}
-				$('.mealPlanSchedule')
-					.append(
-						`<section class="mealDay">`
-						+ `<h3 class="mealTime">${this.time}</h3>`
-						+ `<a href="recipe.html#${meal.id}">`
-						+ '<article class="recipe">'
-						+ '<div class="recipeImg">'
-						+ `<img src="https://spoonacular.com/recipeImages/${meal.image}" alt=${meal.id}/>`
-						+ '</div>'
-				  		+ `<h3>${meal.title}</h3>`
-						+ `<p>Cook Time: ${meal.readyInMinutes} minutes</p>`
-						+ `</a>`
-						+ '</article>'
-						+ `</section>`
-					);
-			});
-
-		}else{
-			// week
-			this.mealArray = [];
-			mealPlan.items.forEach(meal => {
-				let mealItem = JSON.parse(meal.value);
-				this.mealArray.push(mealItem);
-			});
-			let meal = this.mealArray;
-			let weekSchedule = $('.mealPlanSchedule').html();
+		let weekSchedule = $('.mealPlanSchedule').html();
 
 			function displayMealDays(start, finish){
+				console.log('boobies');
+				console.log(start);
+				console.log(finish);
+				console.dir(mealPlanArray[start]);
 				weekSchedule += '<section class="weekDay">'
 							+ '<ul class="weekList">';
 				for(let i=start;i<finish;i++){
 					weekSchedule += '<li>'
-						+ `<a href="recipe.html#${meal[i].id}">`
-					  	+ `<h3>${meal[i].title}</h3>`
+						+ `<a href="recipe.html#${mealPlanArray[i].id}">`
+					  	+ `<h3>${mealPlanArray[i].title}</h3>`
 						+ `</a>`
 						+ '</li>'
 				}
 				weekSchedule += '</ul>'
 							+ '</section>';
+
+				$('.mealPlanSchedule').append(weekSchedule);
 			}
 
-			// divide the meals into days
-			// get first 1-3, store in day 1 etc..
-			// weekSchedule += `<h3 class="day">Day 1</h3>`;
-			displayMealDays(0,3);
+		console.dir(mealPlanArray);
 
-			// weekSchedule += `<h3 class="day">Day 2</h3>`;
-			displayMealDays(3,6);
+		for(let i=0;i<mealPlanArray.length;i++){
 
-			// weekSchedule += `<h3 class="day">Day 3</h3>`;
-			displayMealDays(6,9);
+			// check if week or day
+			// image is undefined if week
+			if(typeof mealPlanArray[i].image == 'undefined'){
+				console.log(i);
 
-			// weekSchedule += `<h3 class="day">Day 4</h3>`;
-			displayMealDays(9,12);
+				// week
+				if(i==2){
 
-			// weekSchedule += `<h3 class="day">Day 5</h3>`;
-			displayMealDays(12,15);
+					displayMealDays(0,3);
 
-			// weekSchedule += `<h3 class="day">Day 6</h3>`;
-			displayMealDays(15,18);
+				}else if(i==5){
 
-			// weekSchedule += `<h3 class="day">Day 7</h3>`;
-			displayMealDays(18,21);
+					displayMealDays(3,6);
 
+				}else if(i==8){
 
-			$('.mealPlanSchedule').append(weekSchedule);
+					displayMealDays(6,9);
+
+				}else if(i==11){
+
+					displayMealDays(9,12);
+
+				}else if(i==14){
+
+					displayMealDays(12,15);
+
+				}else if(i==17){
+
+					displayMealDays(15,18);
+
+				}else if(i==20){
+
+					displayMealDays(18,21);
+
+				}
+
+			}else{
+
+				// day
+
+				// time counter
+				if(i == 1){
+					this.time = 'Breakfast';
+				}else if(i == 2){
+					this.time = 'Lunch';
+				}else{
+					this.time = 'Dinner'
+				}
+
+				$('.mealPlanSchedule')
+					.append(
+						`<section class="mealDay">`
+						+ `<h3 class="mealTime">${this.time}</h3>`
+						+ `<a href="recipe.html#${mealPlanArray[i].id}">`
+						+ '<article class="recipe">'
+						+ '<div class="recipeImg">'
+						+ `<img src="https://spoonacular.com/recipeImages/${mealPlanArray[i].image}" alt=${mealPlanArray[i].id}/>`
+						+ '</div>'
+				  		+ `<h3>${mealPlanArray[i].title}</h3>`
+						+ `<p>Cook Time: ${mealPlanArray[i].readyInMinutes} minutes</p>`
+						+ `</a>`
+						+ '</article>'
+						+ `</section>`
+				);
+			}
+
 		}
+
 	}
 
 	static getFavoriteRecipes(){

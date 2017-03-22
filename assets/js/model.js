@@ -125,12 +125,17 @@ class Model{
 			data: {},
 			dataType: 'json',
 			success: function(data){
+				let info = false;
 				this.similarRecipes = [];
-				// only grab 3 recipes
+				// only grab 2 recipes
 				for(let i=0;i<2;i++){
-					this.similarRecipes.push(data[i]);
+					// this.similarRecipes.push(data[i]);
+					let similarRecipe = Controller.getRecipeDO(data[i], info);
+
+					// push recipe do to array
+					this.similarRecipes.push(similarRecipe);
 				}
-				// pass to controller then view
+				// pass array to controller
 				Controller.sendSimilarRecipes(this.similarRecipes);
 			},
 			error: function(err) { alert(err); },
@@ -157,9 +162,41 @@ class Model{
 			data: {},
 			dataType: 'json',
 			success: function(data){
-				let mealPlan = data;
-				// pass to controller then view
-				Controller.setMealPlan(data);
+
+				let info = false;
+				// array for meals
+				this.mealArray = [];
+
+				// check for day or week
+				if(!('items' in data)){
+
+					// day
+					data.meals.forEach(meal => {
+
+						// create recipe DO
+						let mealDO = Controller.getRecipeDO(meal, info);
+						// push meal to array
+						this.mealArray.push(mealDO);
+
+					});
+
+				}else{
+
+					// week
+					data.items.forEach(meal => {
+
+						// create recipe DO
+						let mealDO = Controller.getRecipeDO(JSON.parse(meal.value), info);
+						// push meal to array
+						this.mealArray.push(mealDO);
+
+					});
+
+				}
+
+				// send array to controller
+				Controller.setMealPlan(this.mealArray);
+
 			},
 			error: function(err) { alert(err); },
 				beforeSend: function(xhr) {

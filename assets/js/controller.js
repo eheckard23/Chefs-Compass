@@ -35,6 +35,15 @@ class Controller{
 		View.displayRecipeInfo(recipeDO);
 	}
 
+	static getSimilarRecipes(url){
+		Model.similarRecipes(url);
+	}
+
+	static sendSimilarRecipes(similarRecipesArray){
+		// pass array to view
+		View.displaySimilarRecipes(similarRecipesArray);
+	}
+
 	static getRecipeDO(recipe, info){
 
 		// create new recipe DO with model data
@@ -70,13 +79,7 @@ class Controller{
 		View.displayVideos(videos);
 	}
 
-	static getSimilarRecipes(url){
-		Model.similarRecipes(url);
-	}
 
-	static sendSimilarRecipes(recipes){
-		View.displaySimilarRecipes(recipes);
-	}
 
 	static similarVideos(path){
 		Model.similarVideos(path);
@@ -90,8 +93,10 @@ class Controller{
 		Model.generateMealPlan(url);
 	}
 
-	static setMealPlan(mealPlan){
-		View.displayMealPlan(mealPlan);
+	// get meal plan array from model
+	static setMealPlan(mealPlanArray){
+		// pass array to view
+		View.displayMealPlan(mealPlanArray);
 	}
 
 	static addFavoriteRecipe(){
