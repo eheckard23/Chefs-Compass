@@ -119,7 +119,13 @@ class Model{
 				// check if recipe is in favorite ls
 				let favoriteArray = JSON.parse(localStorage.getItem('favRecipeArr'));
 
-				if(favoriteArray){
+				console.log(favoriteArray);
+
+				if(favoriteArray == null){
+
+
+
+				}else{
 
 					// filter favorite recipes and return the recipe
 					// with matching id
@@ -127,15 +133,16 @@ class Model{
 						return recipe.id == data.id;
 					});
 
-				}
-				
-				// check if array exists
-				if(this.isFavorite.length > 0){
+					// check if array exists
+					if(this.isFavorite.length > 0){
 
-					// recipe is a favorite
-					this.favorite = 'true';
+						// recipe is a favorite
+						this.favorite = 'true';
+
+					}
 
 				}
+
 
 				// get back id, title, image, readyInMinutes, vegan, gluten, weightWatcherSmartPoints
 				// analyzedInstructons, extendedIngredients
