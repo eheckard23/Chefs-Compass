@@ -64,13 +64,9 @@ body{
 	width: 50%;
 	margin: 0 auto;
 }
-.loading{
-	display: block;
-}
+.loading{ display: block; }
 a:visited,
-.recipe a:visited{
-	color: inherit;
-}
+.recipe a:visited{ color: inherit; }
 /*-------------------------- =Navigation----------------*/
 header{
 	position: fixed;
@@ -113,9 +109,7 @@ nav a[href*="index"]{
 	padding: 10px 0 10px 50px;
 	color: #fbfbf4;
 }
-.logo-nav{
-	display: none;
-}
+.logo-nav{ display: none; }
 /*-------------------------- =Jumbotron----------------*/
 .welcome-container,
 .plan-container,
@@ -139,12 +133,8 @@ nav a[href*="index"]{
 	margin-top: 50px;
 	color: #fbfbf4;
 }
-.fa-search{
-	color: #fbfbf4;
-}
-.searchForm label{
-	display: none;
-}
+.fa-search{ color: #fbfbf4; }
+.searchForm label{ display: none; }
 .searchForm input[name="search"]{
 	display: block;
 	background: rgba(255,255,255,0.2);
@@ -164,15 +154,9 @@ nav a[href*="index"]{
 	color: #fbfbf4;
 	cursor: pointer;
 }
-.searchForm input[name="search"]::-webkit-input-placeholder{
-	color: #fbfbf4;
-}
-.searchForm input[name="search"]:-moz-placeholder{
-	color: #fbfbf4;
-}
-.searchForm input[name="search"]::-moz-placeholder{
-	color: #fbfbf4;
-}
+.searchForm input[name="search"]::-webkit-input-placeholder{ color: #fbfbf4; }
+.searchForm input[name="search"]:-moz-placeholder{ color: #fbfbf4; }
+.searchForm input[name="search"]::-moz-placeholder{ color: #fbfbf4; }
 .triviaResult{
 	font-size: 1.5em;
 	margin-top: 50px;
@@ -254,17 +238,11 @@ footer{
 	background-color: #333;
 	color: #fbfbf4;
 }
-footer h2{
-	margin-left: 2%;
-}
-footer ul{
-	margin: 0;
-}
+footer h2{ margin-left: 2%; }
+footer ul{ margin: 0; }
 
 /*-------------------------- =Meal Plan Page----------------*/
-.plan-container{
-	padding: 100px 60px 60px;	
-}
+.plan-container{ padding: 100px 60px 60px;	 }
 .plan-container h3{
 	display: block;
 	width: 75%;
@@ -319,12 +297,8 @@ footer ul{
 	-moz-appearance: none;
 }
 .select select,
-.dietForm input:focus{
-	color: black;
-}
-.select{
-	position: relative;
-}
+.dietForm input:focus{ color: black; }
+.select{ position: relative; }
 .select-arrow{
 	position: absolute;
 	top: 30px;
@@ -358,15 +332,9 @@ footer ul{
 	border-radius: 2px;
 	cursor: pointer;
 }
-.dietForm input::-webkit-input-placeholder{
-	color: rgba(0,0,0,0.3);
-}
-.dietForm input:-moz-placeholder{
-	color: rgba(0,0,0,0.3);
-}
-.dietForm input::-moz-placeholder{
-	color: rgba(0,0,0,0.3);
-}
+.dietForm input::-webkit-input-placeholder{ color: rgba(0,0,0,0.3); }
+.dietForm input:-moz-placeholder{ color: rgba(0,0,0,0.3); }
+.dietForm input::-moz-placeholder{ color: rgba(0,0,0,0.3); }
 /*-------------------------- =Meal Plan Schedule----------------*/
 .mealPlanSchedule{
 	color: #333;
@@ -375,9 +343,7 @@ footer ul{
 	justify-content: center;
 	transition: all .3s ease;
 }
-.mealTime{
-	text-align: center;
-}
+.mealTime{ text-align: center; }
 .weekDay{
 	width: 50%;
 	margin: 10px;
@@ -401,9 +367,7 @@ footer ul{
 	color: #b74949;
 	text-decoration: underline;
 }
-.weekList h3{
-	margin: 0;
-}
+.weekList h3{ margin: 0; }
 /*-------------------------- =Recipe Card----------------*/
 .recipe,
 .videoRecipe,
@@ -430,23 +394,13 @@ footer ul{
 	-moz-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.30);
 	box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.30);
 }
-.recipe{
-	cursor: pointer;
-}
+.recipe{ cursor: pointer; }
 .recipe,
-.videoRecipe{
-	text-align: center;
-}
-.recipe p{
-	padding-bottom: 10px;
-}
-.recipe a{
-	color: #b74949;
-}
+.videoRecipe{ text-align: center; }
+.recipe p{ padding-bottom: 10px; }
+.recipe a{ color: #b74949; }
 /*-------------------------- =Recipe Page----------------*/
-.jumbotron{
-	overflow: hidden;
-}
+.jumbotron{ overflow: hidden; }
 .recipe-jumbotron{
 	
 	overflow: hidden;
@@ -458,9 +412,7 @@ footer ul{
 	width: 25%;
 	float: left;
 }
-.recipe-container-title{
-	display: none;
-}
+.recipe-container-title{ display: none; }
 .recipeImage{
 	float: left;
 	max-width: 100%;
@@ -537,22 +489,16 @@ footer ul{
 	-moz-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.70);
 	box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.70);
 }
-.favorites{
-	float: left;
-}
+.favorites{ float: left; }
 .favorited{
 	background-color: #50b259;
 	cursor: default;
 }
-.pinterest{
-	clear: left;
-}
+.pinterest{ clear: left; }
 /*--------- =Tools----*/
 
 
-.recipe img{
-	max-width: 100%;
-}
+.recipe img{ max-width: 100%; }
 .ingredientList-container{
 	float: left;
 	background-color: #333;
@@ -588,18 +534,14 @@ footer ul{
 	padding: 4%;
 	float: left;
 }
-.recipeInstructions-container h4{
-	color: #333;
-}
+.recipeInstructions-container h4{ color: #333; }
 .recipeInstructions{
 	list-style: none;
 	padding: 0;
 }
 /*--------- =Similar recipes----*/
 .similar-recipes,
-.similar-videos{
-	justify-content: left;
-}
+.similar-videos{ justify-content: left; }
 .similar{
 	clear: left;
 	background-color: #333;
@@ -615,9 +557,7 @@ footer ul{
 	padding-top: 5px;
 	border-top: solid 2px #b74949;
 }
-.similarRecipeHeading{
-	text-align: center;
-}
+.similarRecipeHeading{ text-align: center; }
 
 /*--------- =Videos----*/
 .ytPlayer{
@@ -632,9 +572,6 @@ footer ul{
 	padding-top: 5px;
 	border-top: solid 2px #b74949;
 }
-
-
-
 /*-------------------------- =Favorite Recipes Page----------------*/
 .favoriteRecipe-container{
 	display: flex;
@@ -667,9 +604,7 @@ footer ul{
 	color: #b74949; 
 	text-decoration: none;
 }
-.top a:hover{
-	text-decoration: underline;
-}
+.top a:hover{ text-decoration: underline; }
 .top h1{
 	font-size: 5em;
 	display: block;
@@ -697,24 +632,16 @@ footer ul{
 }
 /*-------------------------- =Media Queries----------------*/
 @media screen and (max-width: 1100px){
-	.favorites-container{
-		clear: left;
-	}
-	.recipeInstructions-container{
-		float: left;
-	}
-	.similarVideo-container{
-		clear: left;
-	}
+	.favorites-container{ clear: left; }
+	.recipeInstructions-container{ float: left; }
+	.similarVideo-container{ clear: left; }
 	.similar-container{
 		clear: left;
 		margin-left: 5%;
 	}
 }
 @media screen and (max-width: 900px){
-	.recipe-container-title{
-		display: block;
-	}
+	.recipe-container-title{ display: block; }
 	.recipe-container,
 	.title{
 		float: none;
@@ -731,43 +658,25 @@ footer ul{
 		justify-content: center;
 	}
 	.favorites,
-	.pinterest{
-		width: 100%;
-	}
-	.recipeTitle{
-		display: none;
-	}
+	.pinterest{ width: 100%; }
+	.recipeTitle{ display: none; }
 	.ingredientList-container,
 	.recipeInstructions-container{
 		width: 88%;
 		font-size: 1.5em;
 	}
-	.similar{
-		font-size: 1.5em;
-	}
+	.similar{ font-size: 1.5em; }
 	.recipeInstructions-container{
 		clear: left;
 		margin-bottom: 30px;
 	}
-	.similar-recipes{
-		justify-content: center;
-	}
+	.similar-recipes{ justify-content: center; }
 	.similar-recipes .recipe,
-	.similar-recipes .videoRecipe{
-		width: 90%;
-	}
-	.weekDay{
-		width: 100%;
-	}
-	.mealPlan-cta p{
-		width: 90%;
-	}
-	.mealPlan-features{
-		width: 90%;
-	}
-	.dietForm{
-		width: 80%;
-	}
+	.similar-recipes .videoRecipe{ width: 90%; }
+	.weekDay{ width: 100%; }
+	.mealPlan-cta p{ width: 90%; }
+	.mealPlan-features{ width: 90%; }
+	.dietForm{ width: 80%; }
 }
 @media screen and (max-width: 764px){
 	.recipeImageContainer{
@@ -776,14 +685,10 @@ footer ul{
 		overflow: hidden;
 	}
 
-	.dietForm{
-		width: 60%;
-	}
+	.dietForm{ width: 60%; }
 }
 @media screen and (max-width: 577px){
-	.home-nav{
-		display: none;
-	}
+	.home-nav{ display: none; }
 	.logo-nav{
 		display: block;	
 		padding-bottom: 10px;
@@ -792,56 +697,29 @@ footer ul{
 		font-size: 1em;
 		width: 50%;
 	}
-	.recipe{
-		width: 80%;
-	}
+	.recipe{ width: 80%; }
 	.ingredientList-container,
 	.recipeInstructions-container
 	.similar{
 		width: 76%;
 		padding: 10%
 	}
-	.recipe-jumbotron{
-		padding: 0;
-	}
+	.recipe-jumbotron{ padding: 0; }
 	.recipe-container,
 	.title,
-	.recipe-stat{	
-		width: 100%;
-	}
-	.title{
-		padding-bottom: 30px;
-	}
-	.stats{
-		margin-left: 0;
-	}
+	.recipe-stat{	 width: 100%; }
+	.title{ padding-bottom: 30px; }
+	.stats{ margin-left: 0; }
 	.stats{
 		float: none;
 		justify-content: center;
 	}
-	.recipe-stat{
-		width: 25%;
-	}
+	.recipe-stat{ width: 25%; }
 	.similar-recipes .recipe,
-	.similar-recipes .videoRecipe{
-		width: 100%;
-	}
-	.plan-heading{
-		width: 100%;
-	}
-	.plan-container h3{
-		width: 100%;
-	}
-	.dietForm{
-		width: 80%;
-	}
-	.mealPlanSchedule .recipe{
-		width: 88%;
-	}
+	.similar-recipes .videoRecipe{ width: 100%; }
+	.plan-heading{ width: 100%; }
+	.plan-container h3{ width: 100%; }
+	.dietForm{ width: 80%; }
+	.mealPlanSchedule .recipe{ width: 88%; }
 
 }
-
-
-
-
-
