@@ -71,7 +71,7 @@ class Model{
 		  		recipes.forEach(recipe => {
 		  			let info = false;
 		  			// create new recipe data object
-		  			let recipeDO = Controller.getRecipeDO(recipe, info);
+		  			let recipeDO = Controller.getRecipeDO(recipe, false, 'day', '');
 		  			// push recipe data object to array
 		  			this.recipeArray.push(recipeDO);
 		  		});
@@ -178,7 +178,7 @@ class Model{
 				// only grab 2 recipes
 				for(let i=0;i<2;i++){
 					// this.similarRecipes.push(data[i]);
-					let similarRecipe = Controller.getRecipeDO(data[i], info);
+					let similarRecipe = Controller.getRecipeDO(data[i], info, 'day', '');
 
 					// push recipe do to array
 					this.similarRecipes.push(similarRecipe);
@@ -224,7 +224,7 @@ class Model{
 					data.meals.forEach(meal => {
 
 						// create recipe DO
-						let mealDO = Controller.getRecipeDO(meal, info, timeFrame);
+						let mealDO = Controller.getRecipeDO(meal, info, timeFrame, '');
 						// push meal to array
 						this.mealArray.push(mealDO);
 
@@ -236,7 +236,7 @@ class Model{
 					data.items.forEach(meal => {
 
 						// create recipe DO
-						let mealDO = Controller.getRecipeDO(JSON.parse(meal.value), info, timeFrame);
+						let mealDO = Controller.getRecipeDO(JSON.parse(meal.value), info, timeFrame, '');
 						// push meal to array
 						this.mealArray.push(mealDO);
 

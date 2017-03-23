@@ -45,18 +45,12 @@ class Controller{
 	}
 
 	static getRecipeDO(recipe, info, timeFrame, favorite){
+
 		// create new recipe DO with model data
 		let recipeDO = new RecipeDO();
-		recipeDO.id = recipe.id;
-		recipeDO.title = recipe.title;
-		recipeDO.image = recipe.image;
-		recipeDO.readyInMinutes = recipe.readyInMinutes;
-		recipeDO.info = info;
-		recipeDO.timeFrame = timeFrame;
-		recipeDO.favorite = favorite;
 
 		// recipe page information
-		if(recipeDO.info != false){
+		if(recipeDO.info == true){
 			// data only attached if recipe page data is requested
 			recipeDO.servings = recipe.servings;
 			recipeDO.vegan = recipe.vegan;
@@ -66,6 +60,17 @@ class Controller{
 			recipeDO.ingredients = recipe.extendedIngredients;
 
 		}
+		
+		recipeDO.id = recipe.id;
+		recipeDO.title = recipe.title;
+		recipeDO.image = recipe.image;
+		recipeDO.readyInMinutes = recipe.readyInMinutes;
+		recipeDO.info = info;
+		recipeDO.timeFrame = timeFrame;
+		recipeDO.favorite = favorite;
+		console.log(info);
+
+		
 
 		// send back to model
 		return recipeDO;
