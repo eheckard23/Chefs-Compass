@@ -65,7 +65,6 @@ class View{
 	}
 
 	static displayRecipeInfo(recipeDO){
-
 		// store recipe DO in variables
 		let id = recipeDO.id;
 		let src = recipeDO.image;
@@ -78,9 +77,11 @@ class View{
 		let steps = recipeDO.steps;
 		let ingredients = recipeDO.ingredients;
 
+
 		// jumbotron data view
 		$('.recipeImage').attr('src', src);
 		$('.recipeTitle').html(title);
+		$('.recipe-container-title').html(title);
 		$('.servings').html(servings);
 		$('.ready-time').html(readyInMinutes);
 		$('.weight-score').html(weightWatchers);
@@ -151,13 +152,29 @@ class View{
 
 		// get 3 similar videos using recipe title
 		Controller.similarVideos(`https://www.googleapis.com/youtube/v3/search?key=AIzaSyCxolTs58eWL7PrMUVJHPslqY7mOYwQ5lg&part=snippet&maxResults=3&topicId=/m/02wbm&q=recipes+with+${title}`);
-		// favorite recipe button
-		$('.favorites').attr({
-			'data-id': id,
-			'data-recipe': title,
-			'data-img': src,
-			'data-time': readyInMinutes
-		}); 
+
+		// check if recipe is already favorite
+		if(recipeDO.favorite == 'true'){
+
+			// change appearance
+			$('.favorites').addClass('favorited');
+			// remove favorite method
+			$('.favorites').prop('onclick',null).off('click');
+			// change text
+			$('.favorites').html('<i class="fa fa-check" aria-hidden="true"></i> Favorite!');
+
+		}else{
+
+			// favorite recipe button
+			$('.favorites').attr({
+				'data-id': id,
+				'data-recipe': title,
+				'data-img': src,
+				'data-time': readyInMinutes
+			}); 
+
+		}
+		
 
 		// create pinterest save button
 		$('.favorites').after(
@@ -218,19 +235,31 @@ class View{
 		if(mealPlanArray[0].timeFrame == 'day'){
 
 			// day
+			// counter for meal time
+			this.ctr = 0;
 			mealPlanArray.forEach(meal => {
+				// increment counter
+				this.ctr++;
+				let time = '';
 
+				if(this.ctr == 1){
+					time = 'Breakfast';
+				}else if(this.ctr == 2){
+					time = 'Lunch';
+				}else{
+					time = 'Dinner';
+				}
 				$('.mealPlanSchedule')
 					.append(
 						`<section class="mealDay">`
-						+ `<h3 class="mealTime">${this.time}</h3>`
-						+ `<a href="recipe.html#${mealPlanArray[i].id}">`
+						+ `<h3 class="mealTime">${time}</h3>`
+						+ `<a href="recipe.html#${meal.id}">`
 						+ '<article class="recipe">'
 						+ '<div class="recipeImg">'
-						+ `<img src="https://spoonacular.com/recipeImages/${mealPlanArray[i].image}" alt="${mealPlanArray[i].title}"/>`
+						+ `<img src="https://spoonacular.com/recipeImages/${meal.image}" alt="${meal.title}"/>`
 						+ '</div>'
-				  		+ `<h3>${mealPlanArray[i].title}</h3>`
-						+ `<p>Cook Time: ${mealPlanArray[i].readyInMinutes} minutes</p>`
+				  		+ `<h3>${meal.title}</h3>`
+						+ `<p>Cook Time: ${meal.readyInMinutes} minutes</p>`
 						+ `</a>`
 						+ '</article>'
 						+ `</section>`
@@ -250,7 +279,6 @@ class View{
 							+ '<ul class="weekList">';
 				// create 3 meals inside of section
 				for(let i=start;i<finish;i++){
-					console.log('balls');
 					weekSchedule += '<li>'
 								+ `<a href="recipe.html#${mealPlanArray[i].id}">`
 							  	+ `<h3>${mealPlanArray[i].title}</h3>`
@@ -291,7 +319,7 @@ class View{
 
 			);
 		}
-		// console.log(recipes.favLS);
+
 		recipes.forEach(recipe => {
 			$('.favoriteRecipe-container').append(
 				` <a href="recipe.html#${recipe.id}" data-id=${recipe.id}>`

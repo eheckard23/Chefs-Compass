@@ -16,6 +16,7 @@ class RecipeDO{
 		this.ingredients = [];
 		this.info = '';
 		this.timeFrame = '';
+		this.favorite = '';
 
 	}
 

@@ -47,7 +47,9 @@ class Model{
 		    	// pass result to controller then view
 		    	Controller.setTrivia(data);
 		    },
-		    error: function(err) { console.error(err);},//alert(err); },
+		    error: function(err){
+				window.location.href('./error.html');
+			},
 		    beforeSend: function(xhr) {
 		    xhr.setRequestHeader("X-Mashape-Authorization", "fHjaL4Ss9gmshKplCTTN8WTMJD0up1Tuhn4jsnpw0mSEkWnxu9"); // Enter here your Mashape key
 		    }
@@ -76,9 +78,11 @@ class Model{
 		  		// send recipe array to controller
 		  		Controller.sendRecipeArray(this.recipeArray);
 		    },
-			error: function(err) { alert(err); },
-				beforeSend: function(xhr) {
-				xhr.setRequestHeader("X-Mashape-Authorization", "fHjaL4Ss9gmshKplCTTN8WTMJD0up1Tuhn4jsnpw0mSEkWnxu9"); // Enter here your Mashape key
+			error: function(err){
+				window.location.href('./error.html');
+			},
+			beforeSend: function(xhr) {
+			xhr.setRequestHeader("X-Mashape-Authorization", "fHjaL4Ss9gmshKplCTTN8WTMJD0up1Tuhn4jsnpw0mSEkWnxu9"); // Enter here your Mashape key
 			}
 		});
 
@@ -103,17 +107,37 @@ class Model{
 			data: {},
 			dataType: 'json',
 			success: function(data){
-				console.dir(data);
-				// get back title, image, readyInMinutes, vegan, gluten, weightWatcherSmartPoints
+
+				// check if recipe is in favorite ls
+				let favoriteArray = JSON.parse(localStorage.getItem('favRecipeArr'));
+
+				// filter favorite recipes and return the recipe
+				// with matching id
+				let isFavorite = favoriteArray.filter(recipe => {
+					return recipe.id == data.id;
+				});
+
+				// check if array exists
+				if(isFavorite.length > 0){
+
+					// recipe is a favorite
+					this.favorite = 'true';
+
+				}
+
+				// get back id, title, image, readyInMinutes, vegan, gluten, weightWatcherSmartPoints
 				// analyzedInstructons, extendedIngredients
-				let recipePage = Controller.getRecipeDO(data);
+				let recipePage = Controller.getRecipeDO(data, true, 'day', this.favorite);
 
 				Controller.sendRecipeInfo(recipePage);
 				
 			},
-			error: function(err) { console.error(err); },
-				beforeSend: function(xhr) {
-				xhr.setRequestHeader("X-Mashape-Authorization", "fHjaL4Ss9gmshKplCTTN8WTMJD0up1Tuhn4jsnpw0mSEkWnxu9"); // Enter here your Mashape key
+			error: function(err){ 
+				console.error(err);
+				window.location.href('./error.html');
+			},
+			beforeSend: function(xhr) {
+			xhr.setRequestHeader("X-Mashape-Authorization", "fHjaL4Ss9gmshKplCTTN8WTMJD0up1Tuhn4jsnpw0mSEkWnxu9"); // Enter here your Mashape key
 			}
 		});
 	}
@@ -125,7 +149,6 @@ class Model{
 			data: {},
 			dataType: 'json',
 			success: function(data){
-				console.log('3');
 				let info = false;
 				this.similarRecipes = [];
 				// only grab 2 recipes
@@ -139,9 +162,11 @@ class Model{
 				// pass array to controller
 				Controller.sendSimilarRecipes(this.similarRecipes);
 			},
-			error: function(err) { alert(err); },
-				beforeSend: function(xhr) {
-				xhr.setRequestHeader("X-Mashape-Authorization", "fHjaL4Ss9gmshKplCTTN8WTMJD0up1Tuhn4jsnpw0mSEkWnxu9"); // Enter here your Mashape key
+			error: function(err){
+				window.location.href('./error.html');
+			},
+			beforeSend: function(xhr) {
+			xhr.setRequestHeader("X-Mashape-Authorization", "fHjaL4Ss9gmshKplCTTN8WTMJD0up1Tuhn4jsnpw0mSEkWnxu9"); // Enter here your Mashape key
 			}
 		});
 	}
@@ -199,9 +224,11 @@ class Model{
 				Controller.setMealPlan(this.mealArray);
 
 			},
-			error: function(err) { alert(err); },
-				beforeSend: function(xhr) {
-				xhr.setRequestHeader("X-Mashape-Authorization", "fHjaL4Ss9gmshKplCTTN8WTMJD0up1Tuhn4jsnpw0mSEkWnxu9"); // Enter here your Mashape key
+			error: function(err){
+				window.location.href('./error.html');
+			},
+			beforeSend: function(xhr) {
+			xhr.setRequestHeader("X-Mashape-Authorization", "fHjaL4Ss9gmshKplCTTN8WTMJD0up1Tuhn4jsnpw0mSEkWnxu9"); // Enter here your Mashape key
 			}
 		});
 	}

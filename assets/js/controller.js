@@ -36,7 +36,6 @@ class Controller{
 	}
 
 	static getSimilarRecipes(url){
-		console.log('2');
 		Model.similarRecipes(url);
 	}
 
@@ -45,8 +44,7 @@ class Controller{
 		View.displaySimilarRecipes(similarRecipesArray);
 	}
 
-	static getRecipeDO(recipe, info, timeFrame){
-
+	static getRecipeDO(recipe, info, timeFrame, favorite){
 		// create new recipe DO with model data
 		let recipeDO = new RecipeDO();
 		recipeDO.id = recipe.id;
@@ -55,7 +53,7 @@ class Controller{
 		recipeDO.readyInMinutes = recipe.readyInMinutes;
 		recipeDO.info = info;
 		recipeDO.timeFrame = timeFrame;
-
+		recipeDO.favorite = favorite;
 
 		// recipe page information
 		if(recipeDO.info != false){
@@ -102,6 +100,7 @@ class Controller{
 	}
 
 	static addFavoriteRecipe(){
+
 		let id = $('.favorites').attr('data-id');
 		let title = $('.favorites').attr('data-recipe');
 		let img = $('.favorites').attr('data-img');

@@ -123,7 +123,7 @@ class Session{
 		
 		// display similar recipes based on id
 		Controller.getSimilarRecipes(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/${hash}/similar`);
-		console.log('1');
+
 	}
 
 	static getInstance(){
