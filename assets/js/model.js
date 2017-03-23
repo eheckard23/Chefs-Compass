@@ -119,14 +119,18 @@ class Model{
 				// check if recipe is in favorite ls
 				let favoriteArray = JSON.parse(localStorage.getItem('favRecipeArr'));
 
-				// filter favorite recipes and return the recipe
-				// with matching id
-				let isFavorite = favoriteArray.filter(recipe => {
-					return recipe.id == data.id;
-				});
+				if(favoriteArray){
 
+					// filter favorite recipes and return the recipe
+					// with matching id
+					this.isFavorite = favoriteArray.filter(recipe => {
+						return recipe.id == data.id;
+					});
+
+				}
+				
 				// check if array exists
-				if(isFavorite.length > 0){
+				if(this.isFavorite.length > 0){
 
 					// recipe is a favorite
 					this.favorite = 'true';
