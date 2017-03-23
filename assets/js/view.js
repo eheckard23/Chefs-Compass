@@ -170,7 +170,8 @@ class View{
 
 		// create pinterest save button
 		$('.favorites').after(
-				`<button class="pinterest" data-media=${src} data-description="${title}">Pin It</button>`
+				`<button class="pinterest" data-media=${src} data-description="${title}"><i class="fa fa-pinterest" aria-hidden="true"></i>
+Pin It</button>`
 		);
 		$('.pinterest').on('click', (e) => {
 			PinUtils.pinOne({
