@@ -56,7 +56,9 @@ class Controller{
 			recipeDO.vegan = recipe.vegan;
 			recipeDO.glutenFree = recipe.glutenFree;
 			recipeDO.weightWatcherSmartPoints = recipe.weightWatcherSmartPoints;
-			recipeDO.steps = recipe.analyzedInstructions[0].steps;		
+			if(recipe.analyzedInstructions.length){
+				recipeDO.steps = recipe.analyzedInstructions[0].steps;
+			}		
 			recipeDO.ingredients = recipe.extendedIngredients;
 
 		}

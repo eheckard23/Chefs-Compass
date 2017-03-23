@@ -139,12 +139,6 @@ class Model{
 
 				}
 
-				// check for empty instructions
-				if(data.analyzedInstructons[0].steps = []){
-					
-				}
-
-
 				// get back id, title, image, readyInMinutes, vegan, gluten, weightWatcherSmartPoints
 				// analyzedInstructons, extendedIngredients
 				let recipePage = Controller.getRecipeDO(data, true, 'day', this.favorite);
