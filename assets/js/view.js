@@ -11,29 +11,20 @@ class View{
 	// home page
 	static displayRecipes(recipeArray){
 
-		// remove loading animation
-		setTimeout(removeLoader, 1000);
-
-		function removeLoader(){
-
-			$('.loader').removeClass('loading');
-
-			$('.results').html('');
-			recipeArray.forEach(recipe => {
-				$('.results').append(
-					` <a href="recipe.html#${recipe.id}" data-id=${recipe.id}>`
-					+ '<article class="recipe">'
-					+ '<div class="recipeImg">'
-					+ `<img src="https://spoonacular.com/recipeImages/${recipe.image}" alt="${recipe.title}"/>`
-					+ '</div>'
-			  		+ `<h3>${recipe.title}</h3>`
-					+ `<p>Cook Time: ${recipe.readyInMinutes} minutes</p>`
-					+ `</a>`
-					+ '</article>'
-				);
-			});
-
-		}		
+		$('.results').html('');
+		recipeArray.forEach(recipe => {
+			$('.results').append(
+				` <a href="recipe.html#${recipe.id}" data-id=${recipe.id}>`
+				+ '<article class="recipe">'
+				+ '<div class="recipeImg">'
+				+ `<img src="https://spoonacular.com/recipeImages/${recipe.image}" alt="${recipe.title}"/>`
+				+ '</div>'
+		  		+ `<h3>${recipe.title}</h3>`
+				+ `<p>Cook Time: ${recipe.readyInMinutes} minutes</p>`
+				+ `</a>`
+				+ '</article>'
+			);
+		});	
 
 	}
 	// present 2 youtube videos based on search results

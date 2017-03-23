@@ -82,7 +82,15 @@ class Model{
 				window.location.href('./error.html');
 			},
 			beforeSend: function(xhr) {
-			xhr.setRequestHeader("X-Mashape-Authorization", "fHjaL4Ss9gmshKplCTTN8WTMJD0up1Tuhn4jsnpw0mSEkWnxu9"); // Enter here your Mashape key
+
+				$('.loader').addClass('loading');
+
+				xhr.setRequestHeader("X-Mashape-Authorization", "fHjaL4Ss9gmshKplCTTN8WTMJD0up1Tuhn4jsnpw0mSEkWnxu9"); // Enter here your Mashape key
+			},
+			complete: function(){
+
+				$('.loader').removeClass('loading');
+
 			}
 		});
 
@@ -137,7 +145,15 @@ class Model{
 				window.location.href('./error.html');
 			},
 			beforeSend: function(xhr) {
-			xhr.setRequestHeader("X-Mashape-Authorization", "fHjaL4Ss9gmshKplCTTN8WTMJD0up1Tuhn4jsnpw0mSEkWnxu9"); // Enter here your Mashape key
+
+				$('.loader').addClass('loading');
+
+				xhr.setRequestHeader("X-Mashape-Authorization", "fHjaL4Ss9gmshKplCTTN8WTMJD0up1Tuhn4jsnpw0mSEkWnxu9"); // Enter here your Mashape key
+			},
+			complete: function(){
+
+				$('.loader').removeClass('loading');
+
 			}
 		});
 	}
@@ -228,7 +244,15 @@ class Model{
 				window.location.href('./error.html');
 			},
 			beforeSend: function(xhr) {
-			xhr.setRequestHeader("X-Mashape-Authorization", "fHjaL4Ss9gmshKplCTTN8WTMJD0up1Tuhn4jsnpw0mSEkWnxu9"); // Enter here your Mashape key
+
+				$('.loader').addClass('loading');
+
+				xhr.setRequestHeader("X-Mashape-Authorization", "fHjaL4Ss9gmshKplCTTN8WTMJD0up1Tuhn4jsnpw0mSEkWnxu9"); // Enter here your Mashape key
+			},
+			complete: function(){
+
+				$('.loader').removeClass('loading');
+
 			}
 		});
 	}

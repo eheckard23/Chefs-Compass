@@ -3,6 +3,7 @@ class Session{
 
 		console.log('Session created');
 
+		// focus search form on load
 		$('input[name="search"]').focus();
 
 		// reload recipe page
@@ -15,6 +16,7 @@ class Session{
 			window.location.href = './404.html';
 		}
 
+		// get initial values
 		let searchValue = $('.searchRecipe').val();
 		let recipeCount = 6;
 		let recipeId = '';
@@ -47,8 +49,20 @@ class Session{
 			// random food trivia
 			this.controller.getTrivia(urls.triviaSearch);
 
-			// loading animation
-			$('.loader').addClass('loading');
+			// $(document).on({
+
+			// 	ajaxStart: function(){
+			// 		// loading animation
+			// 		$('.loader').addClass('loading');
+			// 	},
+			// 	ajaxStop: function(){
+			// 		// remove animation
+			// 		$('.loader').removeClass('loading');
+			// 	}
+
+			// });
+
+			
 
 			// random recipes
 			Controller.getRecipes(urls.recipeSearch);
@@ -60,7 +74,7 @@ class Session{
 				$('.submitSearch').on('click', (e) => {
 					// add loading animation
 						
-					$('.loader').addClass('loading');
+					// $('.loader').addClass('loading');
 
 					e.preventDefault();
 					let searchValue = $('.searchRecipe').val();
@@ -102,17 +116,6 @@ class Session{
 			});
 
 		});
-
-	}
-
-	static addSpinner(){
-
-		$('.loader').addClass('loading');
-	}
-
-	static removeSpinner(){
-
-		$('.loader').removeClass('loading');
 
 	}
 
