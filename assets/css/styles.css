@@ -419,10 +419,11 @@ footer ul{ margin: 0; }
 .recipeImage{
 	float: left;
 	max-width: 100%;
+	overflow: hidden;
 }
 .recipeImg{
 	width: 100%;
-	height: 150px;
+	max-height: 150px;
 	overflow: hidden;
 }
 .favorites-container{
