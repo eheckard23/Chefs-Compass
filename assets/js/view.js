@@ -285,9 +285,9 @@ class View{
 				// day
 
 				// time counter
-				if(i == 1){
+				if(i == 0){
 					this.time = 'Breakfast';
-				}else if(i == 2){
+				}else if(i == 1){
 					this.time = 'Lunch';
 				}else{
 					this.time = 'Dinner'
