@@ -732,11 +732,15 @@ footer ul{
 	.recipe{
 		width: 80%;
 	}
+	.ingredientList-container,
+	.recipeInstructions-container{
+		width: 76%;
+		padding: 10%
+	}
 	.recipe-container,
 	.title,
 	.recipe-stat,
-	.favorites-container{
-		
+	.favorites-container{	
 		width: 100%;
 	}
 	.favorites-container{
