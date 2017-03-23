@@ -50,7 +50,7 @@ class Controller{
 		let recipeDO = new RecipeDO();
 
 		// recipe page information
-		if(recipeDO.info == true){
+		if(info == true){
 			// data only attached if recipe page data is requested
 			recipeDO.servings = recipe.servings;
 			recipeDO.vegan = recipe.vegan;
@@ -68,9 +68,6 @@ class Controller{
 		recipeDO.info = info;
 		recipeDO.timeFrame = timeFrame;
 		recipeDO.favorite = favorite;
-		console.log(info);
-
-		
 
 		// send back to model
 		return recipeDO;

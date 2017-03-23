@@ -641,7 +641,10 @@ footer ul{ margin: 0; }
 	}
 }
 @media screen and (max-width: 900px){
-	.recipe-container-title{ display: block; }
+	.recipe-container-title{
+		display: block; 
+		text-align: center;
+	}
 	.recipe-container,
 	.title{
 		float: none;
@@ -656,6 +659,11 @@ footer ul{ margin: 0; }
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: center;
+	}
+	.recipeImage{
+		float: none;
+		display: block;
+		margin: 0 auto;
 	}
 	.favorites,
 	.pinterest{ width: 100%; }

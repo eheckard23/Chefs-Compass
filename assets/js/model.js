@@ -115,6 +115,7 @@ class Model{
 			data: {},
 			dataType: 'json',
 			success: function(data){
+				console.dir(data);
 
 				// check if recipe is in favorite ls
 				let favoriteArray = JSON.parse(localStorage.getItem('favRecipeArr'));
