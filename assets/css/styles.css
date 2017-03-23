@@ -96,7 +96,7 @@ nav input[type="search"]{
 	background: #fbfbf4;
 }
 nav ul{
-	width: 50%;
+	width: 100%;
 	margin: 0 2% 0 2%;
 	float: left;
 	list-style: none;
@@ -125,6 +125,9 @@ nav a[href*="index"]{
 	padding: 10px 0 10px 50px;
 	color: #fbfbf4;
 }
+.logo-nav{
+	display: none;
+}
 /*-------------------------- =Jumbotron----------------*/
 .welcome-container,
 .plan-container,
@@ -132,7 +135,6 @@ nav a[href*="index"]{
 	overflow: hidden;
 	background: url('../images/sebastian-lp-204232.jpg') left;
 	background-size: cover;
-	/*margin-top: 58px;*/
 	padding: 100px 0 40px;
 	color: #fbfbf4;
 }
@@ -256,12 +258,15 @@ nav a[href*="index"]{
 }
 /*--------- =Footer----*/
 footer{
-	padding: 20px;
+	padding: 2%;
 	background-color: #333;
 	color: #fbfbf4;
 }
-footer p{
-	width: 50%;
+footer h2{
+	margin-left: 2%;
+}
+footer ul{
+	margin: 0;
 }
 
 /*-------------------------- =Meal Plan Page----------------*/
@@ -337,8 +342,7 @@ footer p{
 }
 .form-input{
 	width: 95%;
-	padding: 10px;
-	padding-bottom: 2px;
+	padding: 10px 0 2px;
 	background-color: rgba(251,251,244,0.8);
 }
 .radio{
@@ -470,21 +474,19 @@ footer p{
 	color: #333;
 	font-size: 2em;
 	margin: 0;
-	margin-left: 30px;
+	margin-left: 3%;
 }
 .stats{
 	background-color: #e9e9e5;
 	display: flex;
-	margin: 30px 0 0 30px;
-	border: solid 1px rgba(0,0,0,0.2);
+	flex-wrap: wrap;
+	margin: 30px 0 0 3%;
 }
 .recipe-stat{
-	width: calc(100%/3);
+	width: 100%;
 	padding: 20px;
 	text-align: center;
-}
-.recipe-stat:not(:last-of-type){
-	border-right: solid 1px rgba(0,0,0,0.2);
+	border: solid 1px rgba(0,0,0,0.2);
 }
 .recipe-stat h3,
 .recipe-stat i{
@@ -513,7 +515,7 @@ footer p{
 	background-color: #b74949;
 	color: #fbfbf4;
 	border: none;
-	margin-bottom: 10px;
+	margin: 10px 0 10px 0;
 	padding: 10px;
 	border-radius: 2px;
 	cursor: pointer;
@@ -545,8 +547,8 @@ footer p{
 .ingredientList-container{
 	float: left;
 	background-color: #333;
-	margin: 0 0 30px 30px;
-	padding: 60px;
+	margin: 0 0 30px 2%;
+	padding: 4%;
 	width: 25%;
 }
 .ingredientList-container h4,
@@ -572,8 +574,8 @@ footer p{
 .recipeInstructions-container{
 	background-color: #fbfbf4;
 	width: 45%;
-	margin: 0 0 0 30px;
-	padding: 60px;
+	margin: 0 0 0 2%;
+	padding: 4%;
 	float: left;
 }
 .recipeInstructions-container h4{
@@ -595,23 +597,6 @@ footer p{
 }
 
 /*--------- =Videos----*/
-.similarVideo-container{
-	width: 60%;
-	margin: 30px 0 30px 30px;
-	padding: 60px;
-	background-color: #333;
-	clear: both;
-}
-.similarVideos{
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: left;
-	margin-left: 0;
-}
-.similarVideos .videoRecipe{
-	margin-left: 0;
-	width: 25%;
-}
 .ytPlayer{
 	width: 100%;
 	border: none;
@@ -705,6 +690,14 @@ footer p{
 	}
 }
 @media screen and (max-width: 900px){
+	.ingredientList-container,
+	.recipeInstructions-container{
+		width: 88%;
+		font-size: 1.5em;
+	}
+	.recipeInstructions-container{
+		clear: left;
+	}
 	.mealPlan-cta p{
 		width: 90%;
 	}
@@ -716,7 +709,8 @@ footer p{
 	}
 }
 @media screen and (max-width: 764px){
-	.recipeImageContainer{
+	.recipeImageContainer,
+	.videoRecipe{
 		width: 100%;
 		height: 300px;
 		overflow: hidden;
@@ -726,6 +720,13 @@ footer p{
 	}
 }
 @media screen and (max-width: 577px){
+	.home-nav{
+		display: none;
+	}
+	.logo-nav{
+		display: block;	
+		padding-bottom: 10px;
+	}
 	.searchForm input[name="search"]{
 		font-size: 1em;
 		width: 50%;
@@ -736,55 +737,22 @@ footer p{
 	.recipe-container,
 	.title,
 	.recipe-stat,
-	.favorites-container,
-	.favorites,
-	.pinterest,
-	.ingredientList-container,
-	.recipeInstructions-container,
-	.similarVideo-container,
-	.similarVideos .videoRecipe{
+	.favorites-container{
+		
 		width: 100%;
 	}
-	.ingredientList-container,
-	.recipeInstructions-container,
-	.similarVideo-container{
-		padding: 0;
-	}
-	.similarVideo-container{
-		margin-top: 30px;
-	}
-	.similarVideos{
-		justify-content: center;
+	.favorites-container{
+		padding-top: 10px;
 	}
 	.favorites,
 	.pinterest{
-		padding: 40px 0;
-	}
-	.ingredientList-container ul,
-	.recipe-instructions{
+		float: none;
+		margin: 10px auto;
 		padding: 20px;
-		width: 90%;
-	}
-	.ingredientList-container li{
-		width: 90%;
-	}
-
-	.recipe-stat:not(:last-of-type){
-		border: none;
 	}
 	.stats,
-	.favorites-container,
-	.ingredientList-container,
-	.recipeInstructions-container,
-	.similarVideo-container{
+	.favorites-container{
 		margin-left: 0;
-	}
-
-	.similar-container{
-		display: none;
-	}
-	.recipeInstructions li{
-		width: 90%;
 	}
 
 }
