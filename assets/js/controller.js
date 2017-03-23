@@ -101,6 +101,12 @@ class Controller{
 
 	static addFavoriteRecipe(){
 
+		$('.favorites').addClass('favorited');
+		// remove favorite method
+		$('.favorites').prop('onclick',null).off('click');
+		// change text
+		$('.favorites').html('<i class="fa fa-check" aria-hidden="true"></i> Favorite!');
+
 		let id = $('.favorites').attr('data-id');
 		let title = $('.favorites').attr('data-recipe');
 		let img = $('.favorites').attr('data-img');
