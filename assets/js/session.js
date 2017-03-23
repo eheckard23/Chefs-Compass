@@ -49,21 +49,6 @@ class Session{
 			// random food trivia
 			this.controller.getTrivia(urls.triviaSearch);
 
-			// $(document).on({
-
-			// 	ajaxStart: function(){
-			// 		// loading animation
-			// 		$('.loader').addClass('loading');
-			// 	},
-			// 	ajaxStop: function(){
-			// 		// remove animation
-			// 		$('.loader').removeClass('loading');
-			// 	}
-
-			// });
-
-			
-
 			// random recipes
 			Controller.getRecipes(urls.recipeSearch);
 
@@ -72,9 +57,6 @@ class Session{
 			// pass search value to recipe search and youtube search
 			$.when(
 				$('.submitSearch').on('click', (e) => {
-					// add loading animation
-						
-					// $('.loader').addClass('loading');
 
 					e.preventDefault();
 					let searchValue = $('.searchRecipe').val();

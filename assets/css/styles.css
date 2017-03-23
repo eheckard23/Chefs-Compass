@@ -369,21 +369,17 @@ footer ul{
 }
 /*-------------------------- =Meal Plan Schedule----------------*/
 .mealPlanSchedule{
-	color: #fbfbf4;
-	background-color: #333;
+	color: #333;
 	margin-bottom: 30px; 
+	display: flex;
 	justify-content: center;
 	transition: all .3s ease;
-}
-.mealPlanSchedule h2{
-	color: #333;
-
 }
 .mealTime{
 	text-align: center;
 }
 .weekDay{
-	width: 25%;
+	width: 50%;
 	margin: 10px;
 	padding: 20px;
 	border-radius: 2px;
@@ -600,8 +596,24 @@ footer ul{
 	padding: 0;
 }
 /*--------- =Similar recipes----*/
-.similar-container{
-	float: right;
+.similar-recipes,
+.similar-videos{
+	justify-content: left;
+}
+.similar{
+	clear: left;
+	background-color: #333;
+	color: #fbfbf4;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	padding: 4%;
+}
+.similar h4{
+	width: 25%;
+	color: #fbfbf4;
+	text-transform: uppercase;
+	padding-top: 5px;
+	border-top: solid 2px #b74949;
 }
 .similarRecipeHeading{
 	text-align: center;
@@ -697,21 +709,30 @@ footer ul{
 	.similar-container{
 		clear: left;
 		margin-left: 5%;
-		border: solid 2px red;
 	}
 }
 @media screen and (max-width: 900px){
-	.title{
-		clear: left;
-		width: 100%;
-	}
 	.recipe-container-title{
 		display: block;
 	}
-	.recipe-container{
+	.recipe-container,
+	.title{
 		float: none;
 		width: 80%;
 		margin: 0 auto;
+	}
+	.favorites-container{
+		overflow: hidden;
+		float: none;
+		width: 50%;
+		margin: 0 auto;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+	.favorites,
+	.pinterest{
+		width: 100%;
 	}
 	.recipeTitle{
 		display: none;
@@ -721,8 +742,22 @@ footer ul{
 		width: 88%;
 		font-size: 1.5em;
 	}
+	.similar{
+		font-size: 1.5em;
+	}
 	.recipeInstructions-container{
 		clear: left;
+		margin-bottom: 30px;
+	}
+	.similar-recipes{
+		justify-content: center;
+	}
+	.similar-recipes .recipe,
+	.similar-recipes .videoRecipe{
+		width: 90%;
+	}
+	.weekDay{
+		width: 100%;
 	}
 	.mealPlan-cta p{
 		width: 90%;
@@ -735,12 +770,12 @@ footer ul{
 	}
 }
 @media screen and (max-width: 764px){
-	.recipeImageContainer,
-	.videoRecipe{
+	.recipeImageContainer{
 		width: 100%;
 		height: 300px;
 		overflow: hidden;
 	}
+
 	.dietForm{
 		width: 60%;
 	}
@@ -761,7 +796,8 @@ footer ul{
 		width: 80%;
 	}
 	.ingredientList-container,
-	.recipeInstructions-container{
+	.recipeInstructions-container
+	.similar{
 		width: 76%;
 		padding: 10%
 	}
@@ -770,21 +806,10 @@ footer ul{
 	}
 	.recipe-container,
 	.title,
-	.recipe-stat,
-	.favorites-container{	
+	.recipe-stat{	
 		width: 100%;
 	}
-	.favorites-container{
-		padding-top: 10px;
-	}
-	.favorites,
-	.pinterest{
-		float: none;
-		margin: 10px auto;
-		padding: 20px;
-	}
-	.stats,
-	.favorites-container{
+	.stats{
 		margin-left: 0;
 	}
 	.stats{
@@ -793,6 +818,10 @@ footer ul{
 	}
 	.recipe-stat{
 		width: 25%;
+	}
+	.similar-recipes .recipe,
+	.similar-recipes .videoRecipe{
+		width: 100%;
 	}
 	.plan-heading{
 		width: 100%;

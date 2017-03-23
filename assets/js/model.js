@@ -119,10 +119,7 @@ class Model{
 				// check if recipe is in favorite ls
 				let favoriteArray = JSON.parse(localStorage.getItem('favRecipeArr'));
 
-				console.log(favoriteArray);
-
 				if(favoriteArray == null){
-
 
 
 				}else{

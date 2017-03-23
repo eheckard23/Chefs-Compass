@@ -141,8 +141,8 @@ class View{
 
 		
 
-		// get 3 similar videos using recipe title
-		Controller.similarVideos(`https://www.googleapis.com/youtube/v3/search?key=AIzaSyCxolTs58eWL7PrMUVJHPslqY7mOYwQ5lg&part=snippet&maxResults=3&topicId=/m/02wbm&q=recipes+with+${title}`);
+		// get 2 similar videos using recipe title
+		Controller.similarVideos(`https://www.googleapis.com/youtube/v3/search?key=AIzaSyCxolTs58eWL7PrMUVJHPslqY7mOYwQ5lg&part=snippet&maxResults=2&topicId=/m/02wbm&q=recipes+with+${title}`);
 
 		// check if recipe is already favorite
 		if(recipeDO.favorite == 'true'){
@@ -207,12 +207,13 @@ class View{
 		// display similar videos
 		$('.similar-videos').html('');
 		videos.forEach(video => {
-			$('.similar-videos')
+			$('.similar-recipes')
 				.append(
 					'<article class="videoRecipe">'
 					+ `<iframe class="ytPlayer" 
 								type="text/html" 
-								src="https://www.youtube.com/embed/${video.id.videoId}">
+								src="https://www.youtube.com/embed/${video.id.videoId}"
+								allowfullscreen>
 						</iframe>`
 					+ `<h3>${video.snippet.title}</h3>`
 					+ '</article>'
