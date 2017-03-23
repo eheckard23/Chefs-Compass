@@ -219,6 +219,9 @@ nav a[href*="index"]{
 	color: #fbfbf4;
 }
 .mealPlan-cta a{
+	text-decoration: none;
+}
+.plan-link{
 	display: block;
 	width: 10%;
 	text-decoration: none;
