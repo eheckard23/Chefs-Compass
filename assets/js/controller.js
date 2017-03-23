@@ -80,9 +80,7 @@ class Controller{
 	static setVideos(videos){
 		View.displayVideos(videos);
 	}
-
-
-
+	
 	static similarVideos(path){
 		Model.similarVideos(path);
 	}

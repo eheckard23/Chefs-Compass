@@ -9,6 +9,8 @@ class Session{
 		// reload recipe page
 		$(window).on('hashchange', () => {
 			window.location.reload();
+			// set page to top
+			scroll(0,0);
 		});
 
 		// redirect to 404 page

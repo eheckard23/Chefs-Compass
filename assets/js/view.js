@@ -55,6 +55,7 @@ class View{
 
 	}
 
+	// get recipe data object from controller
 	static displayRecipeInfo(recipeDO){
 		// store recipe DO in variables
 		let id = recipeDO.id;
@@ -261,11 +262,13 @@ class View{
 
 		}else{
 
+			// pass start, finish, and day values to generate
+			// 3 meals for 1 day section
 			function displayMealDays(start, finish, day){
 
 				let weekSchedule = $('.mealPlanSchedule').html();
 
-				// create 1 new sections
+				// create 1 new section
 				weekSchedule += '<section class="weekDay">'
 							+ `<h2>Day ${day}</h2>`
 							+ '<ul class="weekList">';
@@ -300,6 +303,8 @@ class View{
 
 	}
 
+	// favorite recipe page
+	// get array from local storage
 	static getFavoriteRecipes(){
 		let recipes = JSON.parse(localStorage.getItem('favRecipeArr'));
 
@@ -311,7 +316,7 @@ class View{
 
 			);
 		}
-
+		// display favorite recipes
 		recipes.forEach(recipe => {
 			$('.favoriteRecipe-container').append(
 				` <a href="recipe.html#${recipe.id}" data-id=${recipe.id}>`
