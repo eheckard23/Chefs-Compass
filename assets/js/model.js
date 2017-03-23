@@ -125,6 +125,7 @@ class Model{
 			data: {},
 			dataType: 'json',
 			success: function(data){
+				console.log('3');
 				let info = false;
 				this.similarRecipes = [];
 				// only grab 2 recipes

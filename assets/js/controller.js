@@ -36,6 +36,7 @@ class Controller{
 	}
 
 	static getSimilarRecipes(url){
+		console.log('2');
 		Model.similarRecipes(url);
 	}
 
@@ -105,8 +106,7 @@ class Controller{
 		let img = $('.favorites').attr('data-img');
 		let time = $('.favorites').attr('data-time');
 		let favRecipe = { id, title, img, time };
-		// Controller.favRecipeArray.push(favRecipe);
-		// console.log(Controller.favRecipeArray);
+
 		Model.storeFavoriteRecipes(favRecipe);
 	}
 

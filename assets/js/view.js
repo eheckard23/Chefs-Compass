@@ -24,7 +24,7 @@ class View{
 					` <a href="recipe.html#${recipe.id}" data-id=${recipe.id}>`
 					+ '<article class="recipe">'
 					+ '<div class="recipeImg">'
-					+ `<img src="https://spoonacular.com/recipeImages/${recipe.image}" alt=${recipe.title}/>`
+					+ `<img src="https://spoonacular.com/recipeImages/${recipe.image}" alt="${recipe.title}"/>`
 					+ '</div>'
 			  		+ `<h3>${recipe.title}</h3>`
 					+ `<p>Cook Time: ${recipe.readyInMinutes} minutes</p>`
@@ -149,7 +149,7 @@ class View{
 
 		
 
-		// get 2 similar videos using recipe title
+		// get 3 similar videos using recipe title
 		Controller.similarVideos(`https://www.googleapis.com/youtube/v3/search?key=AIzaSyCxolTs58eWL7PrMUVJHPslqY7mOYwQ5lg&part=snippet&maxResults=3&topicId=/m/02wbm&q=recipes+with+${title}`);
 		// favorite recipe button
 		$('.favorites').attr({
@@ -178,12 +178,12 @@ class View{
 	static displaySimilarRecipes(recipeArray){
 		// display similar recipes
 		recipeArray.forEach(recipe => {
-			$('.similarRecipes')
+			$('.similar-recipes')
 				.append(
 					` <a href="recipe.html#${recipe.id}">`
 					+ '<article class="recipe">'
 					+ '<div class="recipeImg">'
-					+ `<img src="https://spoonacular.com/recipeImages/${recipe.image}" alt=${recipe.id}/>`
+					+ `<img src="https://spoonacular.com/recipeImages/${recipe.image}" alt="${recipe.title}"/>`
 					+ '</div>'
 			  		+ `<h3>${recipe.title}</h3>`
 					+ `<p>Cook Time: ${recipe.readyInMinutes} minutes</p>`
@@ -195,10 +195,11 @@ class View{
 	}
 	// called from Session.recipeInstructions hash method
 	static displaySimilarVideos(videos){
+		
 		// display similar videos
-		$('.similarVideos').html('');
+		$('.similar-videos').html('');
 		videos.forEach(video => {
-			$('.similarVideos')
+			$('.similar-videos')
 				.append(
 					'<article class="videoRecipe">'
 					+ `<iframe class="ytPlayer" 
@@ -215,12 +216,10 @@ class View{
 
 		let weekSchedule = $('.mealPlanSchedule').html();
 
-			function displayMealDays(start, finish){
-				console.log('boobies');
-				console.log(start);
-				console.log(finish);
-				console.dir(mealPlanArray[start]);
+			function displayMealDays(start, finish, day){
+
 				weekSchedule += '<section class="weekDay">'
+							+ `<h2>Day ${day}</h2>`
 							+ '<ul class="weekList">';
 				for(let i=start;i<finish;i++){
 					weekSchedule += '<li>'
@@ -235,43 +234,49 @@ class View{
 				$('.mealPlanSchedule').append(weekSchedule);
 			}
 
-		console.dir(mealPlanArray);
-
 		for(let i=0;i<mealPlanArray.length;i++){
+
+			let idx = 0;
+			idx++;
 
 			// check if week or day
 			// image is undefined if week
 			if(typeof mealPlanArray[i].image == 'undefined'){
-				console.log(i);
+				console.log(idx);
 
 				// week
-				if(i==2){
+				if(idx==2){
+					console.log(idx);
+					displayMealDays(0,3,1);
+					continue;
 
-					displayMealDays(0,3);
+				}else if(idx==5){
+					console.log(idx);
+					displayMealDays(3,6,2);
 
-				}else if(i==5){
+				}else if(idx==8){
+					console.log(idx);
+					displayMealDays(6,9,3);
 
-					displayMealDays(3,6);
+				}else if(idx==11){
+					console.log(idx);
+					displayMealDays(9,12,4);
 
-				}else if(i==8){
+				}else if(idx==14){
+					console.log(idx);
+					displayMealDays(12,15,5);
 
-					displayMealDays(6,9);
+				}else if(idx==17){
 
-				}else if(i==11){
+					displayMealDays(15,18,6);
 
-					displayMealDays(9,12);
+				}else if(idx==20){
 
-				}else if(i==14){
+					displayMealDays(18,21,7);
 
-					displayMealDays(12,15);
+				}else{
 
-				}else if(i==17){
-
-					displayMealDays(15,18);
-
-				}else if(i==20){
-
-					displayMealDays(18,21);
+					continue;
 
 				}
 
@@ -295,7 +300,7 @@ class View{
 						+ `<a href="recipe.html#${mealPlanArray[i].id}">`
 						+ '<article class="recipe">'
 						+ '<div class="recipeImg">'
-						+ `<img src="https://spoonacular.com/recipeImages/${mealPlanArray[i].image}" alt=${mealPlanArray[i].id}/>`
+						+ `<img src="https://spoonacular.com/recipeImages/${mealPlanArray[i].image}" alt="${mealPlanArray[i].title}"/>`
 						+ '</div>'
 				  		+ `<h3>${mealPlanArray[i].title}</h3>`
 						+ `<p>Cook Time: ${mealPlanArray[i].readyInMinutes} minutes</p>`
@@ -326,7 +331,7 @@ class View{
 				` <a href="recipe.html#${recipe.id}" data-id=${recipe.id}>`
 				+ '<article class="recipe">'
 				+ '<div class="recipeImg">'
-				+ `<img src="${recipe.img}" alt=${recipe.title}/>`
+				+ `<img src="${recipe.img}" alt="${recipe.title}"/>`
 				+ '</div>'
 		  		+ `<h3>${recipe.title}</h3>`
 				+ `<p>Cook Time: ${recipe.time} minutes</p>`

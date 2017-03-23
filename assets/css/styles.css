@@ -186,10 +186,13 @@ nav a[href*="index"]{
 	color: #b74949;
 	text-align: center;
 }
+.results{
+	border: solid 2px red;
+}
 .results,
 .ytResults,
-.similarRecipes,
-.similarVideos,
+.similar-recipes,
+.similar-videos,
 .mealPlanSchedule{
 	width: 90%;
 	margin: 0 auto;
@@ -367,6 +370,10 @@ footer p{
 	margin-bottom: 30px; 
 	justify-content: center;
 	transition: all .3s ease;
+}
+.mealPlanSchedule h2{
+	color: #333;
+
 }
 .mealTime{
 	text-align: center;
@@ -561,20 +568,13 @@ footer p{
 	padding: 10px 0;
 	border-bottom: solid 1px #222;
 }
-/*--------- =Similar recipes----*/
-.similar-container{
-	float: right;
-}
-.similarRecipeHeading{
-	text-align: center;
-}
 /*--------- =Instructions----*/
 .recipeInstructions-container{
 	background-color: #fbfbf4;
-	width: 50%;
-	margin: 30px 0 30px 30px;
+	width: 45%;
+	margin: 0 0 0 30px;
 	padding: 60px;
-	clear: left;
+	float: left;
 }
 .recipeInstructions-container h4{
 	color: #333;
@@ -586,12 +586,21 @@ footer p{
 .recipeInstructions li{
 	padding: 20px 0;
 }
+/*--------- =Similar recipes----*/
+.similar-container{
+	float: right;
+}
+.similarRecipeHeading{
+	text-align: center;
+}
+
 /*--------- =Videos----*/
 .similarVideo-container{
 	width: 60%;
 	margin: 30px 0 30px 30px;
 	padding: 60px;
 	background-color: #333;
+	clear: both;
 }
 .similarVideos{
 	display: flex;
