@@ -188,9 +188,6 @@ nav a[href*="index"]{
 	color: #b74949;
 	text-align: center;
 }
-.results{
-	border: solid 2px red;
-}
 .results,
 .ytResults,
 .similar-recipes,

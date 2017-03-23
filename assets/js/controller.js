@@ -45,7 +45,7 @@ class Controller{
 		View.displaySimilarRecipes(similarRecipesArray);
 	}
 
-	static getRecipeDO(recipe, info){
+	static getRecipeDO(recipe, info, timeFrame){
 
 		// create new recipe DO with model data
 		let recipeDO = new RecipeDO();
@@ -54,6 +54,7 @@ class Controller{
 		recipeDO.image = recipe.image;
 		recipeDO.readyInMinutes = recipe.readyInMinutes;
 		recipeDO.info = info;
+		recipeDO.timeFrame = timeFrame;
 
 
 		// recipe page information

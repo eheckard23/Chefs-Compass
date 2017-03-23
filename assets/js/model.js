@@ -170,24 +170,24 @@ class Model{
 
 				// check for day or week
 				if(!('items' in data)){
-
+					let timeFrame = 'day';
 					// day
 					data.meals.forEach(meal => {
 
 						// create recipe DO
-						let mealDO = Controller.getRecipeDO(meal, info);
+						let mealDO = Controller.getRecipeDO(meal, info, timeFrame);
 						// push meal to array
 						this.mealArray.push(mealDO);
 
 					});
 
 				}else{
-
+					let timeFrame = 'week';
 					// week
 					data.items.forEach(meal => {
 
 						// create recipe DO
-						let mealDO = Controller.getRecipeDO(JSON.parse(meal.value), info);
+						let mealDO = Controller.getRecipeDO(JSON.parse(meal.value), info, timeFrame);
 						// push meal to array
 						this.mealArray.push(mealDO);
 

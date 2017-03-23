@@ -214,84 +214,11 @@ class View{
 
 	static displayMealPlan(mealPlanArray){
 
-		let weekSchedule = $('.mealPlanSchedule').html();
+		// check if week or day
+		if(mealPlanArray[0].timeFrame == 'day'){
 
-			function displayMealDays(start, finish, day){
-
-				weekSchedule += '<section class="weekDay">'
-							+ `<h2>Day ${day}</h2>`
-							+ '<ul class="weekList">';
-				for(let i=start;i<finish;i++){
-					weekSchedule += '<li>'
-						+ `<a href="recipe.html#${mealPlanArray[i].id}">`
-					  	+ `<h3>${mealPlanArray[i].title}</h3>`
-						+ `</a>`
-						+ '</li>'
-				}
-				weekSchedule += '</ul>'
-							+ '</section>';
-
-				$('.mealPlanSchedule').append(weekSchedule);
-			}
-
-		for(let i=0;i<mealPlanArray.length;i++){
-
-			let idx = 0;
-			idx++;
-
-			// check if week or day
-			// image is undefined if week
-			if(typeof mealPlanArray[i].image == 'undefined'){
-				console.log(idx);
-
-				// week
-				if(idx==2){
-					console.log(idx);
-					displayMealDays(0,3,1);
-					continue;
-
-				}else if(idx==5){
-					console.log(idx);
-					displayMealDays(3,6,2);
-
-				}else if(idx==8){
-					console.log(idx);
-					displayMealDays(6,9,3);
-
-				}else if(idx==11){
-					console.log(idx);
-					displayMealDays(9,12,4);
-
-				}else if(idx==14){
-					console.log(idx);
-					displayMealDays(12,15,5);
-
-				}else if(idx==17){
-
-					displayMealDays(15,18,6);
-
-				}else if(idx==20){
-
-					displayMealDays(18,21,7);
-
-				}else{
-
-					continue;
-
-				}
-
-			}else{
-
-				// day
-
-				// time counter
-				if(i == 0){
-					this.time = 'Breakfast';
-				}else if(i == 1){
-					this.time = 'Lunch';
-				}else{
-					this.time = 'Dinner'
-				}
+			// day
+			mealPlanArray.forEach(meal => {
 
 				$('.mealPlanSchedule')
 					.append(
@@ -308,6 +235,45 @@ class View{
 						+ '</article>'
 						+ `</section>`
 				);
+
+			});
+
+		}else{
+
+			function displayMealDays(start, finish, day){
+
+				let weekSchedule = $('.mealPlanSchedule').html();
+
+				// create 1 new sections
+				weekSchedule += '<section class="weekDay">'
+							+ `<h2>Day ${day}</h2>`
+							+ '<ul class="weekList">';
+				// create 3 meals inside of section
+				for(let i=start;i<finish;i++){
+					console.log('balls');
+					weekSchedule += '<li>'
+								+ `<a href="recipe.html#${mealPlanArray[i].id}">`
+							  	+ `<h3>${mealPlanArray[i].title}</h3>`
+								+ `</a>`
+								+ '</li>'
+				}
+				// finish section
+				weekSchedule += '</ul>'
+							+ '</section>';
+
+				$('.mealPlanSchedule').html(weekSchedule);
+
+			}
+
+			// week
+			// 21 meals
+			// split into 3's for each day
+			// counter for day
+			this.idx = 1;
+			for(let i=0;i<mealPlanArray.length;i+=3){
+
+				displayMealDays(i, (i + 3), this.idx++);
+
 			}
 
 		}
