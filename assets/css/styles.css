@@ -809,6 +809,9 @@ footer ul{
 	.recipe-stat{	
 		width: 100%;
 	}
+	.title{
+		padding-bottom: 30px;
+	}
 	.stats{
 		margin-left: 0;
 	}
