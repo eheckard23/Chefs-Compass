@@ -115,7 +115,6 @@ class Model{
 			data: {},
 			dataType: 'json',
 			success: function(data){
-
 				// check if recipe is in favorite ls
 				let favoriteArray = JSON.parse(localStorage.getItem('favRecipeArr'));
 
@@ -138,6 +137,11 @@ class Model{
 
 					}
 
+				}
+
+				// check for empty instructions
+				if(data.analyzedInstructons[0].steps = []){
+					
 				}
 
 
