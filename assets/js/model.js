@@ -204,6 +204,7 @@ class Model{
 	}
 
 	static generateMealPlan(url){
+		console.log(url);
 		$.ajax({
 			url,
 			type: 'GET',
@@ -247,7 +248,8 @@ class Model{
 
 			},
 			error: function(err){
-				window.location.href('./error.html');
+				console.error(err);
+				// window.location.href ='./error.html';
 			},
 			beforeSend: function(xhr) {
 
