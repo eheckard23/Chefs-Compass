@@ -1,0 +1,63 @@
+const gulp = require('gulp');
+const pkg = require('./package.json');
+const argv = require('yargs').argv;
+const fs = require('fs');
+
+// gulp task for resetting version number
+gulp.task('reset', () => {
+	if(argv.v){
+		pkg.version = argv.v;
+		// write file changes back to package.json with formatting
+		fs.writeFile('./package.json', JSON.stringify(pkg, null, '  '), (err) => {
+			if(err) throw err;
+			console.log('FILE SAVED');
+		});
+	}else{
+		console.log('Please provide a version number!');
+	}
+});
+
+// gulp bump version
+gulp.task('bump', () => {
+	switch(argv.v){
+		case 0:
+			let majVersion = pkg.version.split('.');
+			// bump major version number
+			let bumpedMaj = parseInt(majVersion[0]) + 1;
+			// reset minor and patch
+			majVersion[1] = majVersion[2] = 0;
+			majVersion[0] = bumpedMaj;
+			pkg.version = majVersion.join('.');
+			fs.writeFile('./package.json', JSON.stringify(pkg, null, '  '), (err) => {
+			if(err) throw err;
+				console.log('FILE SAVED');
+			});
+			break;
+		case 1:
+			let minVersion = pkg.version.split('.');
+			// bump minor version number
+			let bumpedMin = parseInt(minVersion[1]) + 1;
+			// reset patch only
+			minVersion[2] = 0;
+			minVersion[1] = bumpedMin;
+			pkg.version = minVersion.join('.');
+			fs.writeFile('./package.json', JSON.stringify(pkg, null, '  '), (err) => {
+			if(err) throw err;
+				console.log('FILE SAVED');
+			});
+			break;
+		case 2:
+			let patchVersion = pkg.version.split('.');
+			// bump minor version number
+			let bumpedPatch = parseInt(patchVersion[2]) + 1;
+			patchVersion[2] = bumpedPatch;
+			pkg.version = patchVersion.join('.');
+			fs.writeFile('./package.json', JSON.stringify(pkg, null, '  '), (err) => {
+			if(err) throw err;
+				console.log('FILE SAVED');
+			});
+			break;
+		default:
+			console.log('No version provided. Try --v=2 for patch version. (Maj=0, Min=1)')
+	}
+});
