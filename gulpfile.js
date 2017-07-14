@@ -10,7 +10,8 @@ gulp.task('reset', () => {
 		// write file changes back to package.json with formatting
 		fs.writeFile('./package.json', JSON.stringify(pkg, null, '  '), (err) => {
 			if(err) throw err;
-			console.log('FILE SAVED');
+			console.log('package.json updated!');
+			console.log(`Project version now at ${pkg.version}`);
 		});
 	}else{
 		console.log('Please provide a version number!');
@@ -30,7 +31,8 @@ gulp.task('bump', () => {
 			pkg.version = majVersion.join('.');
 			fs.writeFile('./package.json', JSON.stringify(pkg, null, '  '), (err) => {
 			if(err) throw err;
-				console.log('FILE SAVED');
+				console.log('package.json updated!');
+				console.log(`Project version now at ${pkg.version}`);
 			});
 			break;
 		case 1:
@@ -43,7 +45,8 @@ gulp.task('bump', () => {
 			pkg.version = minVersion.join('.');
 			fs.writeFile('./package.json', JSON.stringify(pkg, null, '  '), (err) => {
 			if(err) throw err;
-				console.log('FILE SAVED');
+				console.log('package.json updated!');
+				console.log(`Project version now at ${pkg.version}`);
 			});
 			break;
 		case 2:
@@ -54,10 +57,11 @@ gulp.task('bump', () => {
 			pkg.version = patchVersion.join('.');
 			fs.writeFile('./package.json', JSON.stringify(pkg, null, '  '), (err) => {
 			if(err) throw err;
-				console.log('FILE SAVED');
+				console.log('package.json updated!');
+				console.log(`Project version now at ${pkg.version}`);
 			});
 			break;
 		default:
-			console.log('No version provided. Try --v=2 for patch version. (Maj=0, Min=1)')
+			console.log('No version provided. Try --v=2 for bumping patch version. (Maj=0, Min=1)')
 	}
 });
