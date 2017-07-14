@@ -8,7 +8,7 @@ app.use(express.static('public'));
 app.get('/', (req,res) => {
 	res.sendFile(path.join(__dirname + '/index.html'));
 });
-app.set('port', process.env.PORT || 3000)
+app.set('port', process.env.PORT || 3000);
 
 // server listener
 exports.listener = app.listen(app.get('port'), () => {
