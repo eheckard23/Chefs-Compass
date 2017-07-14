@@ -10,7 +10,7 @@ gulp.task('reset', () => {
 		// write file changes back to package.json with formatting
 		fs.writeFile('./package.json', JSON.stringify(pkg, null, '  '), (err) => {
 			if(err) throw err;
-			console.log('package.json updated!');
+			console.log('package.json successfully updated!');
 			console.log(`Project version now at ${pkg.version}`);
 		});
 	}else{
