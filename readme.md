@@ -1,3 +1,6 @@
+## Table of Contents
+[Overview](#overview)
+
 ## Overview
 This guide will go over the process of installing this application onto your local machine to deploying to a live production server.
 
