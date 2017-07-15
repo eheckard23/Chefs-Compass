@@ -1,4 +1,5 @@
 const gulp = require('gulp');
+const git = require('gulp-git');
 const pkg = require('./package.json');
 const argv = require('yargs').argv;
 const fs = require('fs');
@@ -29,6 +30,11 @@ gulp.task('bump', () => {
 			majVersion[1] = majVersion[2] = 0;
 			majVersion[0] = bumpedMaj;
 			pkg.version = majVersion.join('.');
+			// git tag with version number
+			git.tag(`v${pkg.version}`, 'New Tag', err => {
+				if(err) throw err;
+			});
+			// write to package.json
 			fs.writeFile('./package.json', JSON.stringify(pkg, null, '  '), (err) => {
 			if(err) throw err;
 				console.log('package.json updated!');
@@ -43,6 +49,11 @@ gulp.task('bump', () => {
 			minVersion[2] = 0;
 			minVersion[1] = bumpedMin;
 			pkg.version = minVersion.join('.');
+			// git tag with version number
+			git.tag(`v${pkg.version}`, 'New Tag', err => {
+				if(err) throw err;
+			});
+			// write to package.json
 			fs.writeFile('./package.json', JSON.stringify(pkg, null, '  '), (err) => {
 			if(err) throw err;
 				console.log('package.json updated!');
@@ -55,6 +66,11 @@ gulp.task('bump', () => {
 			let bumpedPatch = parseInt(patchVersion[2]) + 1;
 			patchVersion[2] = bumpedPatch;
 			pkg.version = patchVersion.join('.');
+			// git tag with version number
+			git.tag(`v${pkg.version}`, 'New Tag', err => {
+				if(err) throw err;
+			});
+			// write to package.json
 			fs.writeFile('./package.json', JSON.stringify(pkg, null, '  '), (err) => {
 			if(err) throw err;
 				console.log('package.json updated!');
