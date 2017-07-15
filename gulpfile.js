@@ -62,6 +62,6 @@ gulp.task('bump', () => {
 			});
 			break;
 		default:
-			console.log('No version provided. Try --v=2 for bumping patch version. (Maj=0, Min=1)')
+			console.log('No version provided. Try gulp bump --v=2 for bumping patch version. (Maj=0, Min=1)')
 	}
 });
