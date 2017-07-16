@@ -1,5 +1,3 @@
-![logo.png](https://bitbucket.org/repo/5KLbee/images/2079112299-logo.png)
-
 # Table of Contents
 * [Overview](#overview)
 * [Installation](#installation)
