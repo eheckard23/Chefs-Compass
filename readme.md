@@ -1,3 +1,5 @@
+![logo.png](https://bitbucket.org/repo/5KLbee/images/2079112299-logo.png)
+
 # Table of Contents
 * [Overview](#overview)
 * [Installation](#installation)
@@ -17,7 +19,11 @@ Then be sure to clone your repository down to a folder on your local computer.
 
 ![image](https://user-images.githubusercontent.com/17580530/28235676-b620cba8-68e0-11e7-9703-54cb36ee0408.png)
 
-Now that you have the project on your machine, `cd` into your project folder and run `npm i` to install all of the dependencies.
+Now that you have the project on your machine, `cd` into your project folder, there is a bash script called **setup.sh** that will install the dependencies as well as run a gulp task to create and checkout a development branch to work in. In your terminal go ahead and run:
+
+`./setup.sh`
+
+This script will also run the project on a local server.
 
 ## Deployment Process
 In order to go through the deployment process properly, follow this branching model:
@@ -25,23 +31,23 @@ In order to go through the deployment process properly, follow this branching mo
 ***When you are ready to push up your changes to the repo, follow [this guide](#versioning) below for creating proper versioning to your work.***
 
 ### Develop
-Before you begin working on further updates to this project, you need to be starting your work from a **development** branch. Within the cloned project folder, run:
-
-`git branch -b dev`
+All of your work needs to revolve around the **dev** branch. If you are not already checked into **dev** or have not run the project **setup.sh** script, do those steps before moving on. 
 
 ### Feature
 While working on fixes and minor updates in **development** is best practice, any bigger, planned additions to the project should be expanded to a **feature** branch.
 
 `git branch -b <NAME_OF_YOUR_FEATURE>`
 
-Work on your updates in this branch, once a new feature has been completed and works as planned, `push` those changes to your **feature** branch.
+Work on your updates in this branch, once a new feature has been completed and works as planned, [tag](#versioning) the project version and then `push` those changes to your **feature** branch.
 
 ***`Merge` all work back into dev branch when finished with feature***
 
 ### Release
-When a new feature(s) has been added to the **dev** branch and is working as planned, it is time to add these changes into a **release** branch using whatever the current version of the project is on, for example...
+When a new feature(s) has been added to the **dev** branch and is working as planned, it is time to add these changes into a **release** branch using whatever the current version of the project is on. A gulp task for creating this branch is already setup, in your terminal run:
 
-`git branch -b <release-v1.2.5>`
+`gulp newRelease`
+
+This will create and checkout the new release branch with the current version.
 
 The main focus of the release branch is to stage the new version of the project on a server that looks as identical to a live server as possible. For this project, you will create a stage/production pipeline through [Heroku](https://www.heroku.com/
 )
@@ -120,9 +126,6 @@ When your work has an unexpected bug that needs to be updated and fixed quickly,
 ## Continuous Integration
 This part of the deployment model is not required but is recommended for ensuring that your code passes any necessary tests before pushing to further stages. If you choose to add this part, begin by visiting and signing up with [Codeship](https://codeship.com/)
 
-[![button](https://user-images.githubusercontent.com/17580530/28239316-adb932e6-6937-11e7-9cdf-f7b17af27091.png)]
-(https://codeship.com/)
-
 A service like Codeship allows you to add and listen for pushes to an existing repository. When you push any commits, Codeship will download a copy of your repo and run any commands you provide, including tests.
 #### Sign in using your GitHub account.
 ![image](https://user-images.githubusercontent.com/17580530/28239348-739a90e0-6938-11e7-8564-e0d456d36506.png)
@@ -144,3 +147,5 @@ These commands are where you can specify which tests you want Codeship to actual
 ![image](https://user-images.githubusercontent.com/17580530/28239514-e35a9044-693b-11e7-91fa-17619dfd35c9.png)
 
 Once you're done with that, you should be able to start pushing to your repository and seeing the tests run in Codeship at the same time.
+
+

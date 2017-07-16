@@ -4,19 +4,28 @@ const pkg = require('./package.json');
 const argv = require('yargs').argv;
 const fs = require('fs');
 
-// gulp task for resetting version number
-gulp.task('reset', () => {
-	if(argv.v){
-		pkg.version = argv.v;
-		// write file changes back to package.json with formatting
-		fs.writeFile('./package.json', JSON.stringify(pkg, null, '  '), (err) => {
-			if(err) throw err;
-			console.log('package.json successfully updated!');
-			console.log(`Project version now at ${pkg.version}`);
-		});
-	}else{
-		console.log('Please provide a version number!');
-	}
+// initial setup for branches branches
+gulp.task('setup', () => {
+	git.branch('dev', err => {
+		if(err) throw err;
+		console.log('TEST BRANCH CREATED!');
+	});
+	git.checkout('dev', err => {
+		if(err) throw err;
+		console.log('YOU ARE NOW WORKING IN DEV BRANCH!');
+	});
+});
+
+// create release branch
+gulp.task('newRelease', () => {
+	git.branch(`release-v${pkg.version}`, err => {
+		if(err) throw err;
+		console.log(`RELEASE-V${pkg.version} CREATED!`);
+	});
+	git.checkout(`release-v${pkg.version}`, err => {
+		if(err) throw err;
+		console.log(`YOU ARE NOW WORKING IN RELEASE-V${pkg.version}`);
+	});
 });
 
 // gulp bump version
@@ -79,5 +88,20 @@ gulp.task('bump', () => {
 			break;
 		default:
 			console.log('No version provided. Try gulp bump --v=2 for bumping patch version. (Maj=0, Min=1)')
+	}
+});
+
+// gulp task for resetting version number
+gulp.task('reset', () => {
+	if(argv.v){
+		pkg.version = argv.v;
+		// write file changes back to package.json with formatting
+		fs.writeFile('./package.json', JSON.stringify(pkg, null, '  '), (err) => {
+			if(err) throw err;
+			console.log('package.json successfully updated!');
+			console.log(`Project version now at ${pkg.version}`);
+		});
+	}else{
+		console.log('Please provide a version number!');
 	}
 });
