@@ -21,6 +21,12 @@ Now that you have the project on your machine, `cd` into your project folder, th
 
 `./setup.sh`
 
+> You may need to give the file execute permissions. Do so by running:
+
+`chmod 755 ./setup.sh`
+
+Then re-run the script.
+
 This script should start your project on a local server, you may run `npm start` as well.
 
 ## Deployment Process
